@@ -284,6 +284,7 @@
 				</header>
 				<form action="https://wt-0a368b09c3509d2de209bd9143debb3c-0.sandbox.auth0-extend.com/koenidv-web-Telegram-Bot" method="post"
 				 target="formDestination" id="contactform" style="overflow: hidden;">
+
 					<div class="row">
 						<div class="6u 12u$(small)">
 							<input type="text" name="name" aria-label="Name" placeholder="Name" required="required" autocomplete="name">
@@ -295,13 +296,15 @@
 							<br/>
 						</div>
 					</div>
+
 					<textarea type="text" name="message" aria-label="Your message" placeholder="Your message..." spellcheck="true" required="required"
 					 pattern="[A-Za-z0-9]{1,20}" rows="5"></textarea>
 					<br/>
 
 					<input style="display: none" type="text" name="site" value="koenidv.de" />
 
-					<input type="submit" value="Senden" class="button fit" onclick="formsent()">
+					<input type="submit" value="Send" class="button fit" onclick="formsent()">
+					<p>By clicking this button you agree that your message will be sent over <a href="https://webtask.io">webtask.io</a>.</p>
 				</form>
 				</nav>
 			</section>
