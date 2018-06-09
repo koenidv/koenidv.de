@@ -1,9 +1,14 @@
 
+//koenidv.de
 //fkoe.org
 
 window.onload = function () {
 	refreshBackground();
 	autosize($("textarea"));
+
+	window.setTimeout(function () {
+		changeText(document.getElementById("subheadtext"), "Always look on the bright side of life.");
+	}, 3000);
 
 	// For image lazy loading
 	[].forEach.call(document.querySelectorAll('img[data-src]'), function (img) {
@@ -14,8 +19,20 @@ window.onload = function () {
 	});
 }
 
+function changeText(element, text) {
+	var op = 1;  // initial opacity
+	var timer = setInterval(function () {
+		if (op <= 0) {
+			clearInterval(timer);
+			element.innerHTML = text;
+			fadeIn(element);
+		}
+		element.style.opacity = op;
+		op -= 0.05;
+	}, 5);
+}
+
 function fadeIn(element) {
-	console.log(element);
 	var op = 0;  // initial opacity
 	var timer = setInterval(function () {
 		if (op >= 1) {
@@ -54,8 +71,6 @@ function refreshBackground() {
 	//Save the background number to avoid direct repeat
 	localStorage.setItem("bg", num);
 
-	//document.getElementById("background").style.backgroundImage = "url(\"http://res.cloudinary.com/koenidv/image/upload/f_auto,q_auto/" + num + "\")";
-
 	//Hide empty background
 	document.getElementById("background").style.opacity = 0;
 	//Wait for the background image to load
@@ -71,7 +86,6 @@ function refreshBackground() {
 }
 
 function formsent() {
-	//document.getElementById("contactform").classList.add("hidden");
 	squashOut(document.getElementById("contactform"));
 	document.getElementById("contactsubheader").innerHTML = "Your message has been sent!";
 }
