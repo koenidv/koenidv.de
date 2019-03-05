@@ -1,0 +1,66 @@
+h1,
+h2,
+h3 {
+    font-family: 'Varela Round', sans-serif;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.head {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #333333;
+}
+
+.box {
+    margin: 1rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    height: 8rem;
+    box-shadow: 0 0 25px #cecece;
+    border-radius: 1rem;
+    color: #252525;
+    transition: 200ms;
+}
+
+.box:hover {
+    box-shadow: 0 0 10px #d4d4d4;
+    background-color: #fafafa;
+    transition: 200ms;
+}
+
+@media(min-width: 48em) {
+    .head {
+        padding-top: 25vh;
+        font-size: 1.25em;
+    }
+    .content {
+        font-size: 1.25em;
+        display: flex;
+    }
+    .boxes {
+        margin: auto;
+        padding: 1em;
+    }
+    .box {
+        float: left;
+        height: 11rem;
+        width: 15rem;
+    }
+    .box.quick {
+        float: unset;
+        margin: 1rem auto;
+        height: 6rem;
+        width: 36rem;
+        text-align: center;
+    }
+    .box.quick.input {
+        width: 80%;
+    }
+}
