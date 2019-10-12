@@ -1,7 +1,13 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 h1,
 h2,
 h3 {
     font-family: 'Varela Round', sans-serif;
+    margin: 0;
 }
 
 p {
@@ -13,10 +19,18 @@ a {
 }
 
 .head {
-    margin-top: 3rem;
-    margin-bottom: 2rem;
     text-align: center;
-    color: #333333;
+    color: white;
+    text-shadow: 0 0 5px #333333;
+    height: 80vh;
+}
+
+.head>* {
+    padding-top: 25vh;
+}
+
+.content {
+    height: 20vh;
 }
 
 .box {
@@ -30,37 +44,69 @@ a {
 }
 
 .box:hover {
+    padding: 0.5rem 2rem 0.5rem 2rem;
     box-shadow: 0 0 10px #d4d4d4;
     background-color: #fafafa;
     transition: 200ms;
 }
 
+.boxed {
+    margin: auto 4rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    box-shadow: 0 0 25px #333333;
+    border-radius: 1rem;
+    color: #252525;
+    background-color: white;
+    height: fit-content;
+}
+
 @media(min-width: 48em) {
     .head {
-        padding-top: 25vh;
         font-size: 1.25em;
     }
+
     .content {
         font-size: 1.25em;
         display: flex;
     }
+
     .boxes {
         margin: auto;
         padding: 1em;
     }
+
     .box {
         float: left;
         height: 11rem;
         width: 15rem;
     }
-    .box.quick {
-        float: unset;
-        margin: 1rem auto;
-        height: 6rem;
-        width: 36rem;
-        text-align: center;
+
+    .boxed {
+        margin: auto auto;
     }
-    .box.quick.input {
-        width: 80%;
-    }
+}
+
+.inv {
+    display: none;
+}
+
+
+div#background {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    z-index: -2;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+div#background:before {
+    background-color: rgba(50, 50, 50, 0.5);
+    position: fixed;
+    content: " ";
+    height: 100%;
+    width: 100%;
 }

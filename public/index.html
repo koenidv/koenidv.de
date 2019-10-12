@@ -8,35 +8,71 @@
 </head>
 
 <body>
+
+  <div id="background"></div>
+
   <div class="head">
     <h1 class="title">Hey</h1>
   </div>
-  <div class="content">
-    <div class="boxes">
-      <a href="http://play.google.com/store/apps/dev?id=8958029813460515292">
-        <div class="box">
-          <h3>Google Play</h3>
-          <p>Apps by koenidv</p>
-        </div>
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=com.koenidv.camtools">
-        <div class="box sub">
-          <h3>CamTools</h3>
-          <p>A calculator for photographers</p>
-        </div>
-      </a>
 
-      <a href="https://instagram.com/halbsichtbar">
-        <div class="box">
-          <h3>Instagram</h3>
-          <p>Photos by koenidv</p>
-        </div>
+  <div class="content">
+    <div class="boxed">
+      <p>Zur Zeit keine Inhalte.</p>
     </div>
-  </div>
   </div>
 
   <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+
+
+
+  <script>
+
+    window.onload = function () {
+      refreshBackground();
+    }
+
+    function refreshBackground() {
+      var num = Math.ceil(Math.random() * 23);
+
+      //No direct repeat
+      while (num == localStorage.getItem("bg")) {
+        var num = Math.ceil(Math.random() * 23);
+      }
+
+      //Save the background number to avoid direct repeat
+      localStorage.setItem("bg", num);
+
+      //Hide empty background
+      document.getElementById("background").style.opacity = 0;
+      //Wait for the background image to load
+      $('<img/>').attr('src', 'https://res.cloudinary.com/koenidv/image/upload/f_auto,q_auto,w_' + document.body.offsetWidth + '/' + num + "").on('load', function () {
+        $(this).remove();
+        //Set background image (already loaded)
+        $('#background').css('background-image', 'url(https://res.cloudinary.com/koenidv/image/upload/f_auto,q_auto,w_' + document.body.offsetWidth + '/' + num + "");
+        //Fade background in
+        fadeIn(document.getElementById("background"));
+      });
+    }
+
+    function fadeIn(element) {
+      var op = 0;  // initial opacity
+      var timer = setInterval(function () {
+        if (op >= 1) {
+          clearInterval(timer);
+        }
+        element.style.opacity = op;
+        op += 0.02;
+      }, 5);
+    }
+
+  </script>
+
+
 </body>
 
 </html>
