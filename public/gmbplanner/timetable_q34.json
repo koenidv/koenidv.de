@@ -366,6 +366,16 @@
             {
                 "course": "SPO-PF-1",
                 "room": "TMBG"
+            },
+            {
+                "course": "AG-MG",
+                "room": "Museum"
+            }
+        ],
+        [
+            {
+                "course": "AG-MG",
+                "room": "Museum"
             }
         ]
     ],
@@ -721,6 +731,16 @@
                 "course": "SPO-GK",
                 "room": "TMBG"
             }
+        ],
+        [
+            {
+                "course": "SPO-PF-1",
+                "room": "Seg-1"
+            },
+            {
+                "course": "SPO-GK",
+                "room": "TMBG"
+            }
         ]
     ],
     [
@@ -864,6 +884,32 @@
             {
                 "course": "G-GK-4",
                 "room": "B220"
+            },
+            {
+                "course": "AG-Kor",
+                "room": "A13"
+            }
+        ],
+        [
+            {
+                "course": "GBi-GK-1",
+                "room": "C226"
+            },
+            {
+                "course": "G-GK-2",
+                "room": "M112"
+            },
+            {
+                "course": "G-GK-3",
+                "room": "M120"
+            },
+            {
+                "course": "G-GK-4",
+                "room": "B220"
+            },
+            {
+                "course": "AG-Kor",
+                "room": "A13"
             }
         ]
     ]

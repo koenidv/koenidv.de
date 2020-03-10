@@ -369,6 +369,18 @@
                 "course": "M-GK-4",
                 "room": "A213"
             }
+        ],
+        [
+            {
+                "course": "AG-MG",
+                "room": "Museum"
+            }
+        ],
+        [
+            {
+                "course": "AG-MG",
+                "room": "Museum"
+            }
         ]
     ],
     [
@@ -924,9 +936,18 @@
             {
                 "course": "SPO-PF-1",
                 "room": "Seg3"
+            },
+            {
+                "course": "AG-Kor",
+                "room": "A13"
             }
         ],
-        [],
+        [
+            {
+                "course": "AG-Kor",
+                "room": "A13"
+            }
+        ],
         [
             {
                 "course": "SPO-GK-2",
