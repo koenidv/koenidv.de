@@ -552,6 +552,34 @@
         ],
         [
             {
+                "course": "GBi-GK-1",
+                "room": "A13"
+            },
+            {
+                "course": "PH-GK-1",
+                "room": "E14"
+            },
+            {
+                "course": "BIO-GK-1",
+                "room": "D24"
+            },
+            {
+                "course": "G-GK-2",
+                "room": "M120"
+            },
+            {
+                "course": "POWI-GK-4",
+                "room": "M114"
+            }
+        ],
+        [
+            {
+                "course": "SPO-GK-4",
+                "room": "TMBG"
+            }
+        ],
+        [
+            {
                 "course": "SPO-GK-4",
                 "room": "TMBG"
             }
