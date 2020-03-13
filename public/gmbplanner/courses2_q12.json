@@ -62,5 +62,7 @@
     { "course": "ETHI-GK-2", "teacher": "Han" },
     { "course": "AG-ConcB", "teacher": "Glo"},
     { "course": "AG-MuG", "teacher": "Sol" },
-    { "course": "AG-Kor", "teacher": "Kan" }
+    { "course": "AG-Kor", "teacher": "Kan" },
+    { "course": "AG-Nach", "teacher": "Rum" }
+
 ]

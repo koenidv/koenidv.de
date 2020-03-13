@@ -368,13 +368,13 @@
                 "room": "TMBG"
             },
             {
-                "course": "AG-MG",
+                "course": "AG-MuG",
                 "room": "Museum"
             }
         ],
         [
             {
-                "course": "AG-MG",
+                "course": "AG-MuG",
                 "room": "Museum"
             }
         ]
@@ -698,12 +698,20 @@
             {
                 "course": "E-GK-3",
                 "room": "C226"
+            },
+            {
+                "course": "AG-Nach",
+                "room": "A13"
             }
         ],
         [
             {
                 "course": "E-GK-2",
                 "room": "C226"
+            },
+            {
+                "course": "AG-Nach",
+                "room": "A13"
             }
         ],
         [

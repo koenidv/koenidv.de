@@ -42,5 +42,6 @@
     { "course": "EK-GK-2", "teacher": "Hin" },
     { "course": "Analysis-1", "teacher": "Osc" },
     { "course": "AG-MuG", "teacher": "Sol" },
-    { "course": "AG-Kor", "teacher": "Kan" }
+    { "course": "AG-Kor", "teacher": "Kan" },
+    { "course": "AG-Nach", "teacher": "Rum" }
 ]
