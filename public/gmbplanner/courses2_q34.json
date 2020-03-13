@@ -41,6 +41,6 @@
     { "course": "BIO-GK-3", "teacher": "Wan" },
     { "course": "EK-GK-2", "teacher": "Hin" },
     { "course": "Analysis-1", "teacher": "Osc" },
-    { "course": "AG-MG", "teacher": "Sol" },
-    { "course": "AG-Kor", "teacher": "??" }
+    { "course": "AG-MuG", "teacher": "Sol" },
+    { "course": "AG-Kor", "teacher": "Kan" }
 ]

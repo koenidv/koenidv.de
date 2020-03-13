@@ -60,7 +60,7 @@
     { "course": "RKA-GK-2", "teacher": "Mie" },
     { "course": "ETHI-GK-1", "teacher": "Hei" },
     { "course": "ETHI-GK-2", "teacher": "Han" },
-    { "course": "AG-Concb", "teacher": "Glo "},
-    { "course": "AG-MG", "teacher": "Sol" },
-    { "course": "AG-Kor", "teacher": "??" }
+    { "course": "AG-ConcB", "teacher": "Glo "},
+    { "course": "AG-MuG", "teacher": "Sol" },
+    { "course": "AG-Kor", "teacher": "Kan" }
 ]
