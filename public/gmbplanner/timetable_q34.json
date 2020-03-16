@@ -294,7 +294,7 @@
                 "room": "A215"
             },
             {
-                "course": "D",
+                "course": "D-GK-6",
                 "room": "A215"
             },
             {
@@ -498,7 +498,7 @@
                 "room": "A215"
             },
             {
-                "course": "D",
+                "course": "D-GK-6",
                 "room": "A215"
             },
             {
@@ -524,7 +524,7 @@
                 "room": "A215"
             },
             {
-                "course": "D",
+                "course": "D-GK-6",
                 "room": "A215"
             },
             {
@@ -542,7 +542,7 @@
         ],
         [
             {
-                "course": "BIO-GK",
+                "course": "BIO-GK-3",
                 "room": "D24"
             },
             {
@@ -552,7 +552,7 @@
         ],
         [
             {
-                "course": "BIO-GK",
+                "course": "BIO-GK-3",
                 "room": "D24"
             },
             {
@@ -572,7 +572,7 @@
                 "room": "A215"
             },
             {
-                "course": "D",
+                "course": "D-GK-6",
                 "room": "A215"
             },
             {
@@ -736,7 +736,7 @@
                 "room": "Seg-1"
             },
             {
-                "course": "SPO-GK",
+                "course": "SPO-GK-4",
                 "room": "TMBG"
             }
         ],
@@ -746,7 +746,7 @@
                 "room": "Seg-1"
             },
             {
-                "course": "SPO-GK",
+                "course": "SPO-GK-4",
                 "room": "TMBG"
             }
         ]
