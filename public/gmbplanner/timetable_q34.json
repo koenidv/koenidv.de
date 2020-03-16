@@ -42,7 +42,7 @@
                 "room": "D22"
             },
             {
-                "course": "CH-LK",
+                "course": "CH-LK-1",
                 "room": "CHUE"
             },
             {
@@ -50,15 +50,15 @@
                 "room": "C226"
             },
             {
-                "course": "MU-LK",
+                "course": "MU-LK-1",
                 "room": "GBS2"
             },
             {
-                "course": "PH-LK",
+                "course": "PH-LK-1",
                 "room": "E14"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "Sta"
             }
         ],
@@ -72,7 +72,7 @@
                 "room": "D22"
             },
             {
-                "course": "CH-LK",
+                "course": "CH-LK-1",
                 "room": "CHUE"
             },
             {
@@ -80,15 +80,15 @@
                 "room": "C226"
             },
             {
-                "course": "MU-LK",
+                "course": "MU-LK-1",
                 "room": "GBS2"
             },
             {
-                "course": "PH-LK",
+                "course": "PH-LK-1",
                 "room": "E14"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "Sta"
             }
         ],
@@ -130,7 +130,7 @@
                 "room": "M13"
             },
             {
-                "course": "KU-GK-1",
+                "course": "KU-GK-2",
                 "room": "C22"
             }
         ],
@@ -144,7 +144,7 @@
                 "room": "M13"
             },
             {
-                "course": "KU-GK-1",
+                "course": "KU-GK-2",
                 "room": "C22"
             }
         ],
@@ -236,7 +236,7 @@
                 "room": "A212"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "B217"
             }
         ],
@@ -266,7 +266,7 @@
                 "room": "A212"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "B217"
             }
         ],
@@ -418,7 +418,7 @@
                 "room": "D22"
             },
             {
-                "course": "CH-LK",
+                "course": "CH-LK-1",
                 "room": "CHUE"
             },
             {
@@ -426,15 +426,15 @@
                 "room": "C226"
             },
             {
-                "course": "MU-LK",
+                "course": "MU-LK-1",
                 "room": "GBS2"
             },
             {
-                "course": "PH-LK",
+                "course": "PH-LK-1",
                 "room": "E14"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "Sta"
             }
         ],
@@ -448,7 +448,7 @@
                 "room": "D22"
             },
             {
-                "course": "CH-LK",
+                "course": "CH-LK-1",
                 "room": "CHUE"
             },
             {
@@ -456,15 +456,15 @@
                 "room": "C226"
             },
             {
-                "course": "MU-LK",
+                "course": "MU-LK-1",
                 "room": "GBS2"
             },
             {
-                "course": "PH-LK",
+                "course": "PH-LK-1",
                 "room": "E14"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "Sta"
             }
         ],
@@ -624,7 +624,7 @@
                 "room": "A212"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "B217"
             }
         ],
@@ -654,7 +654,7 @@
                 "room": "A212"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "B217"
             }
         ],
@@ -806,7 +806,7 @@
                 "room": "A212"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "B217"
             }
         ],
@@ -820,7 +820,7 @@
                 "room": "D22"
             },
             {
-                "course": "CH-LK",
+                "course": "CH-LK-1",
                 "room": "CHUE"
             },
             {
@@ -828,15 +828,15 @@
                 "room": "C226"
             },
             {
-                "course": "MU-LK",
+                "course": "MU-LK-1",
                 "room": "GBS2"
             },
             {
-                "course": "PH-LK",
+                "course": "PH-LK-1",
                 "room": "E14"
             },
             {
-                "course": "POWI-LK",
+                "course": "POWI-LK-1",
                 "room": "A215"
             }
         ],
