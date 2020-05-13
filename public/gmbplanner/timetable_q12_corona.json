@@ -1,0 +1,1346 @@
+[
+    [
+        [
+            [
+                {
+                    "course": "cE1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi1",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cCh1",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "cE1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi1",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cCh1",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "cE3",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi3",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "cE3",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi3",
+                    "room": "A212, A213"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "cPh2",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "cBio2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi4",
+                    "room": "m111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "cPh2",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "cBio2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi4",
+                    "room": "m111, M113"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "cBio1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "cE2",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cCh2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPh1",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "cBio1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "cE2",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cCh2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPh1",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ],
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "cE1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi1",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cCh1",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "cE1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi1",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cCh1",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ],
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "cE3",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi3",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "cE3",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi3",
+                    "room": "A212, A213"
+                }
+            ]
+        ]
+    ],
+    [
+        [
+            [
+                {
+                    "course": "cBio1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "cE2",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cCh2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPh1",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "cBio1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "cE2",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cCh2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPh1",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "cE3",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi3",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "cE3",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi3",
+                    "room": "A212, A213"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "cPh2",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "cBio2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi4",
+                    "room": "m111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "cPh2",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "cBio2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi4",
+                    "room": "m111, M113"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "cBio1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "cE2",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cCh2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPh1",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "cBio1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "cE2",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cCh2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPh1",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-1",
+                    "room": "C224"
+                },
+                {
+                    "course": "E-LK-3",
+                    "room": "C223"
+                },
+                {
+                    "course": "POWI-LK-1",
+                    "room": "Aula"
+                },
+                {
+                    "course": "M-LK-1",
+                    "room": "M113"
+                },
+                {
+                    "course": "M-LK-2",
+                    "room": "A212"
+                },
+                {
+                    "course": "CH-LK-1",
+                    "room": "CHUE"
+                },
+                {
+                    "course": "F-LK-1",
+                    "room": "M119"
+                },
+                {
+                    "course": "BIO-LK-1",
+                    "room": "D21"
+                }
+            ],
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ],
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "cE1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi1",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cCh1",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "cE1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "cPoWi1",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cCh1",
+                    "room": "A212, A213"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ],
+            [
+                {
+                    "course": "M-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "M-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "M-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "M-GK-4",
+                    "room": "C223, C224"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ],
+            [
+                {
+                    "course": "D-GK-1",
+                    "room": "M111, M113"
+                },
+                {
+                    "course": "D-GK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-GK-3",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "D-GK-4",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "D-GK-5",
+                    "room": "Aula"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "E-LK-2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "D-LK-1",
+                    "room": "C223"
+                },
+                {
+                    "course": "KU-LK-1",
+                    "room": "M19, M21"
+                },
+                {
+                    "course": "MU-LK-1",
+                    "room": "M13"
+                },
+                {
+                    "course": "G-LK-1",
+                    "room": "A212, A213"
+                },
+                {
+                    "course": "PH-LK-1",
+                    "room": "PHUE"
+                },
+                {
+                    "course": "BIO-LK-2",
+                    "room": "M111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "cPh2",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "cBio2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi4",
+                    "room": "m111, M113"
+                }
+            ],
+            [
+                {
+                    "course": "cPh2",
+                    "room": "C223, C224"
+                },
+                {
+                    "course": "cBio2",
+                    "room": "M119, M121"
+                },
+                {
+                    "course": "cPoWi4",
+                    "room": "m111, M113"
+                }
+            ]
+        ]
+    ]
+]
