@@ -63,6 +63,18 @@
     { "course": "AG-ConcB", "teacher": "Glo"},
     { "course": "AG-MuG", "teacher": "Sol" },
     { "course": "AG-Kor", "teacher": "Kan" },
-    { "course": "AG-Nach", "teacher": "Rum" }
-
+    { "course": "AG-Nach", "teacher": "Rum" },
+    { "course": "cE1", "teacher": "Kli" },
+    { "course": "cE2", "teacher": "Hin" },
+    { "course": "cE3", "teacher": "Asc" },
+    { "course": "cPoWi1", "teacher": "Ess" },
+    { "course": "cPoWi2", "teacher": "Ess" },
+    { "course": "cPoWi3", "teacher": "Ker" },
+    { "course": "cPoWi4", "teacher": "Pin" },
+    { "course": "cPh1", "teacher": "NiG" },
+    { "course": "cPh2", "teacher": "Mak" },
+    { "course": "cBio1", "teacher": "Pau" },
+    { "course": "cBio2", "teacher": "Wan" },
+    { "course": "cCh1", "teacher": "Pau" },
+    { "course": "cCh2", "teacher": "Cas" }
 ]
