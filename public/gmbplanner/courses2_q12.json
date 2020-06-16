@@ -76,5 +76,6 @@
     { "course": "cBio1", "teacher": "Pau" },
     { "course": "cBio2", "teacher": "Wan" },
     { "course": "cCh1", "teacher": "Pau" },
-    { "course": "cCh2", "teacher": "Cas" }
+    { "course": "cCh2", "teacher": "Cas" },
+    { "course": "Lebenskunde", "teacher": "Holger" }
 ]
