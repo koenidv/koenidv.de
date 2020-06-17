@@ -45,6 +45,11 @@
           }
         ]
       }
-    ]
+    ],
+    "redirects": [ {
+      "source": "/gmbplanner/:item*",
+      "destination": "gmbplaner.koenidv.de/:item",
+      "type": 301
+    } ]
   }
 }
