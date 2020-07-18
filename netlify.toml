@@ -1,3 +1,7 @@
 [[redirects]]
   from = "/gmbplanner/*"
   to = "https://gmbplaner.koenidv.de/:splat"
+
+[[redirects]]
+  from = "/juli"
+  to = "https://telegra.ph/Juli-07-17"
