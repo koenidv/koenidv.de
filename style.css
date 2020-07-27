@@ -1,36 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Montserrat|Varela+Round|Dancing+Script&display=swap');
+
 body {
     padding: 0;
     margin: 0;
 }
 
-h1,
-h2,
-h3 {
+h1 {
     font-family: 'Varela Round', sans-serif;
     margin: 0;
 }
 
+h3 {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+}
+
+h4,
+h5,
 p {
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 .head {
     text-align: center;
     color: white;
     text-shadow: 0 0 5px #333333;
-    height: 80vh;
+    height: 60vh;
 }
 
 .head>* {
-    padding-top: 25vh;
+    top: 25vh;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
 }
 
-.content {
-    height: 20vh;
+.social {
+    display: inline-block;
+    margin: 0.4rem;
+    margin-top: 4rem;
+}
+
+.social img {
+    width: 1.5rem;
+    fill: white;
+    /*box-shadow: 0 0 5px #333333;*/
 }
 
 .box {
@@ -60,14 +81,113 @@ a {
     height: fit-content;
 }
 
+section {
+    background: linear-gradient(to bottom, #fff, #fafafa);
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.entry {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.entry .date {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.entry.words h3 {
+    font-family: 'Dancing Script', serif;
+}
+
+.entry.words {
+    transition: padding 200ms, box-shadow 200ms, border-bottom 200ms, border-radius 200ms;
+}
+
+.expandable {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    color: #808080;
+    transition: max-height 200ms, opacity 200ms 100ms;
+}
+
+.expandable>:first-child {
+    margin-top: 0.5rem;
+    border-top: 1px solid #eaeaea;
+    padding-top: 0.5rem;
+}
+
+.expanded .expandable {
+    opacity: 1;
+}
+
+.expandable a {
+    /*text-decoration: underline;*/
+    color: #000;
+}
+
+.entry.words.expanded {
+    border-bottom: 1px solid transparent;
+    border-radius: 1rem;
+    box-shadow: 0 0 25px #dedede;
+    padding: 1rem;
+}
+
+.seemore h5 {
+    color: #333333;
+    margin-top: 1rem;
+}
+
+.disabled * {
+    color: #aeaeae !important;
+    text-decoration: line-through;
+}
+
+.inv {
+    display: none;
+}
+
+
+div#background {
+    top: 0;
+    bottom: 40vh;
+    left: 0;
+    width: 100vw;
+    z-index: -2;
+    position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+div#background:before {
+    background-color: rgba(50, 50, 50, 0.5);
+    position: fixed;
+    content: " ";
+    height: 60%;
+    width: 100%;
+}
+
 @media(min-width: 48em) {
     .head {
         font-size: 1.25em;
     }
 
     .content {
-        font-size: 1.25em;
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section {
+        width: 80%;
+        margin: 0 auto;
+        border-radius: 1rem;
+        text-align:center;
     }
 
     .boxes {
@@ -84,29 +204,12 @@ a {
     .boxed {
         margin: auto auto;
     }
-}
 
-.inv {
-    display: none;
-}
+    div#background {
+        bottom: 0;
+    }
 
-
-div#background {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    z-index: -2;
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-}
-
-div#background:before {
-    background-color: rgba(50, 50, 50, 0.5);
-    position: fixed;
-    content: " ";
-    height: 100%;
-    width: 100%;
+    div#background:before {
+        height: 100%;
+    }
 }

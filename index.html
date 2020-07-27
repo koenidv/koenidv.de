@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html>
 
@@ -12,18 +14,77 @@
   <div id="background"></div>
 
   <div class="head">
-    <h1 class="title">Hey</h1>
+    <h1 id="title">Hey</h1>
+    <span style="z-index: 1;">
+      <a href="https://instagram.com/halbunsichtbar" class="social">
+        <img src="assets/ic-instagram.svg" />
+      </a>
+      <a href="https://github.com/koenidv" class="social">
+        <img src="assets/ic-github.svg" />
+      </a>
+    </span>
   </div>
 
+
   <div class="content">
-    <div class="boxed">
-      <h3>GMB-Planer</h3>
-      <p>Verwalte mühelos deinen Unterricht.</p>
+
+  <section id="news">
+    <h4>Neues</h4>
+    {% for post in site.posts limit:5 %}
+    <a href="{{ post.redirect }}">
+      <div class="entry">
+        <h3>{{ post.title }}<span class="date">
+            {% assign month = post.date | date: "%-m" %}
+            {% case month %}
+            {% when '1' %}Januar
+            {% when '2' %}Februar
+            {% when '3' %}M&auml;rz
+            {% when '4' %}April
+            {% when '5' %}Mai
+            {% when '6' %}Juni
+            {% when '7' %}Juli
+            {% when '8' %}August
+            {% when '9' %}September
+            {% when '10' %}Oktober
+            {% when '11' %}November
+            {% when '12' %}Dezember
+            {% endcase %}
+            {{ post.date | date: "%y" }}
+          </span></h3>
+        <p>{{ post.subtitle }}</p>
+      </div>
+    </a>
+    {% endfor %}
+    <a>
+      <div class="seemore disabled">
+        <h5>Mehr sehen</h5>
+      </div>
+    </a>
+  </section>
+
+  <section id="words">
+    <h4>Inspirierende Worte</h4>
+
+    {% for quote in site.words reversed limit:5 %}
+    <div class="entry words" onclick="expandme(this)">
+      <h3>{{ quote.quote }}</h3>
+      <div class="expandable">
+        <p>Von <a href="{{ quote.authorlink }}">{{ quote.author }}</a></p>
+        <p>Aus <a href="{{ quote.sourcelink }}">{{ quote.source }}</a></p>
+      </div>
     </div>
+    {% endfor %}
+
+    <a>
+      <div class="seemore disabled">
+        <h5>Mehr sehen</h5>
+      </div>
+    </a>
+  </section>
+
   </div>
 
   <link href="style.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
@@ -35,6 +96,9 @@
 
     window.onload = function () {
       refreshBackground();
+      window.setTimeout(function () {
+        changeText(document.getElementById("title"), "Florian König");
+      }, 3000);
     }
 
     function refreshBackground() {
@@ -69,6 +133,30 @@
         element.style.opacity = op;
         op += 0.02;
       }, 5);
+    }
+
+    function changeText(element, text) {
+      var op = 1;  // initial opacity
+      var timer = setInterval(function () {
+        if (op <= 0) {
+          clearInterval(timer);
+          element.innerHTML = text;
+          fadeIn(element);
+        }
+        element.style.opacity = op;
+        op -= 0.02;
+      }, 5);
+    }
+
+    function expandme(element) {
+      element.classList.toggle("expanded");
+      content = element.getElementsByClassName("expandable")[0];
+      console.log(content);
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
     }
 
   </script>
