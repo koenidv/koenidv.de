@@ -155,11 +155,11 @@ section {
 
 div#background {
     top: 0;
-    bottom: 40vh;
+    bottom: 30vh;
     left: 0;
     width: 100vw;
     z-index: -2;
-    position: absolute;
+    position: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
@@ -167,7 +167,7 @@ div#background {
 
 div#background:before {
     background-color: rgba(50, 50, 50, 0.5);
-    position: absolute;
+    position: fixed;
     content: " ";
     height: 100%;
     width: 100%;
@@ -221,19 +221,19 @@ div#background:before {
     }
 
     section {
-        background: linear-gradient(to bottom, #000, #040404);
+        background: linear-gradient(to bottom, #000, #121212);
     }
 
     .entry {
-        border-bottom: 1px solid #101010;
+        border-bottom: 1px solid #404040;
     }
 
     .entry.words.expanded {
-        box-shadow: 0 0 25px #080808;
+        box-shadow: 0 0 25px #202020;
     }
 
     .expandable>:first-child {
-        border-top: 1px solid #101010;
+        border-top: 1px solid #404040;
     }
 
     .expandable a {
