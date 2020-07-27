@@ -155,7 +155,7 @@ section {
 
 div#background {
     top: 0;
-    bottom: 40vh;
+    bottom: 35vh;
     left: 0;
     width: 100vw;
     z-index: -2;
@@ -169,7 +169,7 @@ div#background:before {
     background-color: rgba(50, 50, 50, 0.5);
     position: fixed;
     content: " ";
-    height: 60%;
+    height: 65%;
     width: 100%;
 }
 
@@ -187,7 +187,7 @@ div#background:before {
         width: 80%;
         margin: 0 auto;
         border-radius: 1rem;
-        text-align:center;
+        text-align: center;
     }
 
     .boxes {
@@ -211,5 +211,38 @@ div#background:before {
 
     div#background:before {
         height: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #fff;
+        background-color: #000;
+    }
+
+    section {
+        background: linear-gradient(to bottom, #000, #040404);
+    }
+
+    .entry {
+        border-bottom: 1px solid #101010;
+    }
+
+    .entry.words.expanded {
+        box-shadow: 0 0 25px #080808;
+    }
+
+    .expandable>:first-child {
+        border-top: 1px solid #101010;
+    }
+
+    .expandable a {
+        color: #fff;
+    }
+
+    h4,
+    h5,
+    p {
+        color: #aeaeae;
     }
 }
