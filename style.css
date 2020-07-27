@@ -155,11 +155,11 @@ section {
 
 div#background {
     top: 0;
-    bottom: 35vh;
+    bottom: 40vh;
     left: 0;
     width: 100vw;
     z-index: -2;
-    position: fixed;
+    position: absolute;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
@@ -167,9 +167,9 @@ div#background {
 
 div#background:before {
     background-color: rgba(50, 50, 50, 0.5);
-    position: fixed;
+    position: absolute;
     content: " ";
-    height: 65%;
+    height: 100%;
     width: 100%;
 }
 
