@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Montserrat|Varela+Round|Dancing+Script&display=swap');
 
 body {
-    padding: 0;
+    padding: 1rem 0;
     margin: 0;
 }
 
@@ -54,33 +54,6 @@ a {
     /*box-shadow: 0 0 5px #333333;*/
 }
 
-.box {
-    margin: 1rem;
-    padding: 0.5rem 2rem 0.5rem 2rem;
-    height: 8rem;
-    box-shadow: 0 0 25px #cecece;
-    border-radius: 1rem;
-    color: #252525;
-    transition: 200ms;
-}
-
-.box:hover {
-    padding: 0.5rem 2rem 0.5rem 2rem;
-    box-shadow: 0 0 10px #d4d4d4;
-    background-color: #fafafa;
-    transition: 200ms;
-}
-
-.boxed {
-    margin: auto 4rem;
-    padding: 0.25rem 1rem 0.25rem 1rem;
-    box-shadow: 0 0 25px #333333;
-    border-radius: 1rem;
-    color: #252525;
-    background-color: white;
-    height: fit-content;
-}
-
 section {
     background: linear-gradient(to bottom, #fff, #fafafa);
     padding: 1rem;
@@ -95,7 +68,7 @@ section {
 }
 
 .entry .date {
-    margin-left: 0.5rem;
+    margin-left: 0.35rem;
     font-size: 0.9rem;
     font-family: 'Montserrat', sans-serif;
 }
@@ -109,25 +82,30 @@ section {
 }
 
 .expandable {
+    padding: 1rem;
+    margin: -1rem;
     max-height: 0;
-    overflow: hidden;
     opacity: 0;
-    color: #808080;
+    overflow-y: hidden;
     transition: max-height 200ms, opacity 200ms 100ms;
 }
 
-.expandable>:first-child {
+:not(.seemore)>.expandable {
+    overflow: hidden;
+    color: #808080;
+}
+
+:not(.seemore)>.expandable>:first-child {
     margin-top: 0.5rem;
     border-top: 1px solid #eaeaea;
     padding-top: 0.5rem;
 }
 
-.expanded .expandable {
+.expanded>.expandable {
     opacity: 1;
 }
 
 .expandable a {
-    /*text-decoration: underline;*/
     color: #000;
 }
 
@@ -190,21 +168,6 @@ div#background:before {
         text-align: center;
     }
 
-    .boxes {
-        margin: auto;
-        padding: 1em;
-    }
-
-    .box {
-        float: left;
-        height: 11rem;
-        width: 15rem;
-    }
-
-    .boxed {
-        margin: auto auto;
-    }
-
     div#background {
         bottom: 0;
     }
@@ -232,7 +195,7 @@ div#background:before {
         box-shadow: 0 0 25px #202020;
     }
 
-    .expandable>:first-child {
+    :not(.seemore)>.expandable>:first-child {
         border-top: 1px solid #404040;
     }
 
@@ -242,7 +205,12 @@ div#background:before {
 
     h4,
     h5,
+    .seemore h5,
     p {
         color: #aeaeae;
+    }
+
+    .disabled * {
+        color: #333333 !important;
     }
 }

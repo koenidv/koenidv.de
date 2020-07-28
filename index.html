@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>koenidv</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -28,98 +29,128 @@
 
   <div class="content">
 
-  <section id="news">
-    <h4>Neues</h4>
-    {% for post in site.posts limit:5 %}
-    <a href="{{ post.redirect }}">
-      <div class="entry">
-        <h3>{{ post.title }}<span class="date">
-            {% assign month = post.date | date: "%-m" %}
-            {% case month %}
-            {% when '1' %}Januar
-            {% when '2' %}Februar
-            {% when '3' %}M&auml;rz
-            {% when '4' %}April
-            {% when '5' %}Mai
-            {% when '6' %}Juni
-            {% when '7' %}Juli
-            {% when '8' %}August
-            {% when '9' %}September
-            {% when '10' %}Oktober
-            {% when '11' %}November
-            {% when '12' %}Dezember
-            {% endcase %}
-            {{ post.date | date: "%y" }}
-          </span></h3>
-        <p>{{ post.subtitle }}</p>
-      </div>
-    </a>
-    {% endfor %}
-    <a>
-      <div class="seemore disabled">
-        <h5>Mehr sehen</h5>
-      </div>
-    </a>
-  </section>
+    <section id="news">
+      <h4>Neues</h4>
+      {% for post in site.posts limit:3 %}
+      <a href="{{ post.redirect }}">
+        <div class="entry">
+          <h3>{{ post.title }}<span class="date">
+              {% include date.html %}
+            </span></h3>
+          <p>{{ post.subtitle }}</p>
+        </div>
+      </a>
+      {% endfor %}
 
-  <section id="words">
-    <h4>Inspirierende Worte</h4>
+      <div class="seemore">
 
-    {% for quote in site.words reversed limit:5 %}
-    <div class="entry words" onclick="expandme(this)">
-      <h3>{{ quote.quote }}</h3>
-      <div class="expandable">
-        <p>Von <a href="{{ quote.authorlink }}">{{ quote.author }}</a></p>
-        <p>Aus <a href="{{ quote.sourcelink }}">{{ quote.source }}</a></p>
-      </div>
-    </div>
-    {% endfor %}
+        <div class="expandable">
+          {% for post in site.posts offset:3 %}
+          <a href="{{ post.redirect }}">
+            <div class="entry">
+              <h3>{{ post.title }}<span class="date">
+                  {% include date.html %}
+                </span></h3>
+              <p>{{ post.subtitle }}</p>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
 
-    <a>
-      <div class="seemore disabled">
-        <h5>Mehr sehen</h5>
+        <div class="seemore {% if site.posts.size <= 3 %}disabled{% endif %}" onclick="expandme(this.parentElement)">
+          <h5>Mehr sehen</h5>
+        </div>
+
       </div>
-    </a>
-  </section>
+    </section>
+
+    <section id="words">
+      <h4>Inspirierende Worte</h4>
+
+      {% assign quotes = site.words | reverse %}
+      {% for quote in quotes limit:4 %}
+      <div class="entry words" onclick="expandme(this)">
+        <h3>{{ quote.quote }}</h3>
+        <div class="expandable">
+          <p>Von <a href="{{ quote.authorlink }}">{{ quote.author }}</a></p>
+          <p>Aus <a href="{{ quote.sourcelink }}">{{ quote.source }}</a></p>
+        </div>
+      </div>
+      {% endfor %}
+
+      <div class="seemore">
+
+        <div class="expandable">
+          {% for quote in quotes offset:4 %}
+          <div class="entry words" onclick="expandme(this)">
+            <h3>{{ quote.quote }}</h3>
+            <div class="expandable">
+              <p>Von <a href="{{ quote.authorlink }}">{{ quote.author }}</a></p>
+              <p>Aus <a href="{{ quote.sourcelink }}">{{ quote.source }}</a></p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="seemore {% if quotes.size <= 4 %}disabled{% endif %}" onclick="expandme(this.parentElement)">
+          <h5>Mehr sehen</h5>
+        </div>
+
+      </div>
+    </section>
 
   </div>
-
-  <link href="style.css" rel="stylesheet" />
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 
-
-
-
   <script>
 
+    // Update background and show some title messages
     window.onload = function () {
+      // Set background
       refreshBackground();
+      // Display name after 3s
       window.setTimeout(function () {
         changeText(document.getElementById("title"), "Florian König");
       }, 3000);
+      // Occupational therapy after 15s
+      window.setTimeout(function () {
+        changeText(document.getElementById("title"), "Na, wie geht's?");
+      }, 15000);
+      window.setTimeout(function () {
+        changeText(document.getElementById("title"), "Florian König");
+      }, 25000);
+      // Just for giggles when using dark theme
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        window.setTimeout(function () {
+          changeText(document.getElementById("title"), "I see you're a man of black culture as well…");
+        }, 35000);
+        window.setTimeout(function () {
+          changeText(document.getElementById("title"), "Florian König");
+        }, 45000);
+      }
     }
 
     function refreshBackground() {
       var num = Math.ceil(Math.random() * 23);
 
-      //No direct repeat
+      // No direct repeat
       while (num == localStorage.getItem("bg")) {
         var num = Math.ceil(Math.random() * 23);
       }
 
-      //Save the background number to avoid direct repeat
+      // Save the background number to avoid direct repeat
       localStorage.setItem("bg", num);
 
-      //Hide empty background
+      // Hide empty background
       document.getElementById("background").style.opacity = 0;
-      //Wait for the background image to load
+      // Wait for the background image to load
       $('<img/>').attr('src', 'https://res.cloudinary.com/koenidv/image/upload/f_auto,q_auto,w_' + document.body.offsetWidth + '/' + num + "").on('load', function () {
         $(this).remove();
-        //Set background image (already loaded)
+        // Set background image (already loaded)
         $('#background').css('background-image', 'url(https://res.cloudinary.com/koenidv/image/upload/f_auto,q_auto,w_' + document.body.offsetWidth + '/' + num + "");
-        //Fade background in
+        // Fade background in
         fadeIn(document.getElementById("background"));
       });
     }
@@ -149,6 +180,23 @@
     }
 
     function expandme(element) {
+      element.classList.toggle("expanded");
+      content = element.getElementsByClassName("expandable")[0];
+      console.log(content);
+      if (content.style.maxHeight) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        window.setTimeout(function () {
+          content.style.maxHeight = null;
+        }, 0);
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        window.setTimeout(function () {
+          content.style.maxHeight = "unset";
+        }, 200);
+      }
+    }
+
+    function seemore(element) {
       element.classList.toggle("expanded");
       content = element.getElementsByClassName("expandable")[0];
       console.log(content);
