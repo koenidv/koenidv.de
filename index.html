@@ -187,23 +187,15 @@
         content.style.maxHeight = content.scrollHeight + "px";
         window.setTimeout(function () {
           content.style.maxHeight = null;
+          if (document.getElementsByClassName("seemore")[0]) {
+            document.getElementsByClassName("seemore")[0].style.maxHeight = 0;
+          }
         }, 0);
       } else {
         content.style.maxHeight = content.scrollHeight + "px";
         window.setTimeout(function () {
           content.style.maxHeight = "unset";
         }, 200);
-      }
-    }
-
-    function seemore(element) {
-      element.classList.toggle("expanded");
-      content = element.getElementsByClassName("expandable")[0];
-      console.log(content);
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
       }
     }
 
