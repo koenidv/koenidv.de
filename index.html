@@ -60,8 +60,8 @@
           {% endfor %}
         </div>
 
-        <div class="seemore {% if site.posts.size <= 3 %}disabled{% endif %}" onclick="expandme(this.parentElement)">
-          <h5>Mehr sehen</h5>
+        <div class="morebtn {% if site.posts.size <= 3 %}disabled{% endif %}" onclick="expandme(this.parentElement);this.classList.add('disabled');">
+          <h5 id="moretxt">Mehr sehen</h5>
         </div>
 
       </div>
@@ -95,8 +95,8 @@
           {% endfor %}
         </div>
 
-        <div class="seemore {% if quotes.size <= 4 %}disabled{% endif %}" onclick="expandme(this.parentElement)">
-          <h5>Mehr sehen</h5>
+        <div class="morebtn {% if quotes.size <= 4 %}disabled{% endif %}" onclick="expandme(this.parentElement);this.classList.add('disabled');">
+          <h5 id="moretxt">Mehr sehen</h5>
         </div>
 
       </div>
@@ -185,14 +185,10 @@
     function expandme(element) {
       element.classList.toggle("expanded");
       content = element.getElementsByClassName("expandable")[0];
-      console.log(content);
       if (content.style.maxHeight) {
         content.style.maxHeight = content.scrollHeight + "px";
         window.setTimeout(function () {
           content.style.maxHeight = null;
-          if (document.getElementsByClassName("seemore")[0]) {
-            document.getElementsByClassName("seemore")[0].style.maxHeight = 0;
-          }
         }, 0);
       } else {
         content.style.maxHeight = content.scrollHeight + "px";
