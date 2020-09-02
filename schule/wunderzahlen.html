@@ -25,7 +25,8 @@
             runs = 0;
 
             if (start <= 0) {
-                abort();
+                resultNode.innerHTML = "Die Zahl " + start + " ist zu groß oder zu klein.";
+                return;
             }
             calculate();
         }
@@ -50,7 +51,6 @@
                 resultNode.innerHTML = "Wundersame Zahl nach " + runs + " Durchläufen.";
             } else {
                 resultNode.innerHTML = "Keine wundersame Zahl in " + runs + " Durchläufen. <a onclick='continuedcalc()'>Weitersuchen</a>";
-
             }
         }
     </script>
