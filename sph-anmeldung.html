@@ -29,7 +29,7 @@
         if (localStorage.getItem("user") != null && localStorage.getItem("password") != null && !window.location.href.includes("change")) {
 
             post('https://login.schulportal.hessen.de/?url=aHR0cHM6Ly9jb25uZWN0LnNjaHVscG9ydGFsLmhlc3Nlbi5kZS8=&skin=sp', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
-            body.style.display = none;
+            document.body.style.display = none;
 
 
             function post(url, formData) {
