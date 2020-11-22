@@ -5,3 +5,8 @@
 [[redirects]]
   from = "/juli"
   to = "https://telegra.ph/Juli-07-17"
+
+[[redirects]]
+  from = "/sph-anmeldung*"
+  to = "/autosph:splat"
+  status = 200

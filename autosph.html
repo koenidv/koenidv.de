@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royaler SPH-Anmeldeservice</title>
+</head>
+
+<body>
+
+    <div class="content">
+
+        <h2>Automatische Anmeldung im Hessischen Schulportal</h2>
+        <h4>
+            <ol>
+                <li>
+                    Gib unten deine Anmeldedaten für das Schulportal ein. Sie werden nur lokal gespeichert.
+                </li>
+                <li>
+                    Rufe diese Seite erneut auf, um dich direkt im Schulportal anzumelden.
+                </li>
+                <li>
+                    Füge für Änderungen <a href="?change">?change</a> an die Adresse der Website an.
+                </li>
+            </ol>
+        </h4>
+        <p>Fragen? <a href="https://instagram.com/halbunsichtbar" class="highlight">Schreib mir auf Instagram.</a></p>
+
+        <hr />
+
+        <form>
+            <li>
+                <label for="school">Schulnummer</label>
+                <input type="text" id="school" name="user" value="" placeholder="5146 für das GMB" />
+            </li>
+            <li>
+                <label for="user">Nutzername</label>
+                <input type="text" id="user" name="user" value="" placeholder="Vorname.Nachname" />
+            </li>
+            <li>
+                <label for="password">Passwort</label>
+                <input type="text" id="password" name="password" value="" placeholder="Dein Passwort" />
+            </li>
+            <li>
+                <button onclick="save()">Speichern & Anmelden</button>
+            </li>
+        </form>
+
+    </div>
+
+    <script>
+
+        if (localStorage.getItem("user") != null && localStorage.getItem("password") != null && !window.location.href.includes("change")) {
+
+            post('https://login.schulportal.hessen.de/', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
+            document.body.style.display = "none";
+
+
+            function post(url, formData) {
+                const makeElem = (tag, props) => Object.assign(document.createElement(tag), props)
+                const form = makeElem('form', { action: url, method: 'post', hidden: true })
+                for (const [name, value] of Object.entries(formData)) {
+                    form.appendChild(makeElem('input', { name, value }))
+                }
+                document.body.appendChild(form)
+                form.submit()
+            }
+        } else {
+            document.getElementById("school").value = localStorage.getItem("school")
+            document.getElementById("user").value = localStorage.getItem("user")
+            document.getElementById("password").value = "*".repeat(localStorage.getItem("password").length)
+
+        }
+
+        function save() {
+            localStorage.setItem("school", document.getElementById("school").value)
+            localStorage.setItem("user", document.getElementById("user").value)
+            localStorage.setItem("password", document.getElementById("password").value)
+        }
+
+
+    </script>
+
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Cairo&display=swap');
+
+    body {
+        font-family: "Cairo", sans-serif;
+    }
+
+    div.content {
+        max-width: 40%;
+        margin: 6vh auto;
+        padding: 1.5rem 2rem;
+        border-radius: 0.4rem;
+        box-shadow: 0 0 100rem purple;
+    }
+
+    h2 {
+        font-family: "Lobster", Sans-Serif;
+        color: purple;
+    }
+
+    ol {
+        padding: 0.1rem 1rem;
+    }
+
+    ol>li {
+        margin: 1rem 0;
+    }
+
+    input,
+    button {
+        margin: 0.5rem 0;
+        width: 100%;
+        max-width: 100%;
+        border: 1px solid purple;
+        font-size: 1rem;
+        padding: 0.4rem;
+        border-radius: 0.4rem;
+        box-sizing: content-box;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    form>li {
+        list-style-type: none;
+        margin-top: 1.5rem;
+    }
+
+    button {
+        border: 1px solid purple;
+        background-color: rgba(128, 0, 128, 0.15);
+        font-family: "Lobster", sans-serif;
+    }
+
+    button:hover {
+        background-color: rgba(128, 0, 128, 1);
+        color: white;
+        transition: 150ms;
+    }
+
+    a {
+        text-decoration: none;
+        color: purple;
+    }
+
+    a.highlight {
+        font-family: "Lobster", sans-serif;
+    }
+
+    a:hover {
+        text-shadow: 0 0 1rem purple;
+        transition: 150ms;
+    }
+
+    hr {
+        margin: 2rem 0;
+    }
+
+    @media (max-width: 62rem) {
+        div.content {
+            max-width: 100%;
+            margin: 1rem 0.25rem;
+        }
+    }
+</style>
