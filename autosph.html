@@ -12,10 +12,11 @@
     <div class="content">
 
         <h2>Automatische Anmeldung im Hessischen Schulportal</h2>
+
         <ol>
             <b>
                 <li>
-                    Gib unten deine Anmeldedaten für das Schulportal ein. Sie werden nur lokal gespeichert.
+                    Gib unten deine Anmeldedaten für das Schulportal ein. Sie werden <a href="https://github.com/koenidv/koenidv.de/blob/master/autosph.html">nur lokal gespeichert</a>.
                 </li>
                 <li>
                     Rufe diese Seite erneut auf, um dich direkt im Schulportal anzumelden.
@@ -28,13 +29,18 @@
                 Füge für Änderungen <a href="?change">?change</a> an die Adresse der Website an.
             </li>
         </ol>
+
         <p>Fragen? <a href="https://instagram.com/halbunsichtbar" class="highlight">Schreib mir auf Instagram.</a></p>
 
         <hr />
 
         <div class="form">
             <li>
-                <label for="school">Schulnummer</label>
+                <label for="school">Schulnummer <span
+                        onclick="document.getElementById('help_school').classList.toggle('hidden')">❔</span></label>
+                <p id="help_school" class="hidden">Die Dienststellennummer deiner Schule. Du kannst sie <a
+                        href="https://schul-db.bildung.hessen.de/schul_db.html">in der Schuldatenbank finden</a>, indem
+                    du nach ihrem Namen suchst<span class="onlymobile"> und auf das Plus tippst</span>.</p>
                 <input type="text" id="school" name="user" value="" placeholder="5146 für das GMB" />
             </li>
             <li>
@@ -54,27 +60,51 @@
 
     <script>
 
-        if (localStorage.getItem("school") != null
-            && localStorage.getItem("user") != null
-            && localStorage.getItem("password") != null
-            && !window.location.href.includes("change")) {
-            // Hide content and redirect to SPH if data has been entered
-            post('https://login.schulportal.hessen.de/', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
-            document.body.style.display = "none";
+        login()
 
-        } else {
-            // Show saved credentials to change
-            document.getElementById("school").value = localStorage.getItem("school")
-            document.getElementById("user").value = localStorage.getItem("user")
-            document.getElementById("password").value = "*".repeat(localStorage.getItem("password").length)
+        function login(force) {
+            // Login process
+            if (localStorage.getItem("school") != null
+                && localStorage.getItem("user") != null
+                && localStorage.getItem("password") != null
+                && (!window.location.href.includes("change") || force)) {
+                // Hide content and redirect to SPH if data has been entered
+                post('https://login.schulportal.hessen.de/', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
+                document.body.style.display = "none"
+            } else {
+                // Show saved credentials to change
+                document.getElementById("school").value = localStorage.getItem("school")
+                document.getElementById("user").value = localStorage.getItem("user")
+                document.getElementById("password").placeholder = "*".repeat(localStorage.getItem("password").length)
+            }
         }
 
         function save() {
-            // Save credentials in localStorage
-            localStorage.setItem("school", document.getElementById("school").value)
-            localStorage.setItem("user", document.getElementById("user").value)
-            localStorage.setItem("password", document.getElementById("password").value)
-            post('https://login.schulportal.hessen.de/', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
+            var incorrect = false;
+            // Save credentials in localStorage or show error if empty
+            if (document.getElementById("school").value != "") {
+                localStorage.setItem("school", document.getElementById("school").value)
+                document.getElementById("school").classList.remove('error')
+            } else {
+                document.getElementById("school").classList.add('error')
+                incorrect = true
+            }
+            if (document.getElementById("user").value != "") {
+                localStorage.setItem("user", document.getElementById("user").value)
+                document.getElementById("user").classList.remove('error')
+            } else {
+                document.getElementById("user").classList.add('error')
+                incorrect = true
+            }
+            if (document.getElementById("password").value != "") {
+                localStorage.setItem("password", document.getElementById("password").value)
+                document.getElementById("password").classList.remove('error')
+            } else if (localStorage.getItem("password") == null) {
+                document.getElementById("password").classList.add('error')
+                incorrect = true
+            }
+            if (!incorrect)
+                login(true)
         }
 
         function post(url, formData) {
@@ -91,116 +121,133 @@
 
     </script>
 
-</body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Cairo&display=swap');
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Cairo&display=swap');
+        body {
+            font-family: "Cairo", sans-serif;
+        }
 
-    body {
-        font-family: "Cairo", sans-serif;
-    }
-
-    div.content {
-        max-width: 40%;
-        margin: 6vh auto;
-        padding: 1.5rem 2rem;
-        border-radius: 0.4rem;
-        box-shadow: 0 0 100rem purple;
-    }
-
-    h2 {
-        font-family: "Lobster", Sans-Serif;
-        color: purple;
-    }
-
-    ol {
-        padding: 0.1rem 1rem;
-    }
-
-    ol li {
-        margin: 1rem 0;
-    }
-
-    input,
-    button {
-        margin: 0.5rem 0;
-        width: 100%;
-        max-width: 100%;
-        border: 1px solid purple;
-        font-size: 1rem;
-        padding: 0.4rem;
-        border-radius: 0.4rem;
-        box-sizing: content-box;
-    }
-
-    label {
-        font-weight: bold;
-    }
-
-    .form>li {
-        list-style-type: none;
-        margin-top: 1.5rem;
-    }
-
-    button {
-        border: 1px solid purple;
-        background-color: rgba(128, 0, 128, 0.15);
-        font-family: "Lobster", sans-serif;
-    }
-
-    button:hover {
-        background-color: rgba(128, 0, 128, 1);
-        color: white;
-        transition: 150ms;
-    }
-
-    a {
-        text-decoration: none;
-        color: purple;
-    }
-
-    a.highlight {
-        font-family: "Lobster", sans-serif;
-    }
-
-    a:hover {
-        text-shadow: 0 0 1rem purple;
-        transition: 150ms;
-    }
-
-    hr {
-        margin: 2rem 0;
-    }
-
-    @media (max-width: 62rem) {
         div.content {
+            max-width: 40%;
+            margin: 6vh auto;
+            padding: 1.5rem 2rem;
+            border-radius: 0.4rem;
+            box-shadow: 0 0 100rem purple;
+        }
+
+        h2 {
+            font-family: "Lobster", Sans-Serif;
+            color: purple;
+        }
+
+        ol {
+            padding: 0.1rem 1rem;
+        }
+
+        ol li {
+            margin: 1rem 0;
+        }
+
+        input,
+        button {
+            margin: 0.5rem 0;
+            width: 100%;
             max-width: 100%;
-            margin: 1rem 0.25rem;
-        }
-    }
-
-    @media (prefers-color-scheme: dark) {
-        body, div.content, input {
-            background-color: black;
-            color: white;
+            border: 1px solid purple;
+            font-size: 1rem;
+            padding: 0.4rem;
+            border-radius: 0.4rem;
+            box-sizing: content-box;
         }
 
-        div.content {
-            box-shadow: 0 0 100rem #ee0177;
+        input.error {
+            border-color: red;
         }
 
-        input {
-            border: 1px solid #ee0177;
+        label {
+            font-weight: bold;
+        }
+
+        .form>li {
+            list-style-type: none;
+            margin-top: 1.5rem;
         }
 
         button {
-            color: white;
-            border: 1px solid #ee0177;
-            background-color: rgba(238, 1, 119, 0.15);
+            border: 1px solid purple;
+            background-color: rgba(128, 0, 128, 0.15);
+            font-family: "Lobster", sans-serif;
         }
 
-        h2, a {
-            color: #ee0177;
+        button:hover {
+            background-color: rgba(128, 0, 128, 1);
+            color: white;
+            transition: 150ms;
         }
-    }
-</style>
+
+        a {
+            text-decoration: none;
+            color: purple;
+        }
+
+        a.highlight {
+            font-family: "Lobster", sans-serif;
+        }
+
+        a:hover {
+            text-shadow: 0 0 1rem purple;
+            transition: 150ms;
+        }
+
+        hr {
+            margin: 2rem 0;
+        }
+
+        .hidden,
+        .onlymobile {
+            display: none;
+        }
+
+        @media (max-width: 62rem) {
+            div.content {
+                max-width: 100%;
+                margin: 1rem 0.25rem;
+            }
+
+            .onlymobile {
+                display: unset;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+            body,
+            div.content,
+            input {
+                background-color: black;
+                color: white;
+            }
+
+            div.content {
+                box-shadow: 0 0 100rem #ee0177;
+            }
+
+            input {
+                border: 1px solid #ee0177;
+            }
+
+            button {
+                color: white;
+                border: 1px solid #ee0177;
+                background-color: rgba(238, 1, 119, 0.15);
+            }
+
+            h2,
+            a {
+                color: #ee0177;
+            }
+        }
+    </style>
+
+</body>
