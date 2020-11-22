@@ -178,4 +178,29 @@
             margin: 1rem 0.25rem;
         }
     }
+
+    @media (prefers-color-scheme: dark) {
+        body, div.content, input {
+            background-color: black;
+            color: white;
+        }
+
+        div.content {
+            box-shadow: 0 0 100rem #ee0177;
+        }
+
+        input {
+            border: 1px solid #ee0177;
+        }
+
+        button {
+            color: white;
+            border: 1px solid #ee0177;
+            background-color: rgba(238, 1, 119, 0.15);
+        }
+
+        h2, a {
+            color: #ee0177;
+        }
+    }
 </style>
