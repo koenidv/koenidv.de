@@ -99,7 +99,8 @@
         }
 
         function save() {
-            var incorrect = false;
+            var incorrect = false
+            var newUser = localStorage.getItem("user") == null
             // Save credentials in localStorage or show error if empty
             if (document.getElementById("school").value != "") {
                 localStorage.setItem("school", document.getElementById("school").value)
@@ -123,7 +124,10 @@
                 incorrect = true
             }
             if (!incorrect) {
-                login(true)
+                if (newUser && !window.location.href.includes("private"))
+                    window.location = "https://koenidv.de/.netlify/functions/sph_usercounter"
+                else
+                    login(true)
             }
         }
 

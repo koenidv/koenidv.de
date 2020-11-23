@@ -1,3 +1,5 @@
+// This function saves the current date to a Google sheet to track a rough amount of users for AutoSPH
+
 const { google } = require('googleapis');
 
 // If modifying these scopes, delete token.json.
@@ -51,7 +53,7 @@ exports.handler = async function (event, context, callback) {
   authorize(JSON.parse(creds), updateCounter);
 
   callback(null, {
-    statusCode: 201,
+    statusCode: 302,
     headers: {
       Location: "https://koenidv.de/autosph.html"
     }

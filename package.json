@@ -2,7 +2,7 @@
   "name": "koenidv.de",
   "version": "1.0.0",
   "description": "Persönliche Seite",
-  "main": "functions/stats_userAdded.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koenidv/koenidv.de.git"
