@@ -87,7 +87,7 @@
                 && localStorage.getItem("password") != null
                 && (!window.location.href.includes("change") || force)) {
                 // Hide content and redirect to SPH if data has been entered
-                post('https://login.schulportal.hessen.de/', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
+                post('https://login.schulportal.hessen.de', { user: localStorage.getItem("school") + '.' + localStorage.getItem("user"), password: localStorage.getItem("password") })
                 document.body.style.display = "none"
             } else {
                 // Show saved credentials to change
@@ -122,8 +122,9 @@
                 document.getElementById("password").classList.add('error')
                 incorrect = true
             }
-            if (!incorrect)
+            if (!incorrect) {
                 login(true)
+            }
         }
 
         function post(url, formData) {
@@ -138,7 +139,7 @@
         }
 
         function deleteAll() {
-            // Deletes all saved data and reloads the page
+            // Delete all saved data and reload the page
             localStorage.removeItem("school")
             localStorage.removeItem("user")
             localStorage.removeItem("password")

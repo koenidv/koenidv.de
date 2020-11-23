@@ -10,3 +10,6 @@
   from = "/sph-anmeldung*"
   to = "/autosph:splat"
   status = 200
+
+[build]
+  functions = "./functions"
