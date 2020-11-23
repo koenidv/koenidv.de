@@ -7,8 +7,8 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 // time.
 const TOKEN_PATH = 'token.json';
 
-var creds = '$SPH_GOOGLE_CREDENTIALS'
-var token = '$SPH_GOOGLE_TOKEN'
+var creds = process.env.SPH_GOOGLE_CREDENTIALS
+var token = process.env.SPH_GOOGLE_TOKEN
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -35,7 +35,7 @@ const resource = { values };
 function updateCounter(auth) {
   const sheets = google.sheets({ version: 'v4', auth });
   sheets.spreadsheets.values.append({
-    spreadsheetId: '$SPH_GOOGLE_SHEET',
+    spreadsheetId: process.env.SPH_GOOGLE_SHEET,
     range: "Tabellenblatt1!A1:A",
     valueInputOption: "USER_ENTERED",
     resource: resource
