@@ -5,57 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royaler SPH-Anmeldeservice</title>
-    <meta name="description" content="Spare Zeit, indem du dich mit nur einem Tippen automatisch im Hessischen Schulportal anmelden lässt.">
+    <meta name="description"
+        content="Spare Zeit, indem du dich mit nur einem Tippen automatisch im Hessischen Schulportal anmelden lässt.">
 </head>
 
 <body>
 
-    <div class="content">
+    <div class="editor">
 
-        <h2>Automatische Anmeldung im Hessischen Schulportal</h2>
+        <div class="content">
 
-        <ol>
-            <b>
+            <h2>Automatische Anmeldung im Hessischen Schulportal</h2>
+
+            <ol>
+                <b>
+                    <li>
+                        Gib unten deine Anmeldedaten für das Schulportal ein. Sie werden <a
+                            href="https://github.com/koenidv/koenidv.de/blob/master/autosph.html" class="downlight">nur
+                            lokal
+                            gespeichert</a>.
+                    </li>
+                    <li>
+                        Rufe <a href="https://koenidv.de/autosph" class="highlight">diese Seite</a> erneut auf, um dich
+                        direkt im Schulportal anzumelden.
+                    </li>
+                </b>
                 <li>
-                    Gib unten deine Anmeldedaten für das Schulportal ein. Sie werden <a href="https://github.com/koenidv/koenidv.de/blob/master/autosph.html">nur lokal gespeichert</a>.
+                    Du kannst die Seite auch zu deinen Favoriten oder dem Startbildschirm hinzufügen.
                 </li>
                 <li>
-                    Rufe diese Seite erneut auf, um dich direkt im Schulportal anzumelden.
+                    Füge für Änderungen <a href="https://koenidv.de/autosph?change">?change</a> an die Adresse der
+                    Website an.
                 </li>
-            </b>
-            <li>
-                Du kannst die Seite auch zu deinen Favoriten oder dem Startbildschirm hinzufügen.
-            </li>
-            <li>
-                Füge für Änderungen <a href="?change">?change</a> an die Adresse der Website an.
-            </li>
-        </ol>
+            </ol>
 
-        <p>Fragen? <a href="https://instagram.com/halbunsichtbar" class="highlight">Schreib mir auf Instagram.</a></p>
+            <p>Fragen? <a href="https://instagram.com/halbunsichtbar" class="highlight">Schreib mir auf Instagram.</a>
+            </p>
 
-        <hr />
+            <hr />
 
-        <div class="form">
-            <li>
-                <label for="school">Schulnummer <span
-                        onclick="document.getElementById('help_school').classList.toggle('hidden')">❔</span></label>
-                <p id="help_school" class="hidden">Die Dienststellennummer deiner Schule. Du kannst sie <a
-                        href="https://schul-db.bildung.hessen.de/schul_db.html">in der Schuldatenbank finden</a>, indem
-                    du nach ihrem Namen suchst<span class="onlymobile"> und auf das Plus tippst</span>.</p>
-                <input type="text" id="school" name="user" value="" placeholder="5146 für das GMB" />
-            </li>
-            <li>
-                <label for="user">Nutzername</label>
-                <input type="" id="user" name="user" value="" placeholder="Vorname.Nachname" />
-            </li>
-            <li>
-                <label for="password">Passwort</label>
-                <input type="password" id="password" name="password" value="" placeholder="Dein Passwort" />
-            </li>
-            <li>
-                <button onclick="save()">Speichern & Anmelden</button>
-            </li>
+            <div class="form">
+                <li>
+                    <label for="school">Schulnummer <span
+                            onclick="document.getElementById('help_school').classList.toggle('hidden')">❔</span></label>
+                    <p id="help_school" class="hidden">Die Dienststellennummer deiner Schule. Du kannst sie <a
+                            href="https://schul-db.bildung.hessen.de/schul_db.html">in der Schuldatenbank finden</a>,
+                        indem
+                        du nach ihrem Namen suchst<span class="onlymobile"> und auf das Plus tippst</span>.</p>
+                    <input type="text" id="school" name="user" value="" placeholder="5146 für das GMB" />
+                </li>
+                <li>
+                    <label for="user">Nutzername</label>
+                    <input type="" id="user" name="user" value="" placeholder="Vorname.Nachname" />
+                </li>
+                <li>
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" name="password" value="" placeholder="Dein Passwort" />
+                </li>
+                <li>
+                    <button onclick="save()" class="save">Speichern & Anmelden</button>
+                </li>
+                <div class="delete_container">
+                    <button class="delete" onclick="deleteAll()">Daten löschen</button>
+                </div>
+            </div>
+
         </div>
+
+        <a class="footer highlight nolink" href="https://koenidv.de">Florian König</a>
 
     </div>
 
@@ -76,7 +93,8 @@
                 // Show saved credentials to change
                 document.getElementById("school").value = localStorage.getItem("school")
                 document.getElementById("user").value = localStorage.getItem("user")
-                document.getElementById("password").placeholder = "*".repeat(localStorage.getItem("password").length)
+                if (localStorage.getItem("password") != null)
+                    document.getElementById("password").placeholder = "*".repeat(localStorage.getItem("password").length)
             }
         }
 
@@ -119,6 +137,14 @@
             form.submit()
         }
 
+        function deleteAll() {
+            // Deletes all saved data and reloads the page
+            localStorage.removeItem("school")
+            localStorage.removeItem("user")
+            localStorage.removeItem("password")
+            window.location.reload()
+        }
+
 
     </script>
 
@@ -131,8 +157,8 @@
 
         div.content {
             max-width: 40%;
-            margin: 6vh auto;
-            padding: 1.5rem 2rem;
+            margin: 6vh auto 1vh auto;
+            padding: 1.5rem 2rem 1rem 2rem;
             border-radius: 0.4rem;
             box-shadow: 0 0 100rem purple;
         }
@@ -150,6 +176,10 @@
             margin: 1rem 0;
         }
 
+        b ::marker {
+            font-family: 'Lobster';
+        }
+
         input,
         button {
             margin: 0.5rem 0;
@@ -159,7 +189,7 @@
             font-size: 1rem;
             padding: 0.4rem;
             border-radius: 0.4rem;
-            box-sizing: content-box;
+            box-sizing: border-box;
         }
 
         input.error {
@@ -181,7 +211,7 @@
             font-family: "Lobster", sans-serif;
         }
 
-        button:hover {
+        button.save:hover {
             background-color: rgba(128, 0, 128, 1);
             color: white;
             transition: 150ms;
@@ -192,8 +222,13 @@
             color: purple;
         }
 
-        a.highlight {
+        .highlight {
             font-family: "Lobster", sans-serif;
+        }
+
+        a.downlight {
+            color: unset;
+            text-decoration: underline purple;
         }
 
         a:hover {
@@ -205,15 +240,48 @@
             margin: 2rem 0;
         }
 
+        .delete_container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .delete {
+            text-align: right;
+            margin: 0;
+            padding: 0 3rem;
+            width: fit-content;
+            border-color: rgba(128, 0, 128, 0.25);
+            background-color: unset;
+            font-family: unset;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .delete:hover {
+            border-color: rgba(128, 0, 128, 0.8);
+        }
+
+        .footer {
+            width: fit-content;
+            margin: 0 auto 1.5rem auto;
+            color: unset;
+            display: block;
+        }
+
         .hidden,
         .onlymobile {
             display: none;
         }
 
+        /* Mobile */
         @media (max-width: 62rem) {
             div.content {
                 max-width: 100%;
                 margin: 1rem 0.25rem;
+            }
+
+            .delete_container {
+                justify-content: center;
             }
 
             .onlymobile {
@@ -221,6 +289,7 @@
             }
         }
 
+        /* Dark Theme */
         @media (prefers-color-scheme: dark) {
 
             body,
@@ -244,9 +313,25 @@
                 background-color: rgba(238, 1, 119, 0.15);
             }
 
+            button.save:hover {
+                background-color: rgba(238, 1, 119, 1);
+            }
+
             h2,
             a {
                 color: #ee0177;
+            }
+
+            a.downlight {
+                text-decoration: underline #ee0177;
+            }
+
+            .delete {
+                border-color: rgba(238, 1, 119, 0.25);
+            }
+
+            .delete:hover {
+                border-color: rgba(238, 1, 119, 1);
             }
         }
     </style>
