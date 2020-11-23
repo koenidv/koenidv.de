@@ -1,0 +1,20 @@
+{
+  "name": "koenidv.de",
+  "version": "1.0.0",
+  "description": "Persönliche Seite",
+  "main": "functions/stats_userAdded.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koenidv/koenidv.de.git"
+  },
+  "author": "koenidv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koenidv/koenidv.de/issues"
+  },
+  "homepage": "https://github.com/koenidv/koenidv.de#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "googleapis": "^65.0.0"
+  }
+}
