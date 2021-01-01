@@ -162,7 +162,7 @@
                 document.getElementById("password").classList.add('error')
                 incorrect = true
             }
-            if (!document.getElementById("url").value.startsWith("http"))
+            if (document.getElementById("url").value == "" || !document.getElementById("url").value.startsWith("http"))
                 document.getElementById("url").value = "https://" + document.getElementById("url").value
             localStorage.setItem("url", Base64.encode(document.getElementById("url").value.replace("$schulnr", localStorage.getItem("school"))))
             if (!incorrect) {
