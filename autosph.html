@@ -96,10 +96,30 @@
 
         function login(force) {
             // Login process
-            if (localStorage.getItem("school") != null
+            if (window.location.href.includes("direct")) {
+                // Direct login from app
+                // Don't save or used saved data but directly redirect with data from url
+                // Used by SPHplanner
+                // If 2 '&'
+                if (window.location.href.split("&").length - 1 == 2) {
+                    post('https://login.schulportal.hessen.de', {
+                        user: window.location.href.substring(window.location.href.indexOf("direct=") + 7, window.location.href.indexOf("&")),
+                        password: window.location.href.substring(window.location.href.indexOf("&") + 1, window.location.href.lastIndexOf("&")),
+                        url: window.location.href.substring(window.location.href.lastIndexOf("&") + 1),
+                    })
+                } else {
+                    post('https://login.schulportal.hessen.de', {
+                        user: window.location.href.substring(window.location.href.indexOf("direct=") + 7, window.location.href.indexOf("&")),
+                        password: window.location.href.substring(window.location.href.indexOf("&") + 1)
+                    })
+                }
+                document.getElementById("editor").style.display = "none"
+                document.getElementById("loading").style.display = "unset"
+            } else if (localStorage.getItem("school") != null
                 && localStorage.getItem("user") != null
                 && localStorage.getItem("password") != null
                 && (!window.location.href.includes("change") && !window.location.href.includes("direct") || force)) {
+                // Else if credentials were added
                 // Hide content and redirect to SPH if data has been entered
                 post('https://login.schulportal.hessen.de', {
                     user: localStorage.getItem("school") + '.' + localStorage.getItem("user"),
@@ -116,24 +136,6 @@
                     document.getElementById("password").placeholder = "*".repeat(localStorage.getItem("password").length)
                 if (localStorage.getItem("url") != null)
                     document.getElementById("url").value = Base64.decode(localStorage.getItem("url"))
-            } else if (window.location.href.includes("direct")) {
-                // Don't save or used saved data but directly redirect with data from url
-                // Used by SPHplanner
-                // If 2 '&'
-                if (window.location.href.split("&").length - 1 == 2) {
-                    post('https://login.schulportal.hessen.de', {
-                        user: window.location.href.substring(window.location.href.indexOf("direct=") + 7, window.location.href.indexOf("&")),
-                        password: window.location.href.substring(window.location.href.indexOf("&") + 1),
-                        url: window.location.href.substring(window.location.href.lastIndexOf("&") + 1),
-                    })
-                } else {
-                    post('https://login.schulportal.hessen.de', {
-                        user: window.location.href.substring(window.location.href.indexOf("direct=") + 7, window.location.href.indexOf("&")),
-                        password: window.location.href.substring(window.location.href.indexOf("&") + 1)
-                    })
-                }
-                document.getElementById("editor").style.display = "none"
-                document.getElementById("loading").style.display = "unset"
             }
         }
 
