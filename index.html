@@ -60,7 +60,7 @@
           {% endfor %}
         </div>
 
-        <div class="morebtn {% if site.posts.size <= 3 %}disabled{% endif %}" onclick="expandme(this.parentElement);this.classList.add('disabled');">
+        <div class="morebtn {% if site.posts.size <= 3 %}disabled{% endif %}" onclick="expandme(this.parentElement);this.classList.toggle('disabled');">
           <h5 id="moretxt">Mehr sehen</h5>
         </div>
 
@@ -95,7 +95,7 @@
           {% endfor %}
         </div>
 
-        <div class="morebtn {% if quotes.size <= 4 %}disabled{% endif %}" onclick="expandme(this.parentElement);this.classList.add('disabled');">
+        <div class="morebtn {% if quotes.size <= 4 %}disabled{% endif %}" onclick="expandme(this.parentElement);this.classList.toggle('disabled');">
           <h5 id="moretxt">Mehr sehen</h5>
         </div>
 

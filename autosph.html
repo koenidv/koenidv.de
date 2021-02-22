@@ -104,13 +104,13 @@
                 // Used by SPHplanner
                 // If 2 '&'
                 if (window.location.href.split("&").length - 1 == 2) {
-                    post('https://login.schulportal.hessen.de', {
+                    post('https://login.bildung.hessen.de', {
                         user: window.location.href.substring(window.location.href.indexOf("direct=") + 7, window.location.href.indexOf("&")),
                         password: window.location.href.substring(window.location.href.indexOf("&") + 1, window.location.href.lastIndexOf("&")),
                         url: window.location.href.substring(window.location.href.lastIndexOf("&") + 1),
                     })
                 } else {
-                    post('https://login.schulportal.hessen.de', {
+                    post('https://login.bildung.hessen.de', {
                         user: window.location.href.substring(window.location.href.indexOf("direct=") + 7, window.location.href.indexOf("&")),
                         password: window.location.href.substring(window.location.href.indexOf("&") + 1)
                     })
@@ -123,7 +123,7 @@
                 && (!window.location.href.includes("change") && !window.location.href.includes("direct") || force)) {
                 // Else if credentials were added
                 // Hide content and redirect to SPH if data has been entered
-                post('https://login.schulportal.hessen.de', {
+                post('https://login.bildung.hessen.de', {
                     user: localStorage.getItem("school") + '.' + localStorage.getItem("user"),
                     password: localStorage.getItem("password"),
                     url: localStorage.getItem("url")
