@@ -19,6 +19,7 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             headers: {
                 ...CORS_HEADERS,
+                "Cache-Control": "max-age=604800",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data),

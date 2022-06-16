@@ -75,8 +75,8 @@
       <div class="entry words" onclick="expandme(this)">
         <h3>{{ quote.quote }}</h3>
         <div class="expandable">
-          <p>Von <a href="{{ quote.authorlink }}">{{ quote.author }}</a></p>
-          <p>Aus <a href="{{ quote.sourcelink }}">{{ quote.source }}</a></p>
+          {% if quote.author != nil %}<p>Von <a href="{{ quote.authorlink }}">{{ quote.author }}</a></p>{% endif %}
+          {% if quote.source != nil %}<p>Aus <a href="{{ quote.sourcelink }}">{{ quote.source }}</a></p>{% endif %}
         </div>
       </div>
       {% endfor %}
