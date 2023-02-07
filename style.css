@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Montserrat|Varela+Round|Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Montserrat|Libre+Barcode+39+Extended+Text|Dancing+Script&display=swap');
 
 body {
     padding: 1rem 0;
@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Libre Barcode 39 Extended Text', sans-serif;
     margin: 0;
 }
 
@@ -53,22 +53,22 @@ a {
 }
 
 .tagcloud :nth-child(1) {
-    transform: translateX(-8rem) translateY(-6rem);
+    transform: translateX(-10rem) translateY(-6.5rem);
 }
 .tagcloud :nth-child(2) {
     transform: translateX(1rem) translateY(-7rem);
 }
 .tagcloud :nth-child(3) {
-    transform: translateX(10rem) translateY(-6rem);
+    transform: translateX(12rem) translateY(-6rem);
 }
 .tagcloud :nth-child(4) {
-    transform: translateX(14rem) translateY(-3rem);
+    transform: translateX(18rem) translateY(-3rem);
 }
 .tagcloud :nth-child(5) {
-    transform: translateX(14rem) translateY(0rem);
+    transform: translateX(16rem) translateY(1.5rem);
 }
 .tagcloud :nth-child(6) {
-    transform: translateX(-8rem) translateY(-6rem);
+    transform: translateX(9rem) translateY(4rem);
 }
 
 .socials {
