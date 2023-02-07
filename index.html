@@ -15,7 +15,7 @@
   <div id="background"></div>
 
   <div class="head">
-    <h1 id="title">Hey</h1>
+    <h1 id="title">Florian König</h1>
       <a href="https://instagr
       am.com/halbunsichtbar" alt="Instagram: halb(un)sichtbar" class="social">
         <img src="assets/ic-instagram.svg" />
@@ -108,33 +108,6 @@
     integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 
   <script>
-
-    // Update background and show some title messages
-    window.onload = function () {
-      // Set background
-      refreshBackground();
-      // Display name after 3s
-      window.setTimeout(function () {
-        changeText(document.getElementById("title"), "Florian König");
-      }, 3000);
-      // Occupational therapy after 15s
-      window.setTimeout(function () {
-        changeText(document.getElementById("title"), "Na, wie geht's?");
-      }, 15000);
-      window.setTimeout(function () {
-        changeText(document.getElementById("title"), "Florian König");
-      }, 25000);
-      // Just for giggles when using dark theme
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        window.setTimeout(function () {
-          changeText(document.getElementById("title"), "I see you're a man of black culture as well…");
-        }, 35000);
-        window.setTimeout(function () {
-          changeText(document.getElementById("title"), "Florian König");
-        }, 45000);
-      }
-    }
-
     function refreshBackground() {
       var num = Math.ceil(Math.random() * 23);
 
@@ -156,30 +129,6 @@
         // Fade background in
         fadeIn(document.getElementById("background"));
       });
-    }
-
-    function fadeIn(element) {
-      var op = 0;  // initial opacity
-      var timer = setInterval(function () {
-        if (op >= 1) {
-          clearInterval(timer);
-        }
-        element.style.opacity = op;
-        op += 0.02;
-      }, 5);
-    }
-
-    function changeText(element, text) {
-      var op = 1;  // initial opacity
-      var timer = setInterval(function () {
-        if (op <= 0) {
-          clearInterval(timer);
-          element.innerHTML = text;
-          fadeIn(element);
-        }
-        element.style.opacity = op;
-        op -= 0.02;
-      }, 5);
     }
 
     function expandme(element) {
