@@ -28,30 +28,61 @@ a {
 }
 
 .head {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
     color: white;
-    text-shadow: 0 0 5px #333333;
-    height: 60vh;
+    margin: 12rem 0;
 }
 
-.head>* {
-    top: 25vh;
+#title .tagcloud {
+    position: fixed;
     left: 0;
     right: 0;
+    font-size: 1rem;
+    color: #dedede;
+    text-align: center;
+}
+
+.tagcloud>* {
     position: fixed;
-    z-index: -1;
+    left: 0;
+    right: 0;
 }
 
-.social {
-    display: inline-block;
-    margin: 0.4rem;
-    margin-top: 4rem;
+.tagcloud :nth-child(1) {
+    transform: translateX(-8rem) translateY(-6rem);
+}
+.tagcloud :nth-child(2) {
+    transform: translateX(1rem) translateY(-7rem);
+}
+.tagcloud :nth-child(3) {
+    transform: translateX(10rem) translateY(-6rem);
+}
+.tagcloud :nth-child(4) {
+    transform: translateX(14rem) translateY(-3rem);
+}
+.tagcloud :nth-child(5) {
+    transform: translateX(14rem) translateY(0rem);
+}
+.tagcloud :nth-child(6) {
+    transform: translateX(-8rem) translateY(-6rem);
 }
 
-.social img {
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.socials>* {
     width: 1.5rem;
-    fill: white;
-    /*box-shadow: 0 0 5px #333333;*/
+    fill: #ffffff;
 }
 
 section {
