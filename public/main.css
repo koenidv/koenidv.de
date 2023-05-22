@@ -10,9 +10,9 @@ body {
   margin: 0;
 }
 
-@supports (-webkit-text-stroke: 1px white) {
+/* @supports (-webkit-text-stroke: 1px white) {
   .marquee p {
     color: transparent;
     -webkit-text-stroke: 1px white;
   }
-}
+} */
