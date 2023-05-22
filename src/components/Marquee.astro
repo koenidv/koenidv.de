@@ -1,0 +1,69 @@
+---
+interface Props {
+  inverse?: boolean;
+}
+
+const { inverse = false } = Astro.props;
+---
+
+<div class={inverse ? "marquee-container-right" : "marquee-container-left"}>
+  <div class="marquee no-margin-children">
+    <slot />
+    <slot />
+    <slot />
+    <slot />
+  </div>
+</div>
+
+<style>
+  .marquee-container-left {
+    position: relative;
+    overflow: hidden;
+    --offset: 20vw;
+    --move-initial: calc(-25% + var(--offset));
+    --move-final: calc(-50% + var(--offset));
+  }
+
+  .marquee-container-right {
+    position: relative;
+    overflow: hidden;
+    --offset: 20vw;
+    --move-initial: calc(-50% + var(--offset));
+    --move-final: calc(-25% + var(--offset));
+  }
+
+  .marquee {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    position: relative;
+    width: max-content;
+    font-size: 6rem;
+    font-family: 'Poppins', sans-serif;
+
+    transform: translate3d(var(--move-initial), 0, 0);
+    animation: marquee-left 30s linear infinite;
+  }
+
+  .marquee p {
+    color: transparent;
+    stroke: 1px solid white;
+  }
+
+  .marquee p {
+    /* color: #1c1d20;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; */
+    margin: 0;
+  }
+
+  @keyframes marquee-left {
+    0% {
+      transform: translate3d(var(--move-initial), 0, 0);
+    }
+
+    100% {
+      transform: translate3d(var(--move-final), 0, 0);
+    }
+  }
+</style>

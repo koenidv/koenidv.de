@@ -1,0 +1,18 @@
+html {
+  background-color: #1c1d20;
+}
+
+body {
+  margin: 0;
+}
+
+.no-margin-children > * {
+  margin: 0;
+}
+
+@supports (-webkit-text-stroke: 1px white) {
+  .marquee p {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+  }
+}
