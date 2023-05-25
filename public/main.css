@@ -1,5 +1,8 @@
 html {
-  background-color: #1c1d20;
+  background-color: #ecede7;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 body {
@@ -12,7 +15,7 @@ body {
 
 /* @supports (-webkit-text-stroke: 1px white) {
   .marquee p {
-    color: transparent;
+    color: transparent !important;
     -webkit-text-stroke: 1px white;
   }
 } */

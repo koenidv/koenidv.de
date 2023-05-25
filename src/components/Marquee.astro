@@ -47,9 +47,10 @@ const { inverse = false } = Astro.props;
     animation: marquee-left 30s linear infinite;
   }
 
-  .marquee p {
+  .marquee :global(p) {
     color: transparent;
     stroke: 1px solid white;
+    background-color: red;
   }
 
   .marquee p {

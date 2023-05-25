@@ -4,9 +4,36 @@ import Marquee from "../components/Marquee.astro";
 ---
 
 <Layout title="Florian König">
-  <div style="height:40vh"></div>
+  <div class="h-screen relative">
+    <nav class="w-screen flex flex-row justify-between p-4">
+      <div class="flex flex-row gap-8">
+        <p>Florian König</p>
+        <p>Berlin</p>
+      </div>
+      <div class="flex flex-row gap-2">
+        <p>Projects</p>
+        <p>About</p>
+        <p>Contact</p>
+      </div>
+    </nav>
 
-  <Marquee inverse={false}>
+    <img src="/img.jpg" class="w-[52rem] h-[35%] object-cover absolute left-[20%] top-[30%]" />
+    
+    <h1 class="title text-[14vh] w-min font-black text-left leading-none tracking-widest uppercase relative left-8 top-8 mix-blend-difference text-white">
+      Software<br />
+      Engineer
+    </h1>
+
+
+
+    <h1 class="text-[14vh] font-black text-right leading-none tracking-wider uppercase absolute bottom-8 right-8 mix-blend-difference text-white">
+      Florian<br />
+      Kønig
+    </h1>
+    
+    
+    
+    <!-- <Marquee inverse={false}>
     <img width="100" height="100" src="https://img.icons8.com/stickers/100/google-play.png" alt="google-play"/>
     <p style="color: #f6c576">Android Native</p>
     <img width="100" height="100" src="https://img.icons8.com/stickers/100/globe.png" alt="globe"/>
@@ -29,7 +56,7 @@ import Marquee from "../components/Marquee.astro";
     <p style="color: #de4e2b">SvelteKit</p>
     <p>FQL</p>
     <img width="48" height="48" src="icons/java.svg" alt="java"/>
-    <p style="color: #e34b3b">Java</p>
-    
-  </Marquee>
+    <p style="color: #e34b3b">Java</p> -->
+
+  </div>
 </Layout>
