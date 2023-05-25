@@ -4,59 +4,71 @@ import Marquee from "../components/Marquee.astro";
 ---
 
 <Layout title="Florian König">
-  <div class="h-screen relative">
-    <nav class="w-screen flex flex-row justify-between p-4">
-      <div class="flex flex-row gap-8">
-        <p>Florian König</p>
-        <p>Berlin</p>
-      </div>
-      <div class="flex flex-row gap-2">
-        <p>Projects</p>
-        <p>About</p>
-        <p>Contact</p>
-      </div>
-    </nav>
+	<div class="h-[92vh] relative">
+		<nav class="w-screen flex flex-row justify-between p-4">
+			<div class="flex flex-row gap-8">
+				<a href="https://linkedin.com/in/koenidv" target="_blank">Florian König</a>
 
-    <img src="/img.jpg" class="w-[52rem] h-[35%] object-cover absolute left-[20%] top-[30%]" />
+				<div class="flex flex-row gap-6 opacity-80">
+					<a href="#contact-post" class="flex flex-row gap-1 items-center">
+						<img
+							class="h-4 opacity-75"
+							src="https://img.icons8.com/material-rounded/64/marker.png"
+							alt="location"
+						/>
+						<p>Berlin</p>
+          </a>
+					<a href="https://code.berlin" target="_blank" class="flex flex-row gap-1 items-center">
+						<img
+							class="h-4 opacity-75"
+							src="https://img.icons8.com/material-rounded/64/student-center.png"
+							alt="education"
+						/>
+						<p>CODE University</p>
+          </a>
+					<a href="https://sanofi.com" target="_blank" class="flex flex-row gap-1 items-center">
+						<img
+							class="h-4 opacity-75"
+							src="https://img.icons8.com/material-rounded/64/business.png"
+							alt="work"
+						/>
+						<p>Sanofi</p>
+          </a>
+				</div>
+			</div>
+
+			<div class="flex flex-row gap-2">
+				<a href="#projects">Projects</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</nav>
+
+		<img src="/img.jpg" class="w-[52rem] h-[35%] object-cover absolute left-[20%] top-[30%]" />
+
+		<h1
+			class="title text-[14vh] w-min font-black text-left leading-none tracking-widest uppercase relative left-8 top-8 mix-blend-difference text-white">
+			Software<br />
+			Engineer
+		</h1>
+
+		<h1
+			class="text-[14vh] font-black text-right leading-none tracking-wider uppercase absolute bottom-8 right-8 mix-blend-difference text-white">
+			Florian<br />
+			Kønig
+		</h1>
+	</div>
+
+  <div id="projects">
+
+    <Marquee inverse={false}>
+      <p>Android Native</p>
+      <p>Web</p>
+      <p>Cloud Native</p>
+      <p>Hardware Interfaces</p>
+      <p>DevOps</p>
+    </Marquee>
     
-    <h1 class="title text-[14vh] w-min font-black text-left leading-none tracking-widest uppercase relative left-8 top-8 mix-blend-difference text-white">
-      Software<br />
-      Engineer
-    </h1>
-
-
-
-    <h1 class="text-[14vh] font-black text-right leading-none tracking-wider uppercase absolute bottom-8 right-8 mix-blend-difference text-white">
-      Florian<br />
-      Kønig
-    </h1>
-    
-    
-    
-    <!-- <Marquee inverse={false}>
-    <img width="100" height="100" src="https://img.icons8.com/stickers/100/google-play.png" alt="google-play"/>
-    <p style="color: #f6c576">Android Native</p>
-    <img width="100" height="100" src="https://img.icons8.com/stickers/100/globe.png" alt="globe"/>
-    <p style="color: #6b91ca">Web</p>
-    <img width="100" height="100" src="https://img.icons8.com/stickers/100/cloud-development.png" alt="cloud-development"/>
-    <p style="color: #84bffd">Cloud Native</p>
-    <img width="100" height="100" src="https://img.icons8.com/stickers/100/arduino-uno-board.png" alt="arduino-uno-board"/>
-    <p style="color: #9dc166">Hardware Interfaces</p>
-    <img width="100" height="100" src="https://img.icons8.com/stickers/100/engine.png" alt="engine"/>
-    <p style="color: #747dbe">DevOps</p>
-  </Marquee>
-
-  <Marquee inverse={true}>
-    <img width="48" height="48" src="/icons/kotlin.svg" alt="kotlin"/>
-    <p style="color: #ea8b21">Kotlin</p>
-    <img width="48" height="48" src="/icons/typescript.svg" alt="typescript"/>
-    <p style="color: #2e61a5">TypeScript</p>
-    <p>Deno</p>
-    <img width="48" height="48" src="/icons/svelte.svg" alt="svetle"/>
-    <p style="color: #de4e2b">SvelteKit</p>
-    <p>FQL</p>
-    <img width="48" height="48" src="icons/java.svg" alt="java"/>
-    <p style="color: #e34b3b">Java</p> -->
-
   </div>
+	<div class="h-screen"></div>
 </Layout>

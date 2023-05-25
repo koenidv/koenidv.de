@@ -13,9 +13,8 @@ body {
   margin: 0;
 }
 
-/* @supports (-webkit-text-stroke: 1px white) {
-  .marquee p {
-    color: transparent !important;
-    -webkit-text-stroke: 1px white;
-  }
-} */
+nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 0.125em;
+}

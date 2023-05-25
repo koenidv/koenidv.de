@@ -48,10 +48,15 @@ const { inverse = false } = Astro.props;
   }
 
   .marquee :global(p) {
-    color: transparent;
-    stroke: 1px solid white;
-    background-color: red;
+    color: #131218;
   }
+
+  @supports (-webkit-text-stroke: 1px white) {
+    .marquee :global(p:nth-of-type(even)) {
+      color: transparent;
+      -webkit-text-stroke: 0.15rem black;
+    }
+  }  
 
   .marquee p {
     /* color: #1c1d20;
