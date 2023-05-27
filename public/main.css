@@ -1,20 +1,71 @@
 html {
-  background-color: #ecede7;
-  color: #000000;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+	background-color: #ecede7;
+	color: #000000;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
 }
 
 body {
-  margin: 0;
+	margin: 0;
 }
 
 .no-margin-children > * {
-  margin: 0;
+	margin: 0;
 }
 
-nav a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
-  text-decoration-thickness: 0.125em;
+.maingrid a:hover {
+	text-decoration: underline;
+	text-underline-offset: 0.3em;
+	text-decoration-thickness: 0.125em;
+}
+
+div.maingrid {
+	display: grid;
+	position: relative;
+  grid-template-rows: 3.5rem auto auto 3.5rem;
+	grid-template-areas:
+		"links"
+		"name"
+		"tagline"
+		"shortinfo";
+}
+
+@media screen and (min-width: 48rem) {
+	div.maingrid {
+		height: 92vh;
+    grid-template-rows: 3.5rem auto auto;
+		grid-template-areas:
+			"shortinfo links"
+			"tagline tagline"
+			"name name";
+	}
+}
+
+#shortinfo {
+	grid-area: shortinfo;
+}
+#links {
+	grid-area: links;
+}
+#tagline {
+	grid-area: tagline;
+}
+@media screen and (max-width: 48rem) {
+  #tagline {
+    color: transparent;
+    -webkit-text-stroke: 1px white; 
+  }
+}
+@media screen and (min-width: 48rem) {
+  #tagline {
+    font-size: 14vh;
+    text-align: left;
+  }
+  #name {
+    font-size: 14vh;
+    text-align: right;
+  }
+}
+#name {
+	grid-area: name;
 }
