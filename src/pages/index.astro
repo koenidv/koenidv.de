@@ -6,7 +6,9 @@ import Marquee from "../components/Marquee.astro";
 <Layout title="Florian König">
 	<div class="maingrid">
 		<div id="shortinfo" class="h-14 flex flex-row gap-8 m-4 justify-center md:justify-start">
-			<a class="max-md:hidden" href="https://linkedin.com/in/koenidv" target="_blank">Florian König</a>
+			<a class="max-md:hidden" href="https://linkedin.com/in/koenidv" target="_blank"
+				>Florian König</a
+			>
 
 			<div class="flex flex-row gap-6 opacity-80 items-baseline">
 				<a href="#contact-post" class="flex flex-row gap-1 items-center">
@@ -42,18 +44,19 @@ import Marquee from "../components/Marquee.astro";
 			<a href="#contact">Contact</a>
 		</div>
 
-		<!-- <img src="/img.jpg" class="w-[52rem] h-[35%] object-cover absolute left-[20%] top-[30%]" /> -->
-
-		<h1
-			id="tagline"
-			class="mx-4 md:mx-8 max-md:my-4 text-6xl text-right md:text-left font-black leading-none tracking-widest uppercase mix-blend-difference text-white">
-			Creative<br />
-			Developer
-		</h1>
+    <div id="tagline" class="mx-4 md:mx-8 max-md:my-4 relative">
+      <img src="/img.jpg" class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[56rem] md:max-w-[80vw] h-48 md:h-[80%] object-cover md:absolute left-[12vw] top-[50%]" />
+      <h1
+        id="tagline"
+        class="relative text-6xl md:text-8xl lg:text-[14vh] text-right md:text-left font-black leading-none tracking-widest uppercase md:mix-blend-difference text-[#ecede7] md:text-white">
+        Creative<br />
+        Developer
+      </h1>
+    </div>
 
 		<h1
 			id="name"
-			class="mx-4 md:mx-8 text-7xl font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
+			class="mx-4 md:mx-8 text-7xl md:text-8xl lg:text-[14vh] text-left md:text-right font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
 			Florian<br />
 			Kønig
 		</h1>
