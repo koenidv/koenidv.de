@@ -21,14 +21,14 @@ const { inverse = false } = Astro.props;
     overflow: hidden;
     --offset: 20vw;
     --move-initial: calc(-25% + var(--offset));
-    --move-final: calc(-50% + var(--offset));
+    --move-final: calc(-50.1% + var(--offset));
   }
 
   .marquee-container-right {
     position: relative;
     overflow: hidden;
     --offset: 20vw;
-    --move-initial: calc(-50% + var(--offset));
+    --move-initial: calc(-50.1% + var(--offset));
     --move-final: calc(-25% + var(--offset));
   }
 
@@ -44,7 +44,7 @@ const { inverse = false } = Astro.props;
     font-family: 'Poppins', sans-serif;
 
     transform: translate3d(var(--move-initial), 0, 0);
-    animation: marquee-left 30s linear infinite;
+    animation: marquee 30s linear infinite;
   }
 
   
@@ -80,7 +80,7 @@ const { inverse = false } = Astro.props;
     margin: 0;
   }
 
-  @keyframes marquee-left {
+  @keyframes marquee {
     0% {
       transform: translate3d(var(--move-initial), 0, 0);
     }
