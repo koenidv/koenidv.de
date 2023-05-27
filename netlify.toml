@@ -1,0 +1,23 @@
+[[redirects]]
+  from = "/gmbplanner/*"
+  to = "https://gmbplaner.koenidv.de/:splat"
+
+[[redirects]]
+  from = "/juli"
+  to = "https://telegra.ph/Juli-07-17"
+
+[[redirects]]
+  from = "/sph-anmeldung*"
+  to = "/autosph:splat"
+  status = 200
+  
+[[redirects]]
+  from = "/pocketnc/guide"
+  to = "https://docs.google.com/document/d/1FbMszZZnawZoD0UkwiEVL1WpHouSBBPSTTTbsZSNgYo"
+  
+[[redirects]]
+  from = "/pocketnc"
+  to = "https://drive.google.com/drive/folders/1eyh943sOvH1shQ9rXZEVee81TGMnhvrz"
+
+[build]
+  functions = "./functions"

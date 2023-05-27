@@ -1,4 +1,6 @@
-# Astro Starter Kit: Basics
+# koenidv.de
+
+Just my personal website.
 
 ```
 npm create astro@latest -- --template basics
