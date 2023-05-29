@@ -78,14 +78,14 @@ import Marquee from "../components/Marquee.astro";
 		<div
 			id="recent-projects"
 			class="projectsgrid md:max-h-[86vh] overflow-hidden p-4 md:p-8 max-md:mt-4 lg:px-16 gap-4 md:gap-8">
-			<div id="project1" class="rounded-lg bg-[#e9eae3]">
+			<div id="project1" class="group rounded-lg bg-[#e9eae3] hover:bg-[#e4e3ea] transition-colors hover:cursor-pointer">
 				<img
 					src="/images/melodymates.webp"
 					class="w-full aspect-[2] md:aspect-video object-cover rounded-r-lg rounded-tl-lg"
 				/>
 				<div class="m-8">
-					<h2 class="text-4xl font-poppins font-bold tracking-wider md:mt-4">MelodyMates</h2>
-					<p class="md:mt-4">
+					<h2 class="text-4xl font-poppins font-bold tracking-wider md:mt-4 group-hover:underline underline-offset-[0.4rem] decoration-[0.2rem]">MelodyMates</h2>
+					<p class="mt-4">
 						MelodyMates is a social network for young music lovers.<br />
 						Sing up with Spotify, share the songs you love, and discover what your friends are recommending.<br
 						/>
@@ -98,15 +98,15 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<div id="project2" class="flex flex-col md:flex-row rounded-lg bg-[#e9eae3]">
+			<div id="project2" class="group flex flex-col md:flex-row rounded-lg bg-[#e9eae3] hover:bg-[#e4e3ea] transition-colors hover:cursor-pointer">
 				<img
 					src="/images/chesse.webp"
 					class="h-full aspect-[2] md:aspect-square object-cover rounded-tl-lg max-md:rounded-tr-lg rounded-br-lg md:rounded-bl-lg"
 				/>
 				<div class="flex flex-col m-8 md:mt-6">
-					<h2 class="text-4xl font-poppins font-bold tracking-wider">Chess:E</h2>
-					<p>
-						A remote but analog chess board that brings the traditional chess experience to the
+					<h2 class="text-4xl font-poppins font-bold tracking-wider group-hover:underline underline-offset-[0.4rem] decoration-[0.2rem]">Chess:E</h2>
+					<p class="mt-4">
+						Remote but analog chess system that brings the traditional chess experience to the
 						digital age.
 					</p>
 					<div class="mt-4 flex gap-2">
@@ -118,28 +118,30 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<div id="project3" class="flex flex-col md:flex-row rounded-lg bg-[#e9eae3]">
+			<div id="project3" class="group flex flex-col md:flex-row rounded-lg bg-[#e9eae3] hover:bg-[#e4e3ea] transition-colors hover:cursor-pointer">
 				<img
 					src="/images/helmet.webp"
 					class="h-full aspect-[2] md:aspect-square object-cover rounded-tl-lg max-md:rounded-tr-lg rounded-br-lg md:rounded-bl-lg"
 				/>
 				<div class="flex flex-col m-8 md:mt-6">
-					<h2 class="text-4xl font-poppins font-bold tracking-wider">Indicating Helmet</h2>
-					<p>Rapid prototyping of a bike helmet with turn signals to improve urban safety.</p>
+					<h2 class="text-4xl font-poppins font-bold tracking-wider group-hover:underline underline-offset-[0.4rem] decoration-[0.2rem]">Indicating Helmet</h2>
+					<p class="mt-4">
+						Rapid prototyping of a bike helmet with turn signals to improve urban safety.
+					</p>
 					<div class="mt-4 flex gap-2">
 						<span class="bg-[#e4e3ea] rounded-full px-2">Hardware</span>
 						<span class="bg-[#e4e3ea] rounded-full px-2">C</span>
 					</div>
 				</div>
 			</div>
-			<div id="project4" class="flex flex-col md:flex-row rounded-lg bg-[#e9eae3]">
+			<div id="project4" class="group flex flex-col md:flex-row rounded-lg bg-[#e9eae3] hover:bg-[#e4e3ea] transition-colors hover:cursor-pointer">
 				<img
 					src="/images/sphplanner.webp"
 					class="h-full aspect-[2] md:aspect-square object-cover rounded-tl-lg max-md:rounded-tr-lg rounded-br-lg md:rounded-bl-lg"
 				/>
 				<div class="flex flex-col m-8 md:mt-6">
-					<h2 class="text-4xl font-poppins font-bold tracking-wider">Schulportal App</h2>
-					<p>
+					<h2 class="text-4xl font-poppins font-bold tracking-wider group-hover:underline underline-offset-[0.4rem] decoration-[0.2rem]">Schulportal App</h2>
+					<p class="mt-4">
 						Native Android app for students to manage timetables and homework, chat with teachers,
 						and much more.
 					</p>
@@ -150,8 +152,16 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<a href="#" id="projectsmore" class="bg-[#e9eae3] h-14 w-full md:w-fit rounded-lg flex items-center justify-center md:px-20 hover:bg-[#e4e3ea] hover:underline transition-colors underline-offset-[0.3rem] decoration-[0.125rem]">
-				<p>More Projects</p>
+			<a
+				href="#"
+				id="projectsmore"
+				class="group h-14 w-full">
+				<div class="bg-[#e9eae3] h-full w-full md:w-fit rounded-lg flex items-center justify-center md:px-20 group-hover:bg-[#e4e3ea] transition-colors ">
+					<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+						More Projects
+					</p>
+				</div>
 			</a>
 		</div>
+	</div>
 </Layout>
