@@ -1,34 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 :root {
-	--elevation: 0.5rem;
+    --elevation: 0.5rem;
 }
 
 @layer components {
     .elevated-card {
+        position: relative;
+        margin-bottom: var(--elevation);
+        margin-right: var(--elevation);
 
-		position: relative;
+		--animation: 100ms ease-out;
+		transition: margin var(--animation);
 
-        &:before,
-        &:after {
+		&:hover {
+			margin-bottom: calc(var(--elevation) / 2);
+			margin-right: calc(var(--elevation) / 2);
+			margin-top: calc(var(--elevation) / 2);
+			margin-left: calc(var(--elevation) / 2);
+
+			&::before {
+				height: calc(var(--elevation) / 2);
+			}
+
+			&::after {
+				width: calc(var(--elevation) / 2);
+			}
+		}
+
+        &::before,
+        &::after {
             content: "";
             position: absolute;
             transform-origin: 0 0;
             z-index: -1;
         }
 
-        &:before {
+        &::before {
             width: 100%;
             height: var(--elevation);
             transform: skewx(45deg);
             top: 100%;
             left: 0;
             background: #000000;
+			transition: height var(--animation);
         }
 
-        &:after {
+        &::after {
             width: var(--elevation);
             height: 100%;
             transform: skewy(45deg);
@@ -36,6 +57,7 @@
             left: 100%;
             background: #000000;
             z-index: -2;
+			transition: width var(--animation);
         }
     }
 }
@@ -50,7 +72,7 @@
     }
 
     .elevated-3 {
-		--elevation: 0.75rem;
+        --elevation: 0.75rem;
     }
 
     .elevated-4 {
@@ -148,8 +170,6 @@ div.projectsgrid {
 
 #project1 {
     grid-area: project1;
-    width: 100%;
-    height: 100%;
 }
 
 #project2 {
