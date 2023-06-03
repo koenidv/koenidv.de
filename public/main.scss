@@ -2,6 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--elevation: 0.5rem;
+}
+
+@layer components {
+    .elevated-card {
+
+		position: relative;
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            transform-origin: 0 0;
+            z-index: -1;
+        }
+
+        &:before {
+            width: 100%;
+            height: var(--elevation);
+            transform: skewx(45deg);
+            top: 100%;
+            left: 0;
+            background: #000000;
+        }
+
+        &:after {
+            width: var(--elevation);
+            height: 100%;
+            transform: skewy(45deg);
+            top: 0;
+            left: 100%;
+            background: #000000;
+            z-index: -2;
+        }
+    }
+}
+
+@layer utilities {
+    .elevated-1 {
+        --elevation: 0.25rem;
+    }
+
+    .elevated-2 {
+        --elevation: 0.5rem;
+    }
+
+    .elevated-3 {
+		--elevation: 0.75rem;
+    }
+
+    .elevated-4 {
+        --elevation: 1rem;
+    }
+}
+
+
 html {
     background-color: #ecede7;
     color: #000000;
