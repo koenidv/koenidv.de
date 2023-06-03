@@ -13,23 +13,23 @@
         margin-bottom: var(--elevation);
         margin-right: var(--elevation);
 
-		--animation: 100ms ease-out;
-		transition: margin var(--animation);
+        --animation: 100ms ease-out;
+        transition: margin var(--animation);
 
-		&:hover {
-			margin-bottom: calc(var(--elevation) / 2);
-			margin-right: calc(var(--elevation) / 2);
-			margin-top: calc(var(--elevation) / 2);
-			margin-left: calc(var(--elevation) / 2);
+        &:hover {
+            margin-bottom: calc(var(--elevation) / 2);
+            margin-right: calc(var(--elevation) / 2);
+            margin-top: calc(var(--elevation) / 2);
+            margin-left: calc(var(--elevation) / 2);
 
-			&::before {
-				height: calc(var(--elevation) / 2);
-			}
+            &::before {
+                height: calc(var(--elevation) / 2);
+            }
 
-			&::after {
-				width: calc(var(--elevation) / 2);
-			}
-		}
+            &::after {
+                width: calc(var(--elevation) / 2);
+            }
+        }
 
         &::before,
         &::after {
@@ -46,7 +46,7 @@
             top: 100%;
             left: 0;
             background: #000000;
-			transition: height var(--animation);
+            transition: height var(--animation);
         }
 
         &::after {
@@ -57,7 +57,7 @@
             left: 100%;
             background: #000000;
             z-index: -2;
-			transition: width var(--animation);
+            transition: width var(--animation);
         }
     }
 }
@@ -90,7 +90,9 @@ html {
 
 body {
     margin: 0;
+	min-width: 400px;
 }
+
 
 .no-margin-children>* {
     margin: 0;
@@ -156,7 +158,18 @@ div.projectsgrid {
         "more";
 }
 
-@media screen and (min-width: 48rem) {
+@media screen and (min-width: 64rem) {
+    div.projectsgrid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 3.5rem;
+        grid-template-areas:
+            "project1 project2"
+            "project3 project4"
+            "more more";
+    }
+}
+
+@media screen and (min-width: 96rem) {
     div.projectsgrid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, minmax(0, 1fr)) 3.5rem;

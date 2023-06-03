@@ -5,7 +5,7 @@ import Marquee from "../components/Marquee.astro";
 
 <Layout title="Florian König">
 	<div class="maingrid">
-		<div id="shortinfo" class="h-14 flex flex-row gap-8 m-4 justify-center md:justify-start">
+		<div id="shortinfo" class="h-14 flex flex-row gap-6 m-4 mx-6 justify-center md:justify-start">
 			<a class="max-md:hidden" href="https://linkedin.com/in/koenidv" target="_blank"
 				>Florian König</a
 			>
@@ -38,7 +38,7 @@ import Marquee from "../components/Marquee.astro";
 			</div>
 		</div>
 
-		<div id="links" class="h-14 flex flex-row gap-4 md:gap-2 m-4 justify-center md:justify-end">
+		<div id="links" class="h-14 flex flex-row gap-4 md:gap-3 m-4 mx-6 justify-center md:justify-end">
 			<a href="#projects">Projects</a>
 			<a href="#about">About</a>
 			<a href="#contact">Contact</a>
@@ -51,7 +51,7 @@ import Marquee from "../components/Marquee.astro";
 			/>
 			<h1
 				id="tagline"
-				class="relative text-[10vw] md:text-8xl lg:text-[14vh] text-right md:text-left font-black leading-none tracking-widest uppercase md:mix-blend-difference text-[#ecede7] md:text-white">
+				class="relative text-[10vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-right md:text-left font-black leading-none tracking-widest uppercase md:mix-blend-difference text-[#ecede7] md:text-white">
 				Creative<br />
 				Developer
 			</h1>
@@ -59,7 +59,7 @@ import Marquee from "../components/Marquee.astro";
 
 		<h1
 			id="name"
-			class="mx-4 md:mx-8 text-[12vw] md:text-8xl lg:text-[14vh] text-left md:text-right font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
+			class="mx-4 md:mx-8 text-[12vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-left md:text-right font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
 			Florian<br />
 			Kønig
 		</h1>
@@ -77,12 +77,12 @@ import Marquee from "../components/Marquee.astro";
 
 		<div
 			id="recent-projects"
-			class="projectsgrid md:max-h-[86vh] overflow-hidden p-4 md:p-8 max-md:mt-4 lg:px-16 gap-4 md:gap-8">
+			class="projectsgrid 2xl:max-h-[92vh] overflow-hidden p-4 md:p-8 max-md:mt-4 xl:px-16 gap-4 xl:gap-8">
 			<div id="project1" class="group elevated-4 elevated-card hover:cursor-pointer">
 				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
 					<img
 						src="/images/melodymates.webp"
-						class="w-full aspect-[2] md:aspect-video object-cover border-black border-b-4"
+						class="w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"
 					/>
 					<div class="m-8">
 						<h2
@@ -94,7 +94,7 @@ import Marquee from "../components/Marquee.astro";
 							Sing up with Spotify, share the songs you love, and discover what your friends are recommending.<br
 							/>
 						</p>
-						<div class="mt-4 md:mt-8 flex gap-2">
+						<div class="mt-4 md:mt-8 flex flex-wrap gap-2">
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Fauna</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Deno</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Flutter</span>
@@ -104,10 +104,11 @@ import Marquee from "../components/Marquee.astro";
 				</div>
 			</div>
 			<div id="project2" class="group elevated-card hover:cursor-pointer">
-				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col md:flex-row overflow-hidden">
+				<div
+					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
 					<img
 						src="/images/chesse.webp"
-						class="h-full aspect-[2] md:aspect-square object-cover border-black max-md:border-b-4 md:border-r-4"
+						class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
 					/>
 					<div class="flex flex-col m-8 md:mt-6">
 						<h2
@@ -118,7 +119,7 @@ import Marquee from "../components/Marquee.astro";
 							Remote but analog chess system that brings the traditional chess experience to the
 							digital age.
 						</p>
-						<div class="mt-4 flex gap-2">
+						<div class="mt-4 flex flex-wrap gap-2">
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Hardware</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Deno</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">AMQP</span>
@@ -129,10 +130,11 @@ import Marquee from "../components/Marquee.astro";
 				</div>
 			</div>
 			<div id="project3" class="group elevated-card hover:cursor-pointer">
-				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col md:flex-row overflow-hidden">
+				<div
+					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
 					<img
 						src="/images/helmet.webp"
-						class="h-full aspect-[2] md:aspect-square object-cover border-black max-md:border-b-4 md:border-r-4"
+						class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
 					/>
 					<div class="flex flex-col m-8 md:mt-6">
 						<h2
@@ -142,7 +144,7 @@ import Marquee from "../components/Marquee.astro";
 						<p class="mt-4">
 							Rapid prototyping of a bike helmet with turn signals to improve urban safety.
 						</p>
-						<div class="mt-4 flex gap-2">
+						<div class="mt-4 flex flex-wrap gap-2">
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Hardware</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">C</span>
 						</div>
@@ -150,10 +152,11 @@ import Marquee from "../components/Marquee.astro";
 				</div>
 			</div>
 			<div id="project4" class="group elevated-card hover:cursor-pointer">
-				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col md:flex-row overflow-hidden">
+				<div
+					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
 					<img
 						src="/images/sphplanner.webp"
-						class="h-full aspect-[2] md:aspect-square object-cover border-black max-md:border-b-4 md:border-r-4"
+						class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
 					/>
 					<div class="flex flex-col m-8 md:mt-6">
 						<h2
@@ -164,7 +167,7 @@ import Marquee from "../components/Marquee.astro";
 							Native Android app for students to manage timetables and homework, chat with teachers,
 							and much more.
 						</p>
-						<div class="mt-4 flex gap-2">
+						<div class="mt-4 flex flex-wrap gap-2">
 							<span class="bg-[#e0e2d8] rounded-sm px-2">600+ Users</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Android</span>
 							<span class="bg-[#e0e2d8] rounded-sm px-2">Kotlin</span>
@@ -172,8 +175,8 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<a href="#" id="projectsmore" class="group h-14 w-full flex">
-				<div class="elevated-card elevated-3 w-full md:w-fit">
+			<a href="#" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
+				<div class="elevated-card elevated-3 w-full md:w-[48%] 2xl:w-fit">
 					<div
 						class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center md:px-20">
 						<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
