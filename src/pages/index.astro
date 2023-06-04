@@ -38,7 +38,9 @@ import Marquee from "../components/Marquee.astro";
 			</div>
 		</div>
 
-		<div id="links" class="h-14 flex flex-row gap-4 md:gap-3 m-4 mx-6 justify-center md:justify-end">
+		<div
+			id="links"
+			class="h-14 flex flex-row gap-4 md:gap-3 m-4 mx-6 justify-center md:justify-end">
 			<a href="#projects">Projects</a>
 			<a href="#about">About</a>
 			<a href="#contact">Contact</a>
@@ -103,6 +105,21 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
+			<dialog id="dialog1" class="border-none outline-none bg-transparent rounded-none">
+				<div style="view-transition-name: fullembed;" class="elevated-card elevated-4 bg-[#ecede7]">
+					<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
+						<img
+						src="/images/melodymates.webp"
+						class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
+						/>
+						<h1 class="h-16 mt-4 text-6xl font-poppins font-bold tracking-wider m-8">MelodyMates</h1>
+						<p class="m-8">
+							MelodyMates is a social network for young music lovers.<br />
+							Sing up with Spotify, share the songs you love, and discover what your friends are recommending.
+						</p>
+					</div>
+				</div>
+			</dialog>
 			<div id="project2" class="group elevated-card hover:cursor-pointer">
 				<div
 					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
@@ -191,3 +208,17 @@ import Marquee from "../components/Marquee.astro";
 	<div id="about"></div>
 	<div id="contact"></div>
 </Layout>
+
+<script is:inline>
+	document.querySelectorAll("#project1").forEach((e) => {
+		e.addEventListener("click", () => {
+			e.style.viewTransitionName = "fullembed";
+
+			document.startViewTransition(() => {
+				e.style.viewTransitionName = "";
+				document.querySelector("#dialog1").showModal()
+				e.classList.toggle("invisible");
+			});
+		});
+	});
+</script>
