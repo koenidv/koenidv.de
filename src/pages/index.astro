@@ -105,24 +105,58 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<dialog id="dialog1" class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-				<div style="view-transition-name: fullembed;" class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
-					<div class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
+			<dialog
+				id="dialog1"
+				class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
+				<div
+					style="view-transition-name: fullembed;"
+					class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
+					<div
+						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
 						<img
-						src="/images/melodymates.webp"
-						class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
+							src="/images/melodymates.webp"
+							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
 						/>
-						<h1 class="h-16 mt-4 text-6xl font-poppins font-bold tracking-wider m-8">MelodyMates</h1>
+						<h1 class="h-16 mt-4 text-6xl font-poppins font-bold tracking-wider m-8">
+							MelodyMates
+						</h1>
 						<div class="m-8 flex flex-col gap-4">
 							<p>
 								MelodyMates is a social network for young music lovers.<br />
 								Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
 							</p>
-							<p>This is a placeholder text for the MelodyMates project, a vibrant social network designed exclusively for young music enthusiasts. With a seamless integration with Spotify, MelodyMates offers an exhilarating platform where users can sign up using their Spotify accounts, share their favorite songs, and explore the musical preferences of their friends.</p>
-							<p>Powered by the advanced Fauna database and leveraging the efficient SvelteKit framework, MelodyMates ensures a smooth and engaging user experience. The utilization of Google Cloud Run functions adds scalability and reliability to the platform, guaranteeing uninterrupted access to its wide array of features.</p>
-							<p>MelodyMates enables users to create personalized profiles, showcasing their unique musical tastes and preferences. By connecting with friends and fellow music lovers, users can stay updated with the latest tracks, albums, and playlists recommended by their network. The platform provides a space to engage in lively discussions, exchange opinions, and discover hidden gems within the vast world of music.</p>
-							<p>As the project evolves, MelodyMates has plans to extend its reach by developing a mobile app using the powerful Flutter framework. This future expansion will allow users to seamlessly connect and interact with the MelodyMates community on their mobile devices, ensuring an immersive and on-the-go experience.</p>
-							<p>Join MelodyMates today, and unlock a world of music discovery, connection, and shared passion for the tunes that make life a little more melodious. Stay tuned for more updates as we work towards creating the ultimate platform for music lovers of all kinds.</p>
+							<p>
+								This is a placeholder text for the MelodyMates project, a vibrant social network
+								designed exclusively for young music enthusiasts. With a seamless integration with
+								Spotify, MelodyMates offers an exhilarating platform where users can sign up using
+								their Spotify accounts, share their favorite songs, and explore the musical
+								preferences of their friends.
+							</p>
+							<p>
+								Powered by the advanced Fauna database and leveraging the efficient SvelteKit
+								framework, MelodyMates ensures a smooth and engaging user experience. The
+								utilization of Google Cloud Run functions adds scalability and reliability to the
+								platform, guaranteeing uninterrupted access to its wide array of features.
+							</p>
+							<p>
+								MelodyMates enables users to create personalized profiles, showcasing their unique
+								musical tastes and preferences. By connecting with friends and fellow music lovers,
+								users can stay updated with the latest tracks, albums, and playlists recommended by
+								their network. The platform provides a space to engage in lively discussions,
+								exchange opinions, and discover hidden gems within the vast world of music.
+							</p>
+							<p>
+								As the project evolves, MelodyMates has plans to extend its reach by developing a
+								mobile app using the powerful Flutter framework. This future expansion will allow
+								users to seamlessly connect and interact with the MelodyMates community on their
+								mobile devices, ensuring an immersive and on-the-go experience.
+							</p>
+							<p>
+								Join MelodyMates today, and unlock a world of music discovery, connection, and
+								shared passion for the tunes that make life a little more melodious. Stay tuned for
+								more updates as we work towards creating the ultimate platform for music lovers of
+								all kinds.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -220,11 +254,17 @@ import Marquee from "../components/Marquee.astro";
 	document.querySelectorAll("#project1").forEach((e) => {
 		e.addEventListener("click", () => {
 			e.style.viewTransitionName = "fullembed";
-
+			const scroll = window.scrollY;
+			console.log(scroll);
+			
 			document.startViewTransition(() => {
 				e.style.viewTransitionName = "";
-				document.querySelector("#dialog1").showModal()
+				document.querySelector("#dialog1").showModal();
 				e.classList.toggle("invisible");
+				document.body.style.overflowY = "hidden";
+				document.body.style.top = `-${scroll}px`;
+
+				// Disable scrolling: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 			});
 		});
 	});
