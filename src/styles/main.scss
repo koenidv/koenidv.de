@@ -16,21 +16,6 @@
         --animation: 100ms ease-out;
         transition: margin var(--animation);
 
-        &:hover {
-            margin-bottom: calc(var(--elevation) / 2);
-            margin-right: calc(var(--elevation) / 2);
-            margin-top: calc(var(--elevation) / 2);
-            margin-left: calc(var(--elevation) / 2);
-
-            &::before {
-                height: calc(var(--elevation) / 2);
-            }
-
-            &::after {
-                width: calc(var(--elevation) / 2);
-            }
-        }
-
         &::before,
         &::after {
             content: "";
@@ -58,6 +43,25 @@
             background: #000000;
             z-index: -2;
             transition: width var(--animation);
+        }
+    }
+
+    .elevated-card-hoverable {
+        @apply elevated-card;
+        
+        &:hover {
+            margin-bottom: calc(var(--elevation) / 2);
+            margin-right: calc(var(--elevation) / 2);
+            margin-top: calc(var(--elevation) / 2);
+            margin-left: calc(var(--elevation) / 2);
+
+            &::before {
+                height: calc(var(--elevation) / 2);
+            }
+
+            &::after {
+                width: calc(var(--elevation) / 2);
+            }
         }
     }
 }
