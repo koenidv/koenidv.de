@@ -115,16 +115,21 @@ import Marquee from "../components/Marquee.astro";
 						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
 						<div class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
 							<div id="closedialog1" class="border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full">
-								x
+								<img class="w-full h-full" src="https://img.icons8.com/ios-filled/50/multiply.png" alt="close"/>
 							</div>
 						</div>
 						<img
 							src="/images/melodymates.webp"
 							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
 						/>
-						<h1 class="h-16 mt-4 text-6xl font-poppins font-bold tracking-wider m-8">
-							MelodyMates
-						</h1>
+						<Marquee inverse={false}>
+							<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+								MelodyMates
+							</h1>
+							<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+								MelodyMates
+							</h1>
+						</Marquee>
 						<div class="m-8 flex flex-col gap-4">
 							<p>
 								MelodyMates is a social network for young music lovers.<br />
