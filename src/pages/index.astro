@@ -439,12 +439,8 @@ import Marquee from "../components/Marquee.astro";
 		document.body.style.top = "";
 	};
 
-	document.querySelectorAll(".closedialog").forEach((e) => {
-		const origin = document.getElementById(e.getAttribute("data-origin"));
-		const dialog = document.getElementById(e.getAttribute("data-dialog"));
-
-		e.addEventListener("click", async () => {
-			if (!document.startViewTransition) {
+	const handleCloseClicked = async (origin, dialog) => {
+		if (!document.startViewTransition) {
 				hideDialog(origin, dialog);
 				return;
 			}
@@ -454,6 +450,13 @@ import Marquee from "../components/Marquee.astro";
 			});
 			await transaction.updateCallbackDone;
 			origin.style.viewTransitionName = "";
-		});
+	}
+
+	document.querySelectorAll(".closedialog").forEach((e) => {
+		const origin = document.getElementById(e.getAttribute("data-origin"));
+		const dialog = document.getElementById(e.getAttribute("data-dialog"));
+
+		e.addEventListener("mousedown", () => handleCloseClicked(origin, dialog));
+		e.addEventListener("touchstart", () => handleCloseClicked(origin, dialog));
 	});
 </script>
