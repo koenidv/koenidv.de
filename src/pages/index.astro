@@ -319,7 +319,11 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</dialog>
-			<div id="project4" class="opendialog group elevated-card-hoverable hover:cursor-pointer" data-dialog="dialog4" data-origin="project4">
+			<div
+				id="project4"
+				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
+				data-dialog="dialog4"
+				data-origin="project4">
 				<div
 					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
 					<img
@@ -344,45 +348,45 @@ import Marquee from "../components/Marquee.astro";
 				</div>
 			</div>
 			<dialog
-			id="dialog4"
-			class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-			<div
-				style="view-transition-name: fullembed;"
-				class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
+				id="dialog4"
+				class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
 				<div
-					class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
+					style="view-transition-name: fullembed;"
+					class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
 					<div
-						class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
+						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
 						<div
-							class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-							data-dialog="dialog4"
-							data-origin="project4">
-							<img
-								class="w-full h-full"
-								src="https://img.icons8.com/ios-filled/50/multiply.png"
-								alt="close"
-							/>
+							class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
+							<div
+								class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
+								data-dialog="dialog4"
+								data-origin="project4">
+								<img
+									class="w-full h-full"
+									src="https://img.icons8.com/ios-filled/50/multiply.png"
+									alt="close"
+								/>
+							</div>
 						</div>
+						<img
+							src="/images/sphplanner.webp"
+							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
+						/>
+						<Marquee inverse={false}>
+							<h1
+								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+								Schulportal App
+							</h1>
+							<h1
+								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+								Schulportal App
+							</h1>
+						</Marquee>
+						<div></div>
 					</div>
-					<img
-						src="/images/sphplanner.webp"
-						class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-					/>
-					<Marquee inverse={false}>
-						<h1
-							class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-							Schulportal App
-						</h1>
-						<h1
-							class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-							Schulportal App
-						</h1>
-					</Marquee>
-					<div></div>
 				</div>
-			</div>
-		</dialog>
-			<a href="#" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
+			</dialog>
+			<a href="/projects" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
 				<div class="elevated-card-hoverable elevated-3 w-full md:w-[48%] 2xl:w-fit">
 					<div
 						class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center md:px-20">
@@ -400,41 +404,56 @@ import Marquee from "../components/Marquee.astro";
 </Layout>
 
 <script is:inline>
+	const showDialog = (origin, dialog) => {
+		origin.style.viewTransitionName = "";
+		dialog.showModal();
+		origin.classList.add("invisible");
+		document.body.style.overflowY = "hidden";
+		document.body.style.top = `-${scroll}px`;
+		// Disable scrolling: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+	};
+
 	document.querySelectorAll(".opendialog").forEach((e) => {
-		const dialog = document.getElementById(e.getAttribute("data-dialog"));
 		const origin = document.getElementById(e.getAttribute("data-origin"));
+		const dialog = document.getElementById(e.getAttribute("data-dialog"));
 
 		e.addEventListener("click", () => {
 			origin.style.viewTransitionName = "fullembed";
 			const scroll = window.scrollY;
+			if (!document.startViewTransition) {
+				showDialog(origin, dialog);
+				return;
+			}
 
 			document.startViewTransition(() => {
-				origin.style.viewTransitionName = "";
-				dialog.showModal();
-				origin.classList.add("invisible");
-				document.body.style.overflowY = "hidden";
-				document.body.style.top = `-${scroll}px`;
-
-				// Disable scrolling: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+				showDialog(origin, dialog);
 			});
 		});
 	});
+
+	const hideDialog = (origin, dialog) => {
+		origin.style.viewTransitionName = "fullembed";
+		dialog.close();
+		origin.classList.remove("invisible");
+		document.body.style.overflowY = "";
+		document.body.style.top = "";
+	};
+
 	document.querySelectorAll(".closedialog").forEach((e) => {
-		const dialog = document.getElementById(e.getAttribute("data-dialog"));
 		const origin = document.getElementById(e.getAttribute("data-origin"));
+		const dialog = document.getElementById(e.getAttribute("data-dialog"));
 
-		e.addEventListener("click", () => {
-			// document.querySelector("#project1").style.display = "none"
-			origin.style.viewTransitionName = "fullembed";
+		e.addEventListener("click", async () => {
+			if (!document.startViewTransition) {
+				hideDialog(origin, dialog);
+				return;
+			}
 
-			document.startViewTransition(() => {
-				// document.querySelector("#project1").style.display = ""
-				origin.style.viewTransitionName = "";
-				dialog.close();
-				origin.classList.remove("invisible");
-				document.body.style.overflowY = "";
-				document.body.style.top = "";
+			const transaction = document.startViewTransition(() => {
+				hideDialog(origin, dialog);
 			});
+			await transaction.updateCallbackDone;
+			origin.style.viewTransitionName = "";
 		});
 	});
 </script>
