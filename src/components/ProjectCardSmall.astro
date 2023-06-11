@@ -1,0 +1,37 @@
+---
+export interface Props {
+	title: string;
+	description: string;
+	image: string;
+	index: number;
+	tags: string[];
+}
+
+const { title, description, image, index, tags } = Astro.props;
+---
+
+<div
+	id={"project" + index}
+	class="opendialog group elevated-card-hoverable hover:cursor-pointer"
+	data-dialog={"dialog" + index}
+	data-origin={"project" + index}>
+	<div
+		class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
+		<img
+			src={image}
+			class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
+		/>
+		<div class="flex flex-col m-8 md:mt-6">
+			<h2
+				class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider underline-offset-[0.4rem] decoration-[0.2rem]">
+				{title}
+			</h2>
+			<p class="mt-2">
+				{description}
+			</p>
+			<div class="mt-4 flex flex-wrap gap-2">
+				{tags.map((tag) => <span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>)}
+			</div>
+		</div>
+	</div>
+</div>

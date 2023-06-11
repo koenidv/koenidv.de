@@ -4,15 +4,14 @@ import Marquee from "../components/Marquee.astro";
 export interface Props {
 	title: string;
     image: string;
-    id: string;
-    projectid: string;
+    index: number;
 }
 
-const { title, image, id, projectid } = Astro.props;
+const { title, image, index } = Astro.props;
 ---
 
 <dialog
-    id={ id }
+    id={ "dialog" +  index }
     class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
     <div
         style="view-transition-name: fullembed;"
@@ -23,8 +22,8 @@ const { title, image, id, projectid } = Astro.props;
                 class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
                 <div
                     class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-                    data-dialog={ id }
-                    data-origin={ projectid }>
+                    data-dialog={ "dialog" +  index }
+                    data-origin={ "project" +  index }>
                     <img
                         class="w-full h-full"
                         src="https://img.icons8.com/ios-filled/50/multiply.png"

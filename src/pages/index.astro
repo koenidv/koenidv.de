@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Marquee from "../components/Marquee.astro";
+import ProjectCardSmall from "../components/ProjectCardSmall.astro";
 import ProjectDialog from "../components/ProjectDialog.astro";
 ---
 
@@ -110,11 +111,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 					</div>
 				</div>
 			</div>
-			<ProjectDialog
-				title="MelodyMates"
-				image="/images/melodymates.webp"
-				id="dialog1"
-				projectid="project1">
+			<ProjectDialog title="MelodyMates" image="/images/melodymates.webp" index={1}>
 				<p>
 					MelodyMates is a social network for young music lovers.<br />
 					Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
@@ -151,97 +148,34 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 					as we work towards creating the ultimate platform for music lovers of all kinds.
 				</p>
 			</ProjectDialog>
-			<div
-				id="project2"
-				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
-				data-dialog="dialog2"
-				data-origin="project2">
-				<div
-					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
-					<img
-						src="/images/chesse.webp"
-						class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
-					/>
-					<div class="flex flex-col m-8 md:mt-6">
-						<h2
-							class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider underline-offset-[0.4rem] decoration-[0.2rem]">
-							Chess:E
-						</h2>
-						<p class="mt-2">
-							Remote but analog chess system that brings the traditional chess experience to the
-							digital age.
-						</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Hardware</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Deno</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">AMQP</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Python</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">SvelteKit</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<ProjectDialog title="Chess:E" image="/images/chesse.webp" id="dialog2" projectid="project2">
+			<ProjectCardSmall
+				title="Chess:E"
+				description="Remote but analog chess system that brings the traditional chess experience to the digital age."
+				image="/images/chesse.webp"
+				index={2}
+				tags={["Hardware", "Deno", "AMQP", "Python", "SvelteKit"]}
+			/>
+			<ProjectDialog title="Chess:E" image="/images/chesse.webp" index={2}>
 				<p>Description to be added.</p>
 			</ProjectDialog>
-			<div
-				id="project3"
-				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
-				data-dialog="dialog3"
-				data-origin="project3">
-				<div
-					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
-					<img
-						src="/images/helmet.webp"
-						class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
-					/>
-					<div class="flex flex-col m-8 md:mt-6">
-						<h2
-							class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider underline-offset-[0.4rem] decoration-[0.2rem]">
-							Indicating Helmet
-						</h2>
-						<p class="mt-2">
-							Rapid prototyping of a bike helmet with turn signals to improve urban safety.
-						</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Hardware</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">C</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<ProjectDialog title="Indicating Helmet" image="/images/helmet.webp" id="dialog3" projectid="project3">
+			<ProjectCardSmall
+				title="Indicating Helmet"
+				description="Rapid prototyping of a bike helmet with turn signals to improve urban safety."
+				image="/images/helmet.webp"
+				index={3}
+				tags={["Hardware", "C"]}
+			/>
+			<ProjectDialog title="Indicating Helmet" image="/images/helmet.webp" index={3}>
 				<p>Description to be added.</p>
 			</ProjectDialog>
-			<div
-				id="project4"
-				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
-				data-dialog="dialog4"
-				data-origin="project4">
-				<div
-					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
-					<img
-						src="/images/sphplanner.webp"
-						class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
-					/>
-					<div class="flex flex-col m-8 md:mt-6">
-						<h2
-							class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider underline-offset-[0.4rem] decoration-[0.2rem]">
-							Schulportal App
-						</h2>
-						<p class="mt-2">
-							Native Android app for students to manage timetables and homework, chat with teachers,
-							and much more.
-						</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="bg-[#e0e2d8] rounded-sm px-2">600+ Users</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Android</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Kotlin</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<ProjectDialog title="Schulportal App" image="/images/sphplanner.webp" id="dialog4" projectid="project4">
+			<ProjectCardSmall
+				title="Schulportal App"
+				description="Native Android app for students to manage timetables and homework, chat with teachers, and much more."
+				image="/images/sphplanner.webp"
+				index={4}
+				tags={["600+ Users", "Android", "Kotlin"]}
+			/>
+			<ProjectDialog title="Schulportal App" image="/images/sphplanner.webp" index={4}>
 				<p>Description to be added.</p>
 			</ProjectDialog>
 			<a href="/projects" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
