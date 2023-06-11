@@ -11,6 +11,12 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 	const origin = document.getElementById(e.getAttribute("data-origin"));
 	const dialog = document.getElementById(e.getAttribute("data-dialog"));
 
+	dialog.addEventListener("close", (event) => {
+		origin.classList.remove("invisible");
+		document.body.style.overflowY = "";
+		document.body.style.top = "";
+	})
+
 	e.addEventListener("click", () => {
 		origin.style.viewTransitionName = "fullembed";
 		const scroll = window.scrollY;
@@ -29,8 +35,6 @@ const hideDialog = (origin, dialog) => {
 	origin.style.viewTransitionName = "fullembed";
 	dialog.close();
 	origin.classList.remove("invisible");
-	document.body.style.overflowY = "";
-	document.body.style.top = "";
 };
 
 const handleCloseClicked = async (origin, dialog) => {
