@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Marquee from "../components/Marquee.astro";
+import ProjectDialog from "../components/ProjectDialog.astro";
 ---
 
 <Layout title="Florian König">
@@ -109,82 +110,47 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<dialog
+			<ProjectDialog
+				title="MelodyMates"
+				image="/images/melodymates.webp"
 				id="dialog1"
-				class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-				<div
-					style="view-transition-name: fullembed;"
-					class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
-					<div
-						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
-						<div
-							class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
-							<div
-								class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-								data-dialog="dialog1"
-								data-origin="project1">
-								<img
-									class="w-full h-full"
-									src="https://img.icons8.com/ios-filled/50/multiply.png"
-									alt="close"
-								/>
-							</div>
-						</div>
-						<img
-							src="/images/melodymates.webp"
-							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-						/>
-						<Marquee inverse={false}>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								MelodyMates
-							</h1>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								MelodyMates
-							</h1>
-						</Marquee>
-						<div class="m-8 flex flex-col gap-4">
-							<p>
-								MelodyMates is a social network for young music lovers.<br />
-								Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
-							</p>
-							<p>
-								This is a placeholder text for the MelodyMates project, a vibrant social network
-								designed exclusively for young music enthusiasts. With a seamless integration with
-								Spotify, MelodyMates offers an exhilarating platform where users can sign up using
-								their Spotify accounts, share their favorite songs, and explore the musical
-								preferences of their friends.
-							</p>
-							<p>
-								Powered by the advanced Fauna database and leveraging the efficient SvelteKit
-								framework, MelodyMates ensures a smooth and engaging user experience. The
-								utilization of Google Cloud Run functions adds scalability and reliability to the
-								platform, guaranteeing uninterrupted access to its wide array of features.
-							</p>
-							<p>
-								MelodyMates enables users to create personalized profiles, showcasing their unique
-								musical tastes and preferences. By connecting with friends and fellow music lovers,
-								users can stay updated with the latest tracks, albums, and playlists recommended by
-								their network. The platform provides a space to engage in lively discussions,
-								exchange opinions, and discover hidden gems within the vast world of music.
-							</p>
-							<p>
-								As the project evolves, MelodyMates has plans to extend its reach by developing a
-								mobile app using the powerful Flutter framework. This future expansion will allow
-								users to seamlessly connect and interact with the MelodyMates community on their
-								mobile devices, ensuring an immersive and on-the-go experience.
-							</p>
-							<p>
-								Join MelodyMates today, and unlock a world of music discovery, connection, and
-								shared passion for the tunes that make life a little more melodious. Stay tuned for
-								more updates as we work towards creating the ultimate platform for music lovers of
-								all kinds.
-							</p>
-						</div>
-					</div>
-				</div>
-			</dialog>
+				projectid="project1">
+				<p>
+					MelodyMates is a social network for young music lovers.<br />
+					Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
+				</p>
+				<p>
+					This is a placeholder text for the MelodyMates project, a vibrant social network designed
+					exclusively for young music enthusiasts. With a seamless integration with Spotify,
+					MelodyMates offers an exhilarating platform where users can sign up using their Spotify
+					accounts, share their favorite songs, and explore the musical preferences of their
+					friends.
+				</p>
+				<p>
+					Powered by the advanced Fauna database and leveraging the efficient SvelteKit framework,
+					MelodyMates ensures a smooth and engaging user experience. The utilization of Google Cloud
+					Run functions adds scalability and reliability to the platform, guaranteeing uninterrupted
+					access to its wide array of features.
+				</p>
+				<p>
+					MelodyMates enables users to create personalized profiles, showcasing their unique musical
+					tastes and preferences. By connecting with friends and fellow music lovers, users can stay
+					updated with the latest tracks, albums, and playlists recommended by their network. The
+					platform provides a space to engage in lively discussions, exchange opinions, and discover
+					hidden gems within the vast world of music.
+				</p>
+				<p>
+					As the project evolves, MelodyMates has plans to extend its reach by developing a mobile
+					app using the powerful Flutter framework. This future expansion will allow users to
+					seamlessly connect and interact with the MelodyMates community on their mobile devices,
+					ensuring an immersive and on-the-go experience.
+				</p>
+				<p>
+					Join MelodyMates today, and unlock a world of music discovery, connection, and shared
+					passion for the tunes that make life a little more melodious. Stay tuned for more updates
+					as we work towards creating the ultimate platform for music lovers of all kinds.
+				</p>
+			</ProjectDialog>
 			<div
 				id="project2"
 				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
@@ -215,45 +181,9 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<dialog
-				id="dialog2"
-				class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-				<div
-					style="view-transition-name: fullembed;"
-					class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
-					<div
-						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
-						<div
-							class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
-							<div
-								class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-								data-dialog="dialog2"
-								data-origin="project2">
-								<img
-									class="w-full h-full"
-									src="https://img.icons8.com/ios-filled/50/multiply.png"
-									alt="close"
-								/>
-							</div>
-						</div>
-						<img
-							src="/images/chesse.webp"
-							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-						/>
-						<Marquee inverse={false}>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								Chess:E
-							</h1>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								Chess:E
-							</h1>
-						</Marquee>
-						<div></div>
-					</div>
-				</div>
-			</dialog>
+			<ProjectDialog title="Chess:E" image="/images/chesse.webp" id="dialog2" projectid="project2">
+				<p>Description to be added.</p>
+			</ProjectDialog>
 			<div
 				id="project3"
 				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
@@ -280,45 +210,9 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<dialog
-				id="dialog3"
-				class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-				<div
-					style="view-transition-name: fullembed;"
-					class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
-					<div
-						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
-						<div
-							class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
-							<div
-								class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-								data-dialog="dialog3"
-								data-origin="project3">
-								<img
-									class="w-full h-full"
-									src="https://img.icons8.com/ios-filled/50/multiply.png"
-									alt="close"
-								/>
-							</div>
-						</div>
-						<img
-							src="/images/helmet.webp"
-							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-						/>
-						<Marquee inverse={false}>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								Indicating Helmet
-							</h1>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								Indicating Helmet
-							</h1>
-						</Marquee>
-						<div></div>
-					</div>
-				</div>
-			</dialog>
+			<ProjectDialog title="Indicating Helmet" image="/images/helmet.webp" id="dialog3" projectid="project3">
+				<p>Description to be added.</p>
+			</ProjectDialog>
 			<div
 				id="project4"
 				class="opendialog group elevated-card-hoverable hover:cursor-pointer"
@@ -347,45 +241,9 @@ import Marquee from "../components/Marquee.astro";
 					</div>
 				</div>
 			</div>
-			<dialog
-				id="dialog4"
-				class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-				<div
-					style="view-transition-name: fullembed;"
-					class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
-					<div
-						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
-						<div
-							class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
-							<div
-								class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-								data-dialog="dialog4"
-								data-origin="project4">
-								<img
-									class="w-full h-full"
-									src="https://img.icons8.com/ios-filled/50/multiply.png"
-									alt="close"
-								/>
-							</div>
-						</div>
-						<img
-							src="/images/sphplanner.webp"
-							class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-						/>
-						<Marquee inverse={false}>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								Schulportal App
-							</h1>
-							<h1
-								class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-								Schulportal App
-							</h1>
-						</Marquee>
-						<div></div>
-					</div>
-				</div>
-			</dialog>
+			<ProjectDialog title="Schulportal App" image="/images/sphplanner.webp" id="dialog4" projectid="project4">
+				<p>Description to be added.</p>
+			</ProjectDialog>
 			<a href="/projects" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
 				<div class="elevated-card-hoverable elevated-3 w-full md:w-[48%] 2xl:w-fit">
 					<div
@@ -441,16 +299,16 @@ import Marquee from "../components/Marquee.astro";
 
 	const handleCloseClicked = async (origin, dialog) => {
 		if (!document.startViewTransition) {
-				hideDialog(origin, dialog);
-				return;
-			}
+			hideDialog(origin, dialog);
+			return;
+		}
 
-			const transaction = document.startViewTransition(() => {
-				hideDialog(origin, dialog);
-			});
-			await transaction.updateCallbackDone;
-			origin.style.viewTransitionName = "";
-	}
+		const transaction = document.startViewTransition(() => {
+			hideDialog(origin, dialog);
+		});
+		await transaction.updateCallbackDone;
+		origin.style.viewTransitionName = "";
+	};
 
 	document.querySelectorAll(".closedialog").forEach((e) => {
 		const origin = document.getElementById(e.getAttribute("data-origin"));
