@@ -7,6 +7,19 @@ const showDialog = (origin, dialog) => {
 	// Disable scrolling: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 };
 
+const handleOpenClicked = async (origin, dialog) => {
+	origin.style.viewTransitionName = "fullembed";
+	const scroll = window.scrollY;
+	if (!document.startViewTransition) {
+		showDialog(origin, dialog);
+		return;
+	}
+
+	document.startViewTransition(() => {
+		showDialog(origin, dialog);
+	});
+};
+
 document.querySelectorAll(".opendialog").forEach((e) => {
 	const origin = document.getElementById(e.getAttribute("data-origin"));
 	const dialog = document.getElementById(e.getAttribute("data-dialog"));
@@ -15,19 +28,12 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 		origin.classList.remove("invisible");
 		document.body.style.overflowY = "";
 		document.body.style.top = "";
-	})
+	});
 
-	e.addEventListener("click", () => {
-		origin.style.viewTransitionName = "fullembed";
-		const scroll = window.scrollY;
-		if (!document.startViewTransition) {
-			showDialog(origin, dialog);
-			return;
-		}
-
-		document.startViewTransition(() => {
-			showDialog(origin, dialog);
-		});
+	e.addEventListener("click", () => handleOpenClicked(origin, dialog));
+	e.addEventListener("keydown", (event) => {
+		if (event.keyCode !== 13) return;
+		handleOpenClicked(origin, dialog);
 	});
 });
 
@@ -56,4 +62,8 @@ document.querySelectorAll(".closedialog").forEach((e) => {
 
 	e.addEventListener("mousedown", () => handleCloseClicked(origin, dialog));
 	e.addEventListener("touchstart", () => handleCloseClicked(origin, dialog));
+	e.addEventListener("keydown", (event) => {
+		if (event.keyCode !== 13) return;
+		handleCloseClicked(origin, dialog);
+	});
 });

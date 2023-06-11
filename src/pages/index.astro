@@ -82,11 +82,14 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 		<div
 			id="recent-projects"
 			class="projectsgrid min-h-[56rem] 2xl:max-h-[92vh] overflow-hidden p-4 md:p-8 max-md:mt-4 xl:px-16 gap-4 xl:gap-8">
+			<h2 class="sr-only">Recent Projects</h2>
 			<div
 				id="project1"
 				class="opendialog group elevated-4 elevated-card-hoverable hover:cursor-pointer"
 				data-dialog="dialog1"
-				data-origin="project1">
+				data-origin="project1"
+				tabindex="0"
+				aria-label="Open details">
 				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
 					<img
 						src="/images/melodymates.webp"
@@ -195,4 +198,4 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 	<div id="contact"></div>
 </Layout>
 
-<script src="../scripts/dialogbuttons.js" />
+<script src="../scripts/dialogbuttons.js"></script>
