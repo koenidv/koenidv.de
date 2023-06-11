@@ -1,0 +1,29 @@
+---
+import Shortinfo from "./Shortinfo.astro";
+import Links from "./Links.astro";
+---
+
+<div class="maingrid">
+	<Shortinfo />
+	<Links />
+
+	<div id="tagline" class="mx-4 md:mx-8 max-md:my-4 relative">
+		<img
+			src="/img.jpg"
+			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[56rem] md:max-w-[80vw] h-48 md:h-[80%] object-cover md:absolute left-[12vw] top-[50%]"
+		/>
+		<h1
+			id="tagline"
+			class="relative text-[10vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-right md:text-left font-black leading-none tracking-widest uppercase md:mix-blend-difference text-[#ecede7] md:text-white">
+			Creative<br />
+			Developer
+		</h1>
+	</div>
+
+	<h1
+		id="name"
+		class="mx-4 md:mx-8 text-[12vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-left md:text-right font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
+		Florian<br />
+		Kønig
+	</h1>
+</div>
