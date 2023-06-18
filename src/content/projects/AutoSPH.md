@@ -1,8 +1,8 @@
 ---
 title: "AutoSPH"
-description: "Log in to Hessen's education portal within a second - instead of a minute."
+description: "Log in to Hessen's education portal within seconds instead of minutes."
 image: ""
-link: "https://koenidv.de/autosph?change"
+link: "https://koeni.dev/autosph?change"
 tags: ["Web"]
-date: "22.11.2020"
+date: "2020/11"
 ---

@@ -1,17 +1,47 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const projects = (await getCollection("projects")).sort(
-	(a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 ---
 
-<ul>
-	{
-		projects.map((project) => (
-			<li>
-				<a href={`${project.data.link}/`}>{project.data.title}</a>
-			</li>
-		))
-	}
-</ul>
+<Layout title="Projects by Florian König">
+	<div class="flex flex-col lg:flex-row p-4 pt-8 gap-4 items-baseline">
+		<h1 class="inline-block text-7xl font-poppins uppercase tracking-widest">Projects</h1>
+		<a href="/" class="group">
+			<h2
+				class="inline-block text-6xl font-poppins outlined tracking-wide text-outlined hover:text-[#131218] group-hover:underline underline-offset-[0.3rem] decoration-[0.3rem]">
+				by Florian König
+			</h2>
+		</a>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-4">
+		{
+			projects.map((project) => (
+				<a class="elevated-card-hoverable group hover:cursor-pointer" href={project.data.link}>
+					<div class="flex h-full w-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black">
+						{project.data.image && (
+							<img
+								src={project.data.image}
+								class="aspect-[3] w-full border-b-4 border-black object-cover"
+							/>
+						)}
+						<div class="m-8 flex flex-col md:mt-6">
+							<h2 class="animateunderline font-poppins text-4xl font-bold tracking-wider decoration-[0.2rem] underline-offset-[0.4rem]">
+								{project.data.title}
+							</h2>
+							<p class="mt-2">{project.data.description}</p>
+							<div class="mt-4 flex flex-wrap gap-2">
+								{project.data.tags.map((tag) => (
+									<span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>
+								))}
+							</div>
+						</div>
+					</div>
+				</a>
+			))
+		}
+	</div>
+</Layout>
