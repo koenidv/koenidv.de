@@ -4,9 +4,11 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string(),
+    image: z.string().optional(),
     link: z.string(),
     tags: z.array(z.string()),
     date: z.string().or(z.date()).transform((val) => new Date(val)),
   }),
 });
+
+export const collections = { projects }
