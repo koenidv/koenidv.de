@@ -5,6 +5,7 @@ image: "/images/melodymates.webp"
 link: "https://melodymates.app"
 tags: ["Fauna", "Deno", "Flutter", "SvelteKit"]
 date: "2023/03"
+color: "#f1f6b7"
 ---
 
 <p>

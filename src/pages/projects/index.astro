@@ -5,6 +5,14 @@ import { getCollection } from "astro:content";
 const projects = (await getCollection("projects")).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+function colorForTags(tags) {
+		if (tags.includes("Jekyll")) return "#9ea1d4"
+		else if (tags.includes("Web")) return "#f1f7b5"
+		else if (tags.includes("Android Native")) return "#a8d1d1"
+		else if (tags.includes("Hardware")) return "#fd8a8a"
+		else return "#ecede7"
+	}
 ---
 
 <Layout title="Projects by Florian König">
@@ -20,7 +28,7 @@ const projects = (await getCollection("projects")).sort(
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-4">
 		{
 			projects.map((project) => (
-				<a class="elevated-card-hoverable group hover:cursor-pointer" href={project.data.link}>
+				<a class="elevated-card-hoverable group hover:cursor-pointer" href={project.data.link} target="_blank" style={`background-color: ${project.data.color || colorForTags(project.data.tags)};`}>
 					<div class="flex h-full w-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black">
 						{project.data.image && (
 							<img
@@ -35,7 +43,7 @@ const projects = (await getCollection("projects")).sort(
 							<p class="mt-2">{project.data.description}</p>
 							<div class="mt-4 flex flex-wrap gap-2">
 								{project.data.tags.map((tag) => (
-									<span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>
+									<span class="rounded-sm bg-slate-700 bg-opacity-[15%] px-2">{tag}</span>
 								))}
 							</div>
 						</div>
