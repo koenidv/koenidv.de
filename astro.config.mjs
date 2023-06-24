@@ -15,6 +15,8 @@ export default defineConfig({
 				},
         disableIdentityWidgetInjection: true,
         logo_url: "/img.jpg",
+        site_url: "https://koeni.dev",
+        display_url: "https://koeni.dev",
         /* todo create dialog preview styles and apply here */
 				collections: [
 					{
