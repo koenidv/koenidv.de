@@ -5,6 +5,7 @@
 
 :root {
     --elevation: 0.5rem;
+    --text-outline-color: #131218;
 }
 
 @layer components {
@@ -85,9 +86,12 @@
 
     @supports (-webkit-text-stroke: 1px white) {
         .text-outlined {
-            color: transparent;
-            -webkit-text-stroke: 1.5px #131218;
+            -webkit-text-stroke: 1.5px var(--text-outline-color);
         }
+    }
+    // todo tailwind plugin
+    .text-outline-beige {
+        --text-outline-color: #ecede7;
     }
 }
 
@@ -150,12 +154,6 @@ div.maingrid {
 
 #tagline {
     grid-area: tagline;
-}
-
-@media screen and (max-width: 48rem) {
-    #tagline {
-        -webkit-text-stroke: 1.5px #131218;
-    }
 }
 
 #name {
