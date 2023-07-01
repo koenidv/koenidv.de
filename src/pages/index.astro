@@ -9,7 +9,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 <Layout title="Florian König">
 	<TitleArea />
 
-	<div id="projects">
+	<section id="projects">
 		<Marquee inverse={false}>
 			<p>Android Native</p>
 			<p>Web</p>
@@ -370,10 +370,50 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 				</div>
 			</a>
 		</div>
-	</div>
+	</section>
 
-	<div id="about"></div>
+	<section id="about">
+		<div class="h-8"></div>
+
+		<Marquee inverse={false}>
+			<p>About Me</p>
+			<p>About Me</p>
+			<p>About Me</p>
+			<p>About Me</p>
+			<p>About Me</p>
+			<p>About Me</p>
+		</Marquee>
+
+		<div class="flex flex-row">
+			<div class="lg:mx-16 mt-4 p-8 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+				<h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-poppins font-black">
+					Hey, I'm <span>Florian</span>!
+				</h1>
+				<p class="text-lg mt-8">
+					I'm a multidisciplinary software engineer with a strong passion for the technology of
+					tomorrow.<wbr /> I love building digital products and physical experiences that just feel natural.
+				</p>
+				<a
+					href="https://www.linkedin.com/in/koenidv/"
+					target="_blank"
+					id="projectsmore"
+					class="mt-8 group w-full flex max-md:justify-center">
+					<div class="elevated-card-hoverable elevated-2 w-full md:w-auto 2xl:w-fit">
+						<div
+							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center py-2 md:px-20">
+							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+								Read my Résumé on LinkedIn
+							</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="h-8"></div>
+	</section>
+
 	<div id="contact"></div>
-</Layout>
 
-<script src="../scripts/dialogbuttons.js"></script>
+	<script src="../scripts/dialogbuttons.js"></script>
+</Layout>
