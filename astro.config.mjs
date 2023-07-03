@@ -1,7 +1,8 @@
 import { defineConfig } from "astro/config";
-
 import tailwind from "@astrojs/tailwind";
 import NetlifyCMS from "astro-netlify-cms";
+
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,30 +14,48 @@ export default defineConfig({
 					name: "git-gateway",
 					branch: "main"
 				},
-        disableIdentityWidgetInjection: true,
-        logo_url: "/img.jpg",
-        site_url: "https://koeni.dev",
-        display_url: "https://koeni.dev",
-        /* todo create dialog preview styles and apply here */
+				disableIdentityWidgetInjection: true,
+				logo_url: "/img.jpg",
+				site_url: "https://koeni.dev",
+				display_url: "https://koeni.dev",
+        media_folder: "public/images",
+				/* todo create dialog preview styles and apply here */
 				collections: [
 					{
 						name: "projects",
 						label: "Projects",
-            label_singular: "Project",
+						label_singular: "Project",
 						folder: "src/content/projects",
 						create: true,
 						delete: true,
 						fields: [
-							{ name: "title", widget: "string", label: "Project Name" },
-							{ name: "description", widget: "string", label: "Single line description" },
+							{
+								name: "title",
+								widget: "string",
+								label: "Project Name"
+							},
+							{
+								name: "description",
+								widget: "string",
+								label: "Single line description"
+							},
 							{
 								name: "image",
 								widget: "string",
 								label: "Image URL",
 								required: false /* todo upload images to repository (see media folder) */
 							},
-							{ name: "link", widget: "string", label: "Project URL" },
-							{ name: "tags", widget: "list", label: "Tags", required: false },
+							{
+								name: "link",
+								widget: "string",
+								label: "Project URL"
+							},
+							{
+								name: "tags",
+								widget: "list",
+								label: "Tags",
+								required: false
+							},
 							{
 								name: "date",
 								widget: "datetime",
@@ -68,6 +87,9 @@ export default defineConfig({
 					}
 				]
 			}
+		}),
+		image({
+			serviceEntryPoint: "@astrojs/image/sharp"
 		})
 	]
 });
