@@ -4,6 +4,9 @@ import Layout from "../layouts/Layout.astro";
 import Marquee from "../components/Marquee.astro";
 import ProjectCardSmall from "../components/ProjectCardSmall.astro";
 import ProjectDialog from "../components/ProjectDialog.astro";
+import { Picture } from "@astrojs/image/components";
+
+import image_melodymates from "../assets/images/melodymates.webp";
 ---
 
 <Layout title="Florian König">
@@ -31,6 +34,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 				tabindex="0"
 				aria-label="Open details">
 				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
+					<Picture src={image_melodymates} widths={[200,400,600,800]} sizes="(max-width: 800px) 100vw, 800px" alt="Mockup of the MelodyMates project" />
 					<img
 						src="/images/melodymates.webp"
 						class="w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"

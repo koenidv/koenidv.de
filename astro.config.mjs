@@ -18,7 +18,8 @@ export default defineConfig({
 				logo_url: "/img.jpg",
 				site_url: "https://koeni.dev",
 				display_url: "https://koeni.dev",
-        media_folder: "public/images",
+				media_folder: "src/content/images",
+				public_folder: "public/images",
 				/* todo create dialog preview styles and apply here */
 				collections: [
 					{
