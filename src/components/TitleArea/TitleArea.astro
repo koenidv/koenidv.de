@@ -3,6 +3,7 @@ import Shortinfo from "./Shortinfo.astro";
 import Links from "./Links.astro";
 import NameLeft from "../InlineSVGs/NameLeft.astro";
 import TaglineLeft from "../InlineSVGs/TaglineLeft.astro";
+import TaglineRight from "../InlineSVGs/TaglineRight.astro";
 ---
 
 <div class="maingrid">
@@ -15,8 +16,11 @@ import TaglineLeft from "../InlineSVGs/TaglineLeft.astro";
 			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[56rem] md:max-w-[80vw] h-48 md:h-[80%] object-cover md:absolute left-[12vw] top-[50%]"
 		/>
 
-		<div class="max-w-[100vw] h-[20vw] md:h-48 lg:h-64 xl:h-[28vh]">
+		<div class="max-md:hidden flex justify-start pt-4 max-w-[100vw] h-48 lg:h-64 xl:h-[28vh]">
 			<TaglineLeft />
+		</div>
+		<div class="md:hidden flex justify-end max-w-[100vw] h-[20vw]">
+			<TaglineRight />
 		</div>
 
 		<!-- <h1
