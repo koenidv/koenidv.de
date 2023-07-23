@@ -2,6 +2,7 @@
 import Shortinfo from "./Shortinfo.astro";
 import Links from "./Links.astro";
 import NameLeft from "../InlineSVGs/NameLeft.astro";
+import TaglineLeft from "../InlineSVGs/TaglineLeft.astro";
 ---
 
 <div class="maingrid">
@@ -14,7 +15,9 @@ import NameLeft from "../InlineSVGs/NameLeft.astro";
 			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[56rem] md:max-w-[80vw] h-48 md:h-[80%] object-cover md:absolute left-[12vw] top-[50%]"
 		/>
 
-		<NameLeft />
+		<div class="max-w-[100vw] h-[20vw] md:h-48 lg:h-64 xl:h-[28vh]">
+			<TaglineLeft />
+		</div>
 
 		<!-- <h1
 			id="tagline"
@@ -30,16 +33,4 @@ import NameLeft from "../InlineSVGs/NameLeft.astro";
 		Florian<br />
 		Kønig
 	</h1>
-
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		version="1.1"
-		width="400"
-		height="400"
-		viewBox="0 0 450 450"
-		id="name"
-		class="absolute top-0 right-0 max-h-full max-w-full">
-		<circle cx="174" cy="165" r="160" style="fill: yellow"></circle>
-		<circle cx="245" cy="260" r="160" style="mix-blend-mode: multiply; fill: darkcyan"></circle>
-	</svg>
 </div>
