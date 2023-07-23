@@ -2,6 +2,7 @@
 import Shortinfo from "./Shortinfo.astro";
 import Links from "./Links.astro";
 import NameLeft from "../InlineSVGs/NameLeft.astro";
+import NameRight from "../InlineSVGs/NameRight.astro";
 import TaglineLeft from "../InlineSVGs/TaglineLeft.astro";
 import TaglineRight from "../InlineSVGs/TaglineRight.astro";
 ---
@@ -13,28 +14,31 @@ import TaglineRight from "../InlineSVGs/TaglineRight.astro";
 	<div id="tagline" class="mx-4 md:mx-8 max-md:my-4 relative">
 		<img
 			src="/img.jpg"
-			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[56rem] md:max-w-[80vw] h-48 md:h-[80%] object-cover md:absolute left-[12vw] top-[50%]"
+			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[60%] h-48 md:h-[80%] object-cover md:absolute left-[12vw] top-[50%]"
 		/>
 
-		<div class="max-md:hidden flex justify-start pt-4 max-w-[100vw] h-48 lg:h-64 xl:h-[28vh]">
-			<TaglineLeft />
-		</div>
 		<div class="md:hidden flex justify-end max-w-[100vw] h-[20vw]">
 			<TaglineRight />
 		</div>
-
-		<!-- <h1
-			id="tagline"
-			class="relative text-[10vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-right md:text-left max-md:text-outlined max-md:text-[#ecede7] font-black leading-none tracking-widest uppercase md:mix-blend-difference text-[#ecede7] md:text-white">
-			Creative<br />
-			Developer
-		</h1> -->
+		<div class="max-md:hidden flex justify-start pt-4 max-w-[100vw] h-48 lg:h-64 xl:h-[28vh]">
+			<TaglineLeft />
+		</div>
 	</div>
 
-	<h1
+
+	<div id="name" class="mx-4 max-w-[100vw] md:h-full flex justify-start md:justify-end md:items-end">
+		<div class="md:hidden h-[24vw]">
+			<NameLeft />
+		</div>
+		<div class="max-md:hidden h-48 lg:h-64 xl:h-[28vh]">
+			<NameRight />
+		</div>
+	</div>
+
+	<!-- <h1
 		id="name"
-		class="mx-4 md:mx-8 text-[12vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-left md:text-right font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
+		class="hidden mx-4 md:mx-8 text-[12vw] md:text-8xl lg:text-[8rem] xl:text-[14vh] text-left md:text-right font-black leading-none tracking-wider uppercase mix-blend-difference text-white md:flex items-end justify-end">
 		Florian<br />
 		Kønig
-	</h1>
+	</h1> -->
 </div>
