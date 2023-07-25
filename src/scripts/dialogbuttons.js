@@ -10,7 +10,8 @@ const showDialog = (origin, dialog) => {
 const handleOpenClicked = async (origin, dialog, slug) => {
 	origin.style.viewTransitionName = "fullembed";
 	const scroll = window.scrollY;
-	history.pushState({}, "", `#${slug}`)
+	history.replaceState({ dialog: { originid: origin.id, dialogid: dialog.id } }, "", ``);
+	history.pushState({}, "", `#${slug}`);
 
 	if (!document.startViewTransition) {
 		showDialog(origin, dialog);
@@ -47,6 +48,7 @@ const hideDialog = (origin, dialog) => {
 };
 
 const handleCloseClicked = async (origin, dialog) => {
+	//history.back();
 	if (!document.startViewTransition) {
 		hideDialog(origin, dialog);
 		return;
@@ -70,3 +72,20 @@ document.querySelectorAll(".closedialog").forEach((e) => {
 		handleCloseClicked(origin, dialog);
 	});
 });
+
+onpopstate = async (event) => {
+	if (!event.state || !event.state.dialog) return;
+	const origin = document.getElementById(event.state.dialog.originid);
+	const dialog = document.getElementById(event.state.dialog.dialogid);
+
+		if (!document.startViewTransition) {
+		hideDialog(origin, dialog);
+		return;
+	}
+
+	const transaction = document.startViewTransition(() => {
+		hideDialog(origin, dialog);
+	});
+	await transaction.updateCallbackDone;
+	origin.style.viewTransitionName = "";
+}
