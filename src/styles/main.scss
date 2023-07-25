@@ -112,6 +112,11 @@ dialog:modal {
     max-height: 100vh;
 }
 
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.33);
+    backdrop-filter: blur(0.15rem);
+}
+
 .no-margin-children>* {
     margin: 0;
 }
