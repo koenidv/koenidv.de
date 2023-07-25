@@ -28,6 +28,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 				class="opendialog group elevated-4 elevated-card-hoverable hover:cursor-pointer"
 				data-dialog="dialog1"
 				data-origin="project1"
+				data-slug="melodymates"
 				tabindex="0"
 				aria-label="Open details">
 				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
@@ -185,6 +186,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 				image="/images/chesse.webp"
 				index={2}
 				tags={["Hardware", "Deno", "AMQP", "Python", "SvelteKit"]}
+				slug="chesse"
 			/>
 			<ProjectDialog title="Chess:E" image="/images/chesse.webp" index={2}>
 				<p>
@@ -233,6 +235,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 				image="/images/helmet.webp"
 				index={3}
 				tags={["Hardware", "C"]}
+				slug="helmet"
 			/>
 			<ProjectDialog title="Indicating Helmet" image="/images/helmet.webp" index={3}>
 				<p>
@@ -268,6 +271,7 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 				image="/images/sphplanner.webp"
 				index={4}
 				tags={["600+ Users", "Android", "Kotlin"]}
+				slug="sphplanner"
 			/>
 			<ProjectDialog title="Schulportal App" image="/images/sphplanner.webp" index={4}>
 				<p>
@@ -416,4 +420,38 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 	<div id="contact"></div>
 
 	<script src="../scripts/dialogbuttons.js"></script>
+
+	<script is:inline>
+		document.body.onload = () => {
+			if (document.location.href.includes("#")) {
+				const id = document.location.href.split("#")[1];
+				let dialog, origin;
+				switch (id) {
+					case "melodymates":
+						dialog = document.querySelector("#dialog1")
+						origin = document.querySelector("#project1")
+						break;
+					case "chesse":
+						dialog = document.querySelector("#dialog2")
+						origin = document.querySelector("#project2")
+						break;
+					case "helmet":
+						dialog = document.querySelector("#dialog3")
+						origin = document.querySelector("#project3")
+						break;
+					case "sphplanner":
+						dialog = document.querySelector("#dialog4")
+						origin = document.querySelector("#project4")
+						break;
+					default:
+						break;
+				}
+				if (dialog && origin) {
+					dialog.showModal();
+					origin.classList.add("invisible");
+				}
+			}
+		}
+	</script>
+
 </Layout>

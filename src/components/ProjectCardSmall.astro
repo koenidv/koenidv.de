@@ -5,9 +5,10 @@ export interface Props {
 	image: string;
 	index: number;
 	tags: string[];
+	slug: string;
 }
 
-const { title, description, image, index, tags } = Astro.props;
+const { title, description, image, index, tags, slug } = Astro.props;
 ---
 
 <div
@@ -15,6 +16,7 @@ const { title, description, image, index, tags } = Astro.props;
 	class="opendialog group elevated-card-hoverable hover:cursor-pointer"
 	data-dialog={"dialog" + index}
 	data-origin={"project" + index}
+	data-slug={slug}
 	tabindex="0"
 	aria-label="Open details">
 	<div

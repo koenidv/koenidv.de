@@ -7,9 +7,11 @@ const showDialog = (origin, dialog) => {
 	// Disable scrolling: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 };
 
-const handleOpenClicked = async (origin, dialog) => {
+const handleOpenClicked = async (origin, dialog, slug) => {
 	origin.style.viewTransitionName = "fullembed";
 	const scroll = window.scrollY;
+	history.pushState({}, "", `#${slug}`)
+
 	if (!document.startViewTransition) {
 		showDialog(origin, dialog);
 		return;
@@ -23,6 +25,7 @@ const handleOpenClicked = async (origin, dialog) => {
 document.querySelectorAll(".opendialog").forEach((e) => {
 	const origin = document.getElementById(e.getAttribute("data-origin"));
 	const dialog = document.getElementById(e.getAttribute("data-dialog"));
+	const slug = e.getAttribute("data-slug");
 
 	dialog.addEventListener("close", (event) => {
 		origin.classList.remove("invisible");
@@ -30,10 +33,10 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 		document.body.style.top = "";
 	});
 
-	e.addEventListener("click", () => handleOpenClicked(origin, dialog));
+	e.addEventListener("click", () => handleOpenClicked(origin, dialog, slug));
 	e.addEventListener("keydown", (event) => {
 		if (event.keyCode !== 13) return;
-		handleOpenClicked(origin, dialog);
+		handleOpenClicked(origin, dialog, slug);
 	});
 });
 
