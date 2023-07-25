@@ -48,7 +48,14 @@ const hideDialog = (origin, dialog) => {
 };
 
 const handleCloseClicked = async (origin, dialog) => {
-	//history.back();
+	console.log(document.referrer)
+	console.log((document.referrer && document.location.href.includes(document.referrer))=== true)
+	if ((document.referrer && document.location.href.includes(document.referrer)) === true) {
+		history.back();
+		return;
+	}
+	history.pushState({}, "", "/");
+
 	if (!document.startViewTransition) {
 		hideDialog(origin, dialog);
 		return;
@@ -78,7 +85,7 @@ onpopstate = async (event) => {
 	const origin = document.getElementById(event.state.dialog.originid);
 	const dialog = document.getElementById(event.state.dialog.dialogid);
 
-		if (!document.startViewTransition) {
+	if (!document.startViewTransition) {
 		hideDialog(origin, dialog);
 		return;
 	}
@@ -88,4 +95,4 @@ onpopstate = async (event) => {
 	});
 	await transaction.updateCallbackDone;
 	origin.style.viewTransitionName = "";
-}
+};
