@@ -173,6 +173,19 @@ div.maingrid {
     }
 }
 
+.footergrid {
+    display: grid;
+    grid-template-areas:
+        "name"
+        "links"
+        "address";
+
+    @media screen and (min-width: 48rem) {
+        grid-template-areas:
+            "links name address";
+    }
+}
+
 @media screen and (min-width: 48rem) {
     div.maingrid {
         height: 92vh;
