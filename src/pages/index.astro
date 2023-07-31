@@ -5,6 +5,7 @@ import ContactForm from "../components/TitleArea/ContactForm.astro";
 import Marquee from "../components/Marquee.astro";
 import ProjectCardSmall from "../components/ProjectCardSmall.astro";
 import ProjectDialog from "../components/ProjectDialog.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Florian König">
@@ -434,10 +435,12 @@ import ProjectDialog from "../components/ProjectDialog.astro";
 		</div>
 	</section>
 
-	<div id="contact" class="mx-4 md:mx-8 xl:mx-16 mt-4 p-4 lg:p-8">
+	<section id="contact" class="mx-4 md:mx-8 xl:mx-16 mt-4 p-4 lg:p-8">
 		<h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-poppins mb-14">Let's grow together</h2>
 		<ContactForm />
-	</div>
+	</section>
+
+	<Footer />
 
 	<script src="../scripts/dialogbuttons.js"></script>
 
