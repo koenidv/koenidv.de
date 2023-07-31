@@ -1,0 +1,59 @@
+<form name="contact" netlify class="contactformgrid gap-6 md:gap-12">
+	<div class="flex-grow flex flex-col gap-4 md:bg-[#e0e2d8] md:-m-4 md:p-4 z-0 rounded" style="grid-area: person;">
+		<h3 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins">Tell me about yourself</h3>
+		<div class="flex flex-col gap-1">
+			<label for="name">Your Name</label>
+			<div class="elevated-card-hoverable elevated-2">
+				<input
+					type="text"
+					name="name"
+					placeholder="Erich Doe"
+					class="block p-2 border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full"
+				/>
+			</div>
+		</div>
+		<div class="flex flex-col gap-1">
+			<label for="email">Your Email</label>
+			<div class="elevated-card-hoverable elevated-2">
+				<input
+					type="email"
+					name="email"
+					placeholder="erich@doenut.co"
+					class="block p-2 border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full"
+				/>
+			</div>
+		</div>
+	</div>
+	<div style="grid-area: submit;">
+		<a
+			href="https://www.linkedin.com/in/koenidv/"
+			target="_blank"
+			id="projectsmore"
+			class="group flex justify-center md:justify-end relative">
+			<div class="elevated-card-hoverable elevated-2 w-full md:w-auto min-w-[61.8%] 2xl:w-fit">
+				<div
+					class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center py-2">
+					<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+						Send
+					</p>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="flex-grow flex flex-col gap-4 md:mb-4" style="grid-area: message;">
+		<h3 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins">
+			& what you've got in mind
+		</h3>
+		<div class="elevated-card-hoverable elevated-4">
+			<div
+				class="grow-wrap after:p-2 after:border-l-4 after:border-t-4 after:border-r-2 after:border-b-2 min-h-[16rem]"
+				data-replicatedValue="Yoo Florian,\n\nI've got this crazy idea for a doughnut-shaped spaceship. Complete with rotating outer rings that simulate gravity through centrifugal force. The central hole housing would be a zero-gravity donut bakery to satisfy our interstellar cravings.\n\nIt'll be called Spacedoe, let's build it!">
+				<textarea
+					name="message"
+					oninput="this.parentNode.dataset.replicatedValue = this.value || this.placeholder"
+					placeholder="Yoo Florian,\n\nI've got this crazy idea for a doughnut-shaped spaceship. Complete with rotating outer rings that simulate gravity through centrifugal force. The central hole housing would be a zero-gravity donut bakery to satisfy our interstellar cravings.\n\nIt'll be called Spacedoe, let's build it!"
+					class="p-2 border-l-4 border-t-4 border-r-2 border-b-2 border-black"></textarea>
+			</div>
+		</div>
+	</div>
+</form>

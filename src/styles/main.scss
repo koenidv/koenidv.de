@@ -65,6 +65,26 @@
             }
         }
     }
+
+    .grow-wrap {
+        display: grid;
+
+        &::after {
+            content: attr(data-replicated-value) " " !important;
+            white-space: pre-wrap;
+            visibility: hidden;
+        }
+
+        >textarea {
+            resize: none;
+            overflow: hidden;
+        }
+
+        &::after,
+        >textarea {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+    }
 }
 
 @layer utilities {
@@ -89,6 +109,7 @@
             -webkit-text-stroke: 1.5px var(--text-outline-color);
         }
     }
+
     // todo tailwind plugin
     .text-outline-beige {
         --text-outline-color: #ecede7;
@@ -136,6 +157,20 @@ div.maingrid {
         "name"
         "tagline"
         "shortinfo";
+}
+
+.contactformgrid {
+    display: grid;
+    grid-template-areas:
+        "person"
+        "message"
+        "submit";
+
+    @media screen and (min-width: 48rem) {
+        grid-template-areas:
+            "person message"
+            "submit message";
+    }
 }
 
 @media screen and (min-width: 48rem) {
