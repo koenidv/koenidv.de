@@ -170,6 +170,7 @@ div.maingrid {
         grid-template-areas:
             "person message"
             "submit message";
+        grid-template-columns: 1fr 1fr;
     }
 }
 
