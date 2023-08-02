@@ -66,6 +66,21 @@
         }
     }
 
+    .group:hover>.elevated-card-hoverable {
+        margin-bottom: calc(var(--elevation) / 2);
+        margin-right: calc(var(--elevation) / 2);
+        margin-top: calc(var(--elevation) / 2);
+        margin-left: calc(var(--elevation) / 2);
+
+        &::before {
+            height: calc(var(--elevation) / 2);
+        }
+
+        &::after {
+            width: calc(var(--elevation) / 2);
+        }
+    }
+
     .grow-wrap {
         display: grid;
 

@@ -25,34 +25,35 @@ import Footer from "../components/Footer.astro";
 			id="recent-projects"
 			class="projectsgrid min-h-[56rem] 2xl:max-h-[92vh] overflow-hidden p-4 md:p-8 max-md:mt-4 xl:px-16 gap-4 xl:gap-8">
 			<h2 class="sr-only">Recent Projects</h2>
-			<div
-				id="project1"
-				class="opendialog group elevated-4 elevated-card-hoverable hover:cursor-pointer"
-				data-dialog="dialog1"
-				data-origin="project1"
-				data-slug="melodymates"
-				tabindex="0"
-				aria-label="Open details">
-				<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
-					<img
-						src="/images/melodymates.webp"
-						class="w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"
-					/>
-					<div class="m-8">
-						<h2
-							class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider md:mt-4 underline-offset-[0.4rem] decoration-[0.2rem]">
-							MelodyMates
-						</h2>
-						<p class="mt-2">
-							MelodyMates is a social network for young music lovers.<br />
-							Sign up with Spotify, share the songs you love, and discover what your friends are recommending.<br
-							/>
-						</p>
-						<div class="mt-4 md:mt-8 flex flex-wrap gap-2">
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Fauna</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Deno</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">Flutter</span>
-							<span class="bg-[#e0e2d8] rounded-sm px-2">SvelteKit</span>
+			<div class="group flex" id="project1">
+				<div
+					class="opendialog elevated-4 elevated-card-hoverable hover:cursor-pointer"
+					data-dialog="dialog1"
+					data-origin="project1"
+					data-slug="melodymates"
+					tabindex="0"
+					aria-label="Open details">
+					<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
+						<img
+							src="/images/melodymates.webp"
+							class="w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"
+						/>
+						<div class="m-8">
+							<h2
+								class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider md:mt-4 underline-offset-[0.4rem] decoration-[0.2rem]">
+								MelodyMates
+							</h2>
+							<p class="mt-2">
+								MelodyMates is a social network for young music lovers.<br />
+								Sign up with Spotify, share the songs you love, and discover what your friends are recommending.<br
+								/>
+							</p>
+							<div class="mt-4 md:mt-8 flex flex-wrap gap-2">
+								<span class="bg-[#e0e2d8] rounded-sm px-2">Fauna</span>
+								<span class="bg-[#e0e2d8] rounded-sm px-2">Deno</span>
+								<span class="bg-[#e0e2d8] rounded-sm px-2">Flutter</span>
+								<span class="bg-[#e0e2d8] rounded-sm px-2">SvelteKit</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -63,28 +64,32 @@ import Footer from "../components/Footer.astro";
 					Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
 				</p>
 				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<a
-						href="https://melodymates.app"
-						target="_blank"
-						class="inline-block group elevated-card-hoverable elevated-1 h-8 w-fit">
-						<div
-							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-								Try it now
-							</p>
-						</div>
-					</a>
-					<a
-						href="https://github.com/koenidv/melodymates"
-						target="_blank"
-						class="inline-block group elevated-card-hoverable elevated-1 h-8 w-fit">
-						<div
-							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-								Code on GitHub
-							</p>
-						</div>
-					</a>
+					<div class="group">
+						<a
+							href="https://melodymates.app"
+							target="_blank"
+							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Try it now
+								</p>
+							</div>
+						</a>
+					</div>
+					<div class="group">
+						<a
+							href="https://github.com/koenidv/melodymates"
+							target="_blank"
+							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Code on GitHub
+								</p>
+							</div>
+						</a>
+					</div>
 				</div>
 				<div class="imagecarousel flex flex-row gap-2 overflow-x-scroll rounded">
 					<a
@@ -197,39 +202,43 @@ import Footer from "../components/Footer.astro";
 					traditional chess experience to the digital age.
 				</p>
 				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<a
-						href="https://pawn-hub.de/"
-						target="_blank"
-						class="inline-block group elevated-card-hoverable elevated-1 h-8 w-fit">
-						<div
-							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-								Play Chess:E
-							</p>
-						</div>
-					</a>
-					<a
-						href="https://github.com/PawnHubChess/backend"
-						target="_blank"
-						class="inline-block group elevated-card-hoverable elevated-1 h-8 w-fit">
-						<div
-							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-								Backend on GitHub
-							</p>
-						</div>
-					</a>
+					<div class="group">
+						<a
+							href="https://pawn-hub.de/"
+							target="_blank"
+							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Play Chess:E
+								</p>
+							</div>
+						</a>
+					</div>
+					<div class="group">
+						<a
+							href="https://github.com/PawnHubChess/backend"
+							target="_blank"
+							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Backend on GitHub
+								</p>
+							</div>
+						</a>
+					</div>
+					<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
+					<p>This is something I have yet to write.</p>
+					<h2 class="text-3xl font-poppins pt-4">Connecting Humans</h2>
+					<p>This is something I have yet to write.</p>
+					<h2 class="text-3xl font-poppins pt-4">Team</h2>
+					<p>This is something I have yet to write.</p>
+					<h2 class="text-3xl font-poppins pt-4">Technology</h2>
+					<p>This is something I have yet to write.</p>
+					<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
+					<p>This is something I have yet to write.</p>
 				</div>
-				<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Connecting Humans</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Team</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Technology</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
-				<p>This is something I have yet to write.</p>
 			</ProjectDialog>
 			<ProjectCardSmall
 				title="Indicating Helmet"
@@ -246,17 +255,19 @@ import Footer from "../components/Footer.astro";
 					going.
 				</p>
 				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<a
-						href="https://drive.google.com/file/d/1zGdzhDCvHW8u2QyqdMXzXgZRerl3s4Cr/view?usp=sharing"
-						target="_blank"
-						class="inline-block group elevated-card-hoverable elevated-1 h-8 w-fit">
-						<div
-							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-								Read the documentation
-							</p>
-						</div>
-					</a>
+					<div class="group">
+						<a
+							href="https://drive.google.com/file/d/1zGdzhDCvHW8u2QyqdMXzXgZRerl3s4Cr/view?usp=sharing"
+							target="_blank"
+							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Read the documentation
+								</p>
+							</div>
+						</a>
+					</div>
 				</div>
 				<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
 				<p>This is something I have yet to write.</p>
@@ -281,17 +292,19 @@ import Footer from "../components/Footer.astro";
 					manage timetables and homework, chat with teachers, and much more.
 				</p>
 				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<a
-						href="https://github.com/koenidv/sph-planner"
-						target="_blank"
-						class="inline-block group elevated-card-hoverable elevated-1 h-8 w-fit">
-						<div
-							class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-							<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-								Code on GitHub
-							</p>
-						</div>
-					</a>
+					<div class="group">
+						<a
+							href="https://github.com/koenidv/sph-planner"
+							target="_blank"
+							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Code on GitHub
+								</p>
+							</div>
+						</a>
+					</div>
 				</div>
 				<div class="imagecarousel flex flex-row gap-2 overflow-x-scroll rounded">
 					<a
@@ -436,7 +449,9 @@ import Footer from "../components/Footer.astro";
 	</section>
 
 	<section id="contact" class="mx-4 md:mx-8 xl:mx-16 mt-4 p-4 lg:p-8">
-		<h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-poppins mb-14">Let's grow together</h2>
+		<h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-poppins mb-14">
+			Let's grow together
+		</h2>
 		<ContactForm />
 	</section>
 
