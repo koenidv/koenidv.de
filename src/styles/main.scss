@@ -88,6 +88,10 @@
 }
 
 @layer utilities {
+    .elevated-0 {
+        --elevation: 0rem;
+    }
+
     .elevated-1 {
         --elevation: 0.25rem;
     }
@@ -171,6 +175,18 @@ div.maingrid {
             "person message"
             "submit message";
         grid-template-columns: 1fr 1fr;
+    }
+
+    &:has(:invalid) div.elevated-card-hoverable:has(input[type="submit"]) {
+        @apply elevated-0 opacity-60;
+
+        :hover {
+            cursor: not-allowed;
+        }
+
+        >div.border-b-2.border-r-2 {
+            @apply border-r-4 border-b-4;
+        }
     }
 }
 
