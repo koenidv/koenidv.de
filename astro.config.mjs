@@ -1,10 +1,12 @@
 import { defineConfig } from "astro/config";
+import netlify from '@astrojs/netlify/functions';
 
 import tailwind from "@astrojs/tailwind";
 import NetlifyCMS from "astro-netlify-cms";
 
 // https://astro.build/config
 export default defineConfig({
+	adapter: netlify(),
 	integrations: [
 		tailwind(),
 		NetlifyCMS({
