@@ -1,0 +1,45 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const name = Astro.url.searchParams.get("name");
+const content = Astro.url.searchParams.get("content");
+
+if (!content || content?.length == 0) return Astro.redirect("/");
+---
+
+<Layout title={"Sharing " + (name ? '"' + name + '"' : "text") + " | Florian König"}>
+    <div class="flex flex-col md:flex-row p-8 gap-8">
+        <div class="md:w-[33vw] lg:w-[25vw] shrink-0 flex flex-col gap-4">
+            <span>
+                <h1 class="font-poppins text-2xl tracking-wide overflow-hidden overflow-ellipsis">{name || "Something"}</h1>
+                <p class="">was shared with you</p>
+            </span>
+            <button
+            id="copybutton"
+            class="group flex max-md:justify-center">
+                <div class="elevated-card-hoverable elevated-2 w-full">
+                    <div
+                        class="border-l-4 border-t-4 border-r-2 border-b-2 border-black bg-white h-full w-full flex items-center justify-center py-2 px-4">
+                        <p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+                            Copy to clipboard
+                        </p>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="group w-full">
+            <div class="elevated-card elevated-2">
+                <div class="p-2 min-h-[8rem] md:min-h-[calc(100vh-4.5rem)] border-l-4 border-t-4 border-r-2 border-b-2 border-black bg-white">
+                    <p>{content}</p>
+                    <p class="italic font-mono text-sm opacity-30 mt-2">End of input</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script is:inline>
+    document.querySelector("#copybutton").addEventListener("click", () => {
+        navigator.clipboard.writeText(content);
+    });
+</script>
