@@ -22,9 +22,12 @@ if (!content || content?.length == 0) {
 				<div class="elevated-card-hoverable elevated-2 w-full">
 					<div
 						class="border-l-4 border-t-4 border-r-2 border-b-2 border-black bg-white h-full w-full flex items-center justify-center py-2 px-4">
-						<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+						<p id="precopytext" class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
 							Copy to clipboard
 						</p>
+                        <p id="postcopytext" class="hidden">
+                            Text copied!
+                        </p>
 					</div>
 				</div>
 			</button>
@@ -44,5 +47,10 @@ if (!content || content?.length == 0) {
 <script is:inline>
 	document.querySelector("#copybutton").addEventListener("click", () => {
 		navigator.clipboard.writeText(document.querySelector("#content").innerText);
+        const card = document.querySelector("#copybutton .elevated-card-hoverable"); 
+        card?.classList.remove("elevated-card-hoverable", "elevated-2");
+        card?.classList.add("elevated-card", "elevated-1");
+        document.querySelector("#precopytext").classList.add("hidden");
+        document.querySelector("#postcopytext").classList.remove("hidden");
 	});
 </script>
