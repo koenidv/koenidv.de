@@ -14,7 +14,7 @@ export default defineConfig({
 	srcDir: "src",
 	adapter: netlify(),
 	integrations: [tailwind(),
-	sitemap(),
+	//sitemap(), fixme: info is undefined (netlify adapter?)
 	NetlifyCMS({
 		config: {
 			backend: {
