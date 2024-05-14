@@ -31,3 +31,8 @@
   for = "*.br"
   [headers.values]
     Content-Encoding = "br"
+
+[[headers]]
+  for = "*.wasm*"
+  [headers.values]
+    Content-Type = "application/wasm"
