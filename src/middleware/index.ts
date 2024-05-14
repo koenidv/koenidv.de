@@ -1,10 +1,11 @@
-/// <reference path="../../.astro/types.d.ts" />
-import { defineMiddleware } from "astro:middleware";
+// /// <reference path="../../.astro/types.d.ts" />
+// import type { defineMiddleware } from "astro:middleware";
 
-// `context` and `next` are automatically typed
-export const onRequest = defineMiddleware((context, next) => {
+// fixme astro:middleware can't be found
+// export const onRequest = defineMiddleware((context, next) => {
+export function onRequest(context, next) {
   if (context.url.pathname.endsWith(".br")) {
     context.headers.set("Content-Encoding", "br");
   }
   return next();
-});
+};
