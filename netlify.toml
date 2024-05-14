@@ -26,3 +26,8 @@
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "https://koeni.dev"
+
+[[headers]]
+  for = "*.br"
+  [headers.values]
+    Content-Encoding = "br"
