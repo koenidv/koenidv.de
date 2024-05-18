@@ -147,7 +147,7 @@ import "../../../../public/projects/cultureonair/unity.css";
 
 			// To lower canvas resolution on mobile devices to gain some
 			// performance, uncomment the following line:
-			// config.devicePixelRatio = 1;
+			config.devicePixelRatio = 1;
 		} else {
 			// Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 			// canvas.style.width = "100%";
@@ -167,17 +167,6 @@ import "../../../../public/projects/cultureonair/unity.css";
 					fullscreenButton.onclick = () => {
 						unityInstance.SetFullscreen(1);
 					};
-
-					var previousOrientation = window.orientation;
-					var checkOrientation = function () {
-						if (window.orientation !== previousOrientation) {
-							previousOrientation = window.orientation;
-							unityInstance.SetFullscreen(1);
-						}
-					};
-
-					window.addEventListener("resize", checkOrientation, false);
-					window.addEventListener("orientationchange", checkOrientation, false);
 				})
 				.catch((message) => {
 					alert(message);
