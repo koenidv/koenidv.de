@@ -1,11 +1,24 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
+import "../../../../public/projects/cultureonair/unity.css";
 ---
 
 <Layout title="Culture on Air | koenidv | Unity WebGL">
+	<div
+		class="sm:hidden absolute w-screen h-screen bg-[#ecede7] z-50 flex flex-col justify-center items-center">
+		<svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-10 h-10"
+    viewBox="0 0 24 24">
+    <path
+    d="M 12 2 C 9.033 2 6.5688438 4.167 6.0898438 7 L 8.1425781 7 C 8.5895781 5.28 10.142 4 12 4 C 13.080901 4 14.085524 4.441733 14.822266 5.1777344 L 13 7 L 18 7 L 18 2 L 16.232422 3.7675781 C 15.12732 2.6635322 13.621048 2 12 2 z M 2 9 L 2 21 L 22 21 L 22 9 L 2 9 z M 4 11 L 19 11 L 19 19 L 4 19 L 4 11 z"
+    ></path>
+		<p class="my-4">Please turn your phone.</p>
+		</svg>
+	</div>
+
 	<div class="flex flex-row h-full w-full">
-		<div class="sidebar flex w-24 flex-shrink-0 justify-center">
+		<div class="sidebar flex w-24 flex-shrink-0 justify-center max-lg:hidden">
 			<div
 				class="sidebar-content flex flex-row-reverse w-fit h-full [writing-mode:vertical-rl] py-8 items-center justify-between">
 				<div class="inline-block rotate-180">
@@ -34,13 +47,13 @@ import { getCollection } from "astro:content";
 				</div>
 			</div>
 		</div>
-		<div class="game w-full elevated-card mr-8 my-8">
+		<div class="game w-full lg:elevated-card lg:mr-8 lg:my-8">
 			<div
-				class="flex h-full w-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black">
+				class="flex h-full w-full flex-col overflow-hidden lg:border-b-2 lg:border-l-4 lg:border-r-2 lg:border-t-4 border-black">
 				<div id="unity-container" class="unity-desktop">
 					<canvas
 						id="unity-canvas"
-						class="bg-[#221f20] h-[calc(100vh-4.3rem)] w-full"
+						class="bg-[#221f20] h-screen lg:h-[calc(100vh-4.3rem)] w-full"
 						width="100%"
 						height="100%"
 						tabindex="-1"></canvas>
