@@ -255,7 +255,7 @@ div.projectsgrid {
         "more";
 }
 
-@media screen and (min-width: 64rem) {
+@media screen and (min-width: 56rem) {
     div.projectsgrid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 3.5rem;
