@@ -13,8 +13,21 @@ import TaglineRight from "../InlineSVGs/TaglineRight.astro";
 
 	<div id="tagline" class="mx-4 md:mx-8 max-md:my-4 relative">
 		<img
-			src="/img.jpg"
+			srcset="
+				/images/200/title.jpg   200w,
+				/images/400/title.jpg   400w,
+				/images/800/title.jpg   800w,
+				/images/1200/title.jpg 1200w,
+				/images/2000/title.jpg 2000w"
+			sizes="
+				(max-width: 450px) 200px,
+         (max-width: 850px) 400px,
+         (max-width: 1250px) 800px,
+         (max-width: 2000px) 1200px,
+         2000px"
+			src="/images/1200/title.jpg"
 			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[60%] h-48 md:h-full xl:h-[80%] object-cover md:absolute left-[12vw] top-[50%] md:max-xl:top-[25%] select-none"
+			alt="Blurry photo of subway station"
 		/>
 
 		<div class="md:hidden flex justify-end max-w-[100vw] h-[20vw]">
@@ -28,8 +41,9 @@ import TaglineRight from "../InlineSVGs/TaglineRight.astro";
 		</div>
 	</div>
 
-
-	<div id="name" class="mx-4 max-w-[100vw] md:h-full flex justify-start md:justify-end md:items-end">
+	<div
+		id="name"
+		class="mx-4 max-w-[100vw] md:h-full flex justify-start md:justify-end md:items-end">
 		<div class="md:hidden h-[24vw]">
 			<NameLeft />
 		</div>

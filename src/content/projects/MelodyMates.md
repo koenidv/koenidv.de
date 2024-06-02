@@ -1,7 +1,7 @@
 ---
 title: "MelodyMates"
 description: "Social network for young music lovers."
-image: "/images/melodymates.webp"
+image: "melodymates.webp"
 link: "https://melodymates.app"
 tags: ["Fauna", "Deno", "Flutter", "SvelteKit"]
 date: "2023/03"

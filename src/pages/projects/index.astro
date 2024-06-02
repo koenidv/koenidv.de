@@ -34,7 +34,23 @@ function colorForTags(tags) {
 						<div class="flex h-full w-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black">
 							{project.data.image && (
 								<img
-									src={project.data.image}
+									srcSet={
+										project.data.image.startsWith("http") ? undefined : `
+											/images/200/${project.data.image} 200w,
+											/images/400/${project.data.image} 400w,
+											/images/800/${project.data.image} 800w,
+											/images/1200/${project.data.image} 1200w`
+									}
+									sizes={
+										project.data.image.startsWith("http") ? undefined : `
+											(max-width: 450px) 200px,
+											(max-width: 850px) 400px,
+											(max-width: 1250px) 800px,
+											1200px`
+									}
+									src={project.data.image.startsWith("http") ? project.data.image : `/images/1200/${project.data.image}`}
+									loading="lazy"
+									alt={`Cover image for ${project.data.title}`}
 									class="aspect-[3] w-full border-b-4 border-black object-cover"
 								/>
 							)}

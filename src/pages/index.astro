@@ -35,7 +35,19 @@ import Footer from "../components/Footer.astro";
 					aria-label="Open details">
 					<div class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full">
 						<img
-							src="/images/melodymates.webp"
+							srcset="
+								/images/200/melodymates.webp   200w,
+								/images/800/melodymates.webp   400w,
+								/images/400/melodymates.webp   800w,
+								/images/1200/melodymates.webp 1200w"
+							sizes="
+								(max-width: 450px) 200px,
+								(max-width: 850px) 400px,
+								(max-width: 1250px) 800px,
+								1200px"
+							src="/images/1200/melodymates.webp"
+							loading="lazy"
+							alt="Cover image for MelodyMates"
 							class="w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"
 						/>
 						<div class="m-8">
@@ -58,7 +70,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</div>
 			</div>
-			<ProjectDialog title="MelodyMates" image="/images/melodymates.webp" index={1}>
+			<ProjectDialog title="MelodyMates" image="melodymates.webp" index={1}>
 				<p>
 					MelodyMates is a social network for young music lovers.<br />
 					Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
@@ -99,6 +111,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://user-images.githubusercontent.com/32238636/234383204-cfd9e5fe-743f-45ee-b054-9dac9ad465cc.png"
+							loading="lazy"
+							alt="Screenshot from Melodymates; Home Screen"
 						/>
 					</a>
 					<a
@@ -108,6 +122,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://user-images.githubusercontent.com/32238636/234383213-91b8f412-c4a7-45c8-910a-bc2a939c4678.png"
+							loading="lazy"
+							alt="Screenshot from Melodymates; User Profile"
 						/>
 					</a>
 					<a
@@ -117,6 +133,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://user-images.githubusercontent.com/32238636/234383226-4699cbfa-1de5-4492-977b-520345ba5058.png"
+							loading="lazy"
+							alt="Screenshot from Melodymates; Song Post Thread"
 						/>
 					</a>
 					<a
@@ -126,6 +144,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://user-images.githubusercontent.com/32238636/234383242-daef942c-f03a-4a4f-bd77-ea3a1990e80c.png"
+							loading="lazy"
+							alt="Screenshot from Melodymates; Search Results"
 						/>
 					</a>
 				</div>
@@ -181,6 +201,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] rounded"
 							src="https://user-images.githubusercontent.com/32238636/234679138-054267b9-162f-4359-8f8a-b34eb024165d.png"
+							loading="lazy"
+							alt="Diagram describing MelodyMates' software architecture"
 						/>
 					</a>
 				</div>
@@ -190,12 +212,12 @@ import Footer from "../components/Footer.astro";
 			<ProjectCardSmall
 				title="Chess:E"
 				description="Remote but analog chess system that brings the traditional chess experience to the digital age."
-				image="/images/chesse.webp"
+				image="chesse.webp"
 				index={2}
 				tags={["Hardware", "Deno", "AMQP", "Python", "SvelteKit"]}
 				slug="chesse"
 			/>
-			<ProjectDialog title="Chess:E" image="/images/chesse.webp" index={2}>
+			<ProjectDialog title="Chess:E" image="chesse.webp" index={2}>
 				<p>
 					Chess:E is an internet-enabled chess board that enables playing chess on a physical board
 					against friends at a different location or in an virtual environment. It brings the
@@ -228,6 +250,7 @@ import Footer from "../components/Footer.astro";
 							</div>
 						</a>
 					</div>
+				</div>
 					<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
 					<p>This is something I have yet to write.</p>
 					<h2 class="text-3xl font-poppins pt-4">Connecting Humans</h2>
@@ -238,17 +261,16 @@ import Footer from "../components/Footer.astro";
 					<p>This is something I have yet to write.</p>
 					<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
 					<p>This is something I have yet to write.</p>
-				</div>
 			</ProjectDialog>
 			<ProjectCardSmall
 				title="Indicating Helmet"
 				description="Rapid prototyping of a bike helmet with turn signals to improve urban safety."
-				image="/images/helmet.webp"
+				image="helmet.webp"
 				index={3}
 				tags={["Hardware", "C"]}
 				slug="helmet"
 			/>
-			<ProjectDialog title="Indicating Helmet" image="/images/helmet.webp" index={3}>
+			<ProjectDialog title="Indicating Helmet" image="helmet.webp" index={3}>
 				<p>
 					This hardware prototype of a helmet with turn indicators is designed to aid urban safety
 					by making cyclists more noticable and allowing them to let drivers know where they are
@@ -281,12 +303,12 @@ import Footer from "../components/Footer.astro";
 			<ProjectCardSmall
 				title="Schulportal App"
 				description="Native Android app for students to manage timetables and homework, chat with teachers, and much more."
-				image="/images/sphplanner.webp"
+				image="sphplanner.webp"
 				index={4}
 				tags={["600+ Users", "Android", "Kotlin"]}
 				slug="sphplanner"
 			/>
-			<ProjectDialog title="Schulportal App" image="/images/sphplanner.webp" index={4}>
+			<ProjectDialog title="Schulportal App" image="sphplanner.webp" index={4}>
 				<p>
 					Schulportal App makes accessing Hesse's education portal a breeze. It allows students to
 					manage timetables and homework, chat with teachers, and much more.
@@ -314,6 +336,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/7aa56cda18686dc156d5d746d9d31a0ca9e58ca08ac7d596e33ed8c7ef32496b/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f55595232554d5a546a66676172477948574968336d466d38634b725578634c436a7a6465644d6d3749684e646f644c537267705870765a5f384f6771325474786d773d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Home Screen"
 						/>
 					</a>
 					<a
@@ -323,6 +347,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/c25385099332082fe99cb10847111ba161be49636c0ca56c59485003cc3c0454/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f2d6a744a70327233524a356352374d5843756f2d35586d4c4e7a32505859614b4974716b4b615263486837767777336d694e6d357a4453564b51636a523735516b79513d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Home Screen"
 						/>
 					</a>
 					<a
@@ -332,6 +358,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/42470257ffe2c91f530a460097d952b438403d74312555d34e91195b999c1878/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f2d6936776d6e734f6f375a4469425459736d4151495a63683973642d546e515a376b7943316a766733307636414a486c744435725a4b6d4d657a4a31774363556269633d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Tasks"
 						/>
 					</a>
 					<a
@@ -341,6 +369,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/70acc4bfc12fe4d5173777ef9a1baf3924812418be96669cde47102a7c6a6255/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f4b754c614151354c764f5577556c4b505834765370306355495a4b5f7a6a707657306d53367530426e474232506b5969787434774e6d577677616f4a376d6f5732513d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Schedule Changes"
 						/>
 					</a>
 					<a
@@ -350,6 +380,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/90bdecc5c197b64c79cacf59a680edc8f1e9770eb7bf1bebc433d6cb897eedb3/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6570306b75464f5636583242354b7455466875384b7144687a59775448724f4b5742757833553653556878526b5261636e77744a32727a73474e427170426c63767471783d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Messenger"
 						/>
 					</a>
 					<a
@@ -359,6 +391,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/58beb0168d4376ae6b4c2e5fb6cb42cbb231cff44a74db4ffda8a069f0c3f60f/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f4a7034307a3555497748765a6d44497767703258374c59456271726a654d7270756170657778706744666b79735835764a4368454f5762444e5a51517072336d4e7157743d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Class Summary"
 						/>
 					</a>
 					<a
@@ -368,6 +402,8 @@ import Footer from "../components/Footer.astro";
 						<img
 							class="max-h-[40vh] min-w-[7.5rem] rounded"
 							src="https://camo.githubusercontent.com/0a868ecb002cc328987bccba68e9ccff5f7b7e1f8fa72c7bc948b0452a769696/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f784d4952383545527a4b755f3050456e484a347977424969727a364d39564c64327670524a306a5942306d6c54594266424e495978586b4f78374a4a62525f6b4e513d77313932302d683934372d7277"
+							loading="lazy"
+							alt="Screenshot from Schulportal App; Additional Features"
 						/>
 					</a>
 				</div>

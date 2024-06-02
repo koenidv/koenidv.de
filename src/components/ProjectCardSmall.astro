@@ -23,7 +23,20 @@ const { title, description, image, index, tags, slug } = Astro.props;
 		<div
 			class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
 			<img
-				src={image}
+				srcset={`
+					/images/200/${image}   200w,
+					/images/400/${image}   400w,
+					/images/800/${image}   800w,
+					/images/1200/${image} 1200w
+				`}	
+				sizes="
+					(max-width: 450px) 200px,
+					(max-width: 850px) 400px,
+					(max-width: 1250px) 800px,
+					1200px"
+				src={`/images/1200/${image}`}
+				loading="lazy"
+				alt={`Cover image for ${title}`}
 				class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
 			/>
 			<div class="flex flex-col m-8 md:mt-6">

@@ -3,53 +3,65 @@ import Marquee from "../components/Marquee.astro";
 
 export interface Props {
 	title: string;
-    image: string;
-    index: number;
+	image: string;
+	index: number;
 }
 
 const { title, image, index } = Astro.props;
 ---
 
 <dialog
-    id={ "dialog" +  index }
-    class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
-    <div
-        style="view-transition-name: fullembed;"
-        class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
-        <div
-            class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
-            <div
-                class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
-                <div
-                    class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-                    data-dialog={ "dialog" +  index }
-                    data-origin={ "project" +  index }
-                    tabindex="0"
-                    aria-label="Close dialog">
-                    <img
-                        class="w-full h-full"
-                        src="https://img.icons8.com/ios-filled/50/multiply.png"
-                        alt="close"
-                    />
-                </div>
-            </div>
-            <img
-                src={ image }
-                class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-            />
-            <Marquee inverse={false}>
-                <h1
-                    class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-                    { title }
-                </h1>
-                <h1
-                    class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
-                    { title }
-                </h1>
-            </Marquee>
-            <div class="m-8 flex flex-col gap-4">
-                <slot />
-            </div>
-        </div>
-    </div>
+	id={"dialog" + index}
+	class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
+	<div
+		style="view-transition-name: fullembed;"
+		class="md:elevated-card elevated-4 bg-[#ecede7] max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
+		<div
+			class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
+			<div
+				class="elevated-card-hoverable elevated-1 absolute top-4 right-4 w-8 h-8 bg-[#ecede7] z-10">
+				<div
+					class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
+					data-dialog={"dialog" + index}
+					data-origin={"project" + index}
+					tabindex="0"
+					aria-label="Close dialog">
+					<img
+						class="w-full h-full"
+						src="https://img.icons8.com/ios-filled/50/multiply.png"
+						alt="close"
+					/>
+				</div>
+			</div>
+			<img
+				srcset={`
+                    /images/200/${image}   200w,
+                    /images/800/${image}   400w,
+                    /images/400/${image}   800w,
+                    /images/1200/${image} 1200w,
+			    `}
+				sizes="
+                    (max-width: 450px) 200px,
+                    (max-width: 850px) 400px,
+                    (max-width: 1250px) 800px,
+                    (max-width: 2000px) 1200px,
+                    2000px"
+				src={`/images/1200/${image}`}
+                loading="lazy"
+                alt={`Photo demostrating the ${title} project`}
+				class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
+			/>
+			<Marquee inverse={false}>
+				<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+					{title}
+				</h1>
+				<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+					{title}
+				</h1>
+			</Marquee>
+			<div class="m-8 flex flex-col gap-4">
+				<slot />
+			</div>
+		</div>
+	</div>
 </dialog>
