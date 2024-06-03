@@ -1,4 +1,7 @@
 ---
+import NameInline from "../../components/InlineSVGs/NameInline.astro";
+import NameLeft from "../../components/InlineSVGs/NameLeft.astro";
+import ProjectsInline from "../../components/InlineSVGs/ProjectsInline.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -6,7 +9,7 @@ const projects = (await getCollection("projects")).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-function colorForTags(tags) {
+function colorForTags(tags: string[]) {
 		if (tags.includes("Jekyll")) return "#9ea1d4"
 		else if (tags.includes("Web")) return "#f1f7b5"
 		else if (tags.includes("Android Native")) return "#a8d1d1"
@@ -17,13 +20,12 @@ function colorForTags(tags) {
 ---
 
 <Layout title="Projects by Florian König">
-	<div class="flex flex-col lg:flex-row p-4 pt-8 gap-4 items-baseline">
-		<h1 class="inline-block text-7xl font-poppins uppercase tracking-widest">Projects</h1>
+	<div class="flex flex-col p-4 pt-8 gap-4 items-baseline lg:justify-between lg:flex-row-reverse">
+			
+		<ProjectsInline class="max-md:w-full"/>
+
 		<a href="/" class="group">
-			<h2
-				class="inline-block text-6xl font-poppins outlined tracking-wide text-outlined hover:text-[#131218] group-hover:underline underline-offset-[0.3rem] decoration-[0.3rem]">
-				by Florian König
-			</h2>
+				<NameInline class="max-md:w-full"/>
 		</a>
 	</div>
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 auto-rows-fr gap-4 p-4">
@@ -34,7 +36,7 @@ function colorForTags(tags) {
 						<div class="flex h-full w-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black">
 							{project.data.image && (
 								<img
-									srcSet={
+									srcset={
 										project.data.image.startsWith("http") ? undefined : `
 											/images/200/${project.data.image} 200w,
 											/images/400/${project.data.image} 400w,
