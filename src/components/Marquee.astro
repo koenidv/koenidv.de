@@ -54,7 +54,7 @@ const { inverse = false } = Astro.props;
   
   @supports (-webkit-text-stroke: 1px white) {
     .marquee :global(p:nth-of-type(even)) {
-      color: transparent;
+      color: theme('colors.beige.100');
       -webkit-text-stroke: 2px black;
     }
   }  
@@ -67,7 +67,7 @@ const { inverse = false } = Astro.props;
 
     @supports (-webkit-text-stroke: 1px white) {
     .marquee :global(:nth-of-type(even)) {
-      color: transparent;
+      color: theme('colors.beige.100');
       -webkit-text-stroke: 0.15rem black;
     }
   }  

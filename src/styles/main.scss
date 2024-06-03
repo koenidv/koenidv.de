@@ -13,6 +13,7 @@
         position: relative;
         margin-bottom: var(--elevation);
         margin-right: var(--elevation);
+        background-color: theme('colors.beige.100');
 
         --animation: 100ms ease-out;
         transition: margin var(--animation);
@@ -131,13 +132,16 @@
 
     // todo tailwind plugin
     .text-outline-beige {
-        --text-outline-color: #ecede7;
+        --text-outline-color: theme('colors.beige.100');
     }
 }
 
 
 html {
-    background-color: #ecede7;
+    background-image: url('/.netlify/images?url=/images/bg.png');
+    background-color: theme('colors.beige.100');
+    background-size: 80px;
+    background-repeat: repeat;
     color: #000000;
     font-weight: 600;
 }
