@@ -36,8 +36,10 @@
   for = "*.br"
   [headers.values]
     Content-Encoding = "br"
+    Cache-Control = "max-age=86400, stale-while-revalidate=3600"
 
 [[headers]]
   for = "*.wasm*"
   [headers.values]
     Content-Type = "application/wasm"
+    Cache-Control = "max-age=86400, stale-while-revalidate=3600"
