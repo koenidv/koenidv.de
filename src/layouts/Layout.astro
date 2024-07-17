@@ -1,5 +1,6 @@
 ---
 import "../styles/main.scss"
+import PostHog from "../components/PostHog.astro"
 
 export interface Props {
 	title: string;
@@ -26,6 +27,7 @@ const { title, description } = Astro.props;
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap"
 			rel="stylesheet"
 		/>
+		<PostHog />
 	</head>
 	<body>
 		<slot />
