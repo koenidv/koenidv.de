@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /copytext
+
+User-agent: *
+Disallow: /test3

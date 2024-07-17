@@ -3,17 +3,18 @@ import "../styles/main.scss"
 
 export interface Props {
 	title: string;
+	description?: string | undefined;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>{title}</title>
-		<meta name="description" content="Astro description" />
+		<title>{title || "Florian König: Creative Developer"}</title>
+		<meta name="description" content={description || "Florian König is a creative software engineer and designer from Berlin, Germany. Explore his projects!"} />
 		<meta name="viewport" content="width=device-width" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
