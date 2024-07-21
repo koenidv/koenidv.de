@@ -20,6 +20,10 @@
   from = "/pocketnc"
   to = "https://drive.google.com/drive/folders/1eyh943sOvH1shQ9rXZEVee81TGMnhvrz"
 
+[[redirects]]
+  from = "/onair"
+  to = "/projects/cultureonair"
+
 [build]
   functions = "./functions"
 
