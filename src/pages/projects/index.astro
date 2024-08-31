@@ -2,6 +2,7 @@
 import NameInline from "../../components/InlineSVGs/NameInline.astro";
 import NameLeft from "../../components/InlineSVGs/NameLeft.astro";
 import ProjectsInline from "../../components/InlineSVGs/ProjectsInline.astro";
+import LiveIndicator from "../../components/LiveIndicator.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -53,8 +54,11 @@ function colorForTags(tags: string[]) {
 									src={project.data.image.startsWith("http") ? project.data.image : `/images/1200/${project.data.image}`}
 									loading="lazy"
 									alt={`Cover image for ${project.data.title}`}
-									class="aspect-[3] w-full border-b-4 border-black object-cover"
+									class="aspect-[3] w-full border-b-4 border-black object-cover bg-beige-300"
 								/>
+							)}
+							{project.data.live && (
+								<LiveIndicator class="absolute top-4 left-4" />
 							)}
 							<div class="m-8 flex flex-col md:mt-6">
 								<h2 class="animateunderline font-poppins text-4xl font-bold tracking-wider decoration-[0.2rem] underline-offset-[0.4rem]">

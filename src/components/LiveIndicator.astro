@@ -1,0 +1,8 @@
+---
+const { class: className, ...rest } = Astro.props
+---
+
+<div class="live-indicator" class:list={['bg-beige-base h-4 flex align-middle gap-[0.6rem] pr-1', className]} {...rest}>
+  <span class="live-dot inline-block bg-green-400 w-4 h-4 "></span>
+  <span class="live-indicator__text leading-none text-sm self-center">live</span>
+</div>

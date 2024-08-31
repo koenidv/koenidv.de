@@ -10,6 +10,7 @@ module.exports = {
 			},
 			colors: {
 				beige: {
+					base: "#f4f0e5",
 					50: "#fcfbf7",
 					100: "#f5f0e5",
 					200: "#eee5d3",
