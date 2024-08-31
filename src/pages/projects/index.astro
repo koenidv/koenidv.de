@@ -28,11 +28,11 @@ function colorForTags(tags: string[]) {
 				<NameInline class="max-md:w-full"/>
 		</a>
 	</div>
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 auto-rows-fr gap-4 p-4">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 rainbow rainbow-5 auto-rows-fr gap-4 p-4">
 		{
 			projects.map((project) => (
-				<div class="group flex">
-					<a class="elevated-card-hoverable elevated-1 lg:elevated-2 group hover:cursor-pointer flex-grow" href={project.data.link} target="_blank" style={`background-color: ${project.data.color || colorForTags(project.data.tags)};`}>
+				<div class="group flex rainbowchild">
+					<a class="elevated-card-hoverable elevated-1 lg:elevated-2 group hover:cursor-pointer flex-grow rainbowtarget" href={project.data.link} target="_blank">
 						<div class="flex h-full w-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black">
 							{project.data.image && (
 								<img

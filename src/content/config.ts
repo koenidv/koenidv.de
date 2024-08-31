@@ -9,7 +9,8 @@ const projects = defineCollection({
     tags: z.array(z.string()),
     date: z.string().or(z.date()).transform((val) => new Date(val)),
     color: z.string().optional(),
-    category: z.enum(["people", "tools", "games", "services"]).optional()
+    category: z.enum(["people", "tools", "games", "services"]).optional(),
+    live: z.boolean().optional(),
   }),
 });
 

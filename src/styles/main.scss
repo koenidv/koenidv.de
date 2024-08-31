@@ -130,9 +130,34 @@
         }
     }
 
-    // todo tailwind plugin
-    .text-outline-beige {
+    todo tailwind plugin .text-outline-beige {
         --text-outline-color: theme('colors.beige.100');
+    }
+
+    .grid.rainbow {
+        &.rainbow-5 .rainbowchild {
+
+            // #f1f5b9, #f4ae81, #ef8d8b, #a0a2d3, #afd0d1
+            &:nth-child(5n) .rainbowtarget {
+                background-color: #f1f5b9;
+            }
+
+            &:nth-child(5n + 1) .rainbowtarget {
+                background-color: #f4ae81;
+            }
+
+            &:nth-child(5n + 2) .rainbowtarget {
+                background-color: #ef8d8b;
+            }
+
+            &:nth-child(5n + 3) .rainbowtarget {
+                background-color: #a0a2d3;
+            }
+
+            &:nth-child(5n + 4) .rainbowtarget {
+                background-color: #afd0d1;
+            }
+        }
     }
 }
 
