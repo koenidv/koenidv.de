@@ -163,6 +163,16 @@
     .live-dot {
         @apply bg-green-400;
         box-shadow: rgba(#71db83, 0.8) 0 0 0 0.25rem;
+        animation: breathing 4s infinite ease-in-out;
+
+        @keyframes breathing {
+            0%, 100% {
+              box-shadow: rgba(113, 219, 131, 0.9) 0 0 0 0.2rem;
+            }
+            50% {
+              box-shadow: rgba(113, 219, 131, 0.6) 0 0 0 0.3rem;
+            }
+          }
     }
 }
 
