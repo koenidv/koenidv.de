@@ -3,7 +3,7 @@ import Marquee from "../components/Marquee.astro";
 
 export interface Props {
 	title: string;
-	image: string;
+	image?: string;
 	slug: string;
 }
 
@@ -42,24 +42,28 @@ const { title, image, slug } = Astro.props;
 							/>
 						</div>
 					</div>
-					<img
-						srcset={`
+					{
+						image && (
+							<img
+								srcset={`
                     /images/200/${image}   200w,
                     /images/800/${image}   400w,
                     /images/400/${image}   800w,
                     /images/1200/${image} 1200w,
 			    `}
-						sizes="
+								sizes="
                     (max-width: 450px) 200px,
                     (max-width: 850px) 400px,
                     (max-width: 1250px) 800px,
                     (max-width: 2000px) 1200px,
                     2000px"
-						src={`/images/1200/${image}`}
-						loading="lazy"
-						alt={`Photo demostrating the ${title} project`}
-						class="max-h-96 w-full aspect-[2] md:aspect-video object-cover"
-					/>
+								src={`/images/1200/${image}`}
+								loading="lazy"
+								alt={`Photo demostrating the ${title} project`}
+								class="aspect-[2] max-h-96 w-full object-cover md:aspect-video"
+							/>
+						)
+					}
 					<Marquee inverse={false}>
 						<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
 							{title}

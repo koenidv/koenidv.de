@@ -2,6 +2,7 @@
 slug: "helmet"
 title: "Indicating Helmet"
 description: "Prototype bike helmet with turn signals."
+longDescription: "Rapid prototyping of a bike helmet with turn signals to improve urban safety."
 image: "helmet.webp"
 link: "https://drive.google.com/file/d/1zGdzhDCvHW8u2QyqdMXzXgZRerl3s4Cr/view?usp=sharing"
 tags: ["Hardware", "C"]

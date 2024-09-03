@@ -1,23 +1,25 @@
 ---
 import { CollectionEntry } from "astro:content";
-import ProjectCardSmall from "./ProjectCardSmall.astro";
+import ProjectCard from "./ProjectCard.astro";
 import ProjectDialog from "./ProjectDialog.astro";
 
 export interface Props {
-	project: CollectionEntry<"projects">;
+	project: CollectionEntry<"projects">,
+	isLarge?: boolean
 }
 
-const { project } = Astro.props;
+const { project, isLarge } = Astro.props;
 const data = project.data;
 const { Content, headings } = await project.render();
 ---
 
-<ProjectCardSmall
+<ProjectCard
 	title={data.title}
 	description={data.longDescription || data.description}
 	image={data.image || ""}
 	tags={data.tags}
 	slug={project.slug}
+	isLarge={isLarge == true}
 />
 <ProjectDialog title={data.title} image={data.image} slug={project.slug}>
 	<Content />

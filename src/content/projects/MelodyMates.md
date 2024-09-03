@@ -1,6 +1,7 @@
 ---
 title: "MelodyMates"
 description: "Social network for young music lovers."
+longDescription: "MelodyMates is a social network for young music lovers.\nSign up with Spotify, share the songs you love, and discover what your friends are recommending."
 image: "melodymates.webp"
 link: "https://melodymates.app"
 tags: ["Fauna", "Deno", "Flutter", "SvelteKit"]

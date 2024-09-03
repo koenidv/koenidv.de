@@ -5,29 +5,35 @@ export interface Props {
 	image: string;
 	tags: string[];
 	slug: string;
+	isLarge: boolean;
 }
 
-const { title, description, image, tags, slug } = Astro.props;
+const { title, description, image, tags, slug, isLarge } = Astro.props;
 ---
 
-<div class="group flex">
+<div class="group flex" id={"project" + slug}>
 	<div
-		id={"project" + slug}
-		class="opendialog group elevated-card-hoverable hover:cursor-pointer w-full"
+		class:list={[
+			"opendialog elevated-card-hoverable hover:cursor-pointer w-full",
+			{ "elevated-4": isLarge }
+		]}
 		data-dialog={"dialog" + slug}
 		data-origin={"project" + slug}
 		data-slug={slug}
 		tabindex="0"
 		aria-label="Open details">
 		<div
-			class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex flex-col 2xl:flex-row overflow-hidden">
+			class:list={[
+				"border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full",
+				{ "flex flex-col 2xl:flex-row overflow-hidden": !isLarge }
+			]}>
 			<img
 				srcset={`
 					/images/200/${image}   200w,
 					/images/400/${image}   400w,
 					/images/800/${image}   800w,
 					/images/1200/${image} 1200w
-				`}	
+				`}
 				sizes="
 					(max-width: 450px) 200px,
 					(max-width: 850px) 400px,
@@ -36,9 +42,15 @@ const { title, description, image, tags, slug } = Astro.props;
 				src={`/images/1200/${image}`}
 				loading="lazy"
 				alt={`Cover image for ${title}`}
-				class="h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
+				class:list={isLarge
+					? [
+							"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"
+					  ]
+					: [
+							"h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
+					  ]}
 			/>
-			<div class="flex flex-col m-8 md:mt-6">
+			<div class:list={["m-8", { "flex flex-col m-8 md:mt-6": !isLarge }]}>
 				<h2
 					class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider underline-offset-[0.4rem] decoration-[0.2rem]">
 					{title}
@@ -46,7 +58,7 @@ const { title, description, image, tags, slug } = Astro.props;
 				<p class="mt-2">
 					{description}
 				</p>
-				<div class="mt-4 flex flex-wrap gap-2">
+				<div class:list={["mt-4 flex flex-wrap gap-2", { "md:mt-8": isLarge }]}>
 					{tags.map((tag: String) => <span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>)}
 				</div>
 			</div>
