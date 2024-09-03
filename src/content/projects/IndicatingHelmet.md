@@ -1,4 +1,5 @@
 ---
+slug: "helmet"
 title: "Indicating Helmet"
 description: "Prototype bike helmet with turn signals."
 image: "helmet.webp"
