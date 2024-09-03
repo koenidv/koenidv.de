@@ -25,41 +25,41 @@ collections:
     - { label: "Live", name: "live", widget: "boolean", required: false }
     - { label: "Body", name: "body", widget: "markdown" }
   
-  - name: settings
-    label: Settings
+  - name: "settings"
+    label: "Settings"
     files:
-      - file: data/settings/promotedProjects.yml
-        label: Promoted Projects
-        name: promotedProjects
+      - file: "src/data/settings/promotedProjects.json"
+        label: "Promoted Projects"
+        name: "promotedProjects"
         fields:
-          - label: Large Project
-            name: project1
-            widget: relation
-            collection: projects
+          - label: "Large Project"
+            name: "project1"
+            widget: "relation"
+            collection: "projects"
             searchFields: ["title"]
             valueField: "slug"
             displayFields: ["title", "longDescription"]
             required: true
-          - label: Small Project 1
-            name: project2
-            widget: relation
-            collection: projects
+          - label: "Small Project 1"
+            name: "project2"
+            widget: "relation"
+            collection: "projects"
             searchFields: ["title"]
             valueField: "slug"
             displayFields: ["title", "longDescription"]
             required: true
-          - label: Small Project 2
-            name: project3
-            widget: relation
-            collection: projects
+          - label: "Small Project 2"
+            name: "project3"
+            widget: "relation"
+            collection: "projects"
             searchFields: ["title"]
             valueField: "slug"
             displayFields: ["title", "longDescription"]
             required: true
-          - label: Small Project 3
-            name: project4
-            widget: relation
-            collection: projects
+          - label: "Small Project 3"
+            name: "project4"
+            widget: "relation"
+            collection: "projects"
             searchFields: ["title"]
             valueField: "slug"
             displayFields: ["title", "longDescription"]
