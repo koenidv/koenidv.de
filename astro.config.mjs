@@ -13,7 +13,6 @@ export default defineConfig({
 	srcDir: "src",
 	adapter: netlify(),
 	integrations: [
-		tailwind(),
-		//sitemap(), fixme: info is undefined (netlify adapter?)
+		tailwind()
 	]
 });
