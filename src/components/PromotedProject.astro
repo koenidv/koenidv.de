@@ -1,0 +1,24 @@
+---
+import { CollectionEntry } from "astro:content";
+import ProjectCardSmall from "./ProjectCardSmall.astro";
+import ProjectDialog from "./ProjectDialog.astro";
+
+export interface Props {
+	project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const data = project.data;
+const { Content, headings } = await project.render();
+---
+
+<ProjectCardSmall
+	title={data.title}
+	description={data.longDescription || data.description}
+	image={data.image || ""}
+	tags={data.tags}
+	slug={project.slug}
+/>
+<ProjectDialog title={data.title} image={data.image} slug={project.slug}>
+	<Content />
+</ProjectDialog>

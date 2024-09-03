@@ -1,6 +1,7 @@
 ---
 title: "Chess:E"
 description: "Remote but analog chess experience."
+longDescription: "Remote but analog chess system that brings the traditional chess experience to the digital age."
 image: "chesse.webp"
 link: "https://chesse.koeni.dev"
 tags: ["Hardware", "Deno", "AMQP", "Python", "SvelteKit"]
@@ -8,3 +9,47 @@ date: "2023/05"
 category: "people"
 live: true
 ---
+
+<p>
+  Chess:E is an internet-enabled chess board that enables playing chess on a physical board
+  against friends at a different location or in an virtual environment. It brings the traditional
+  chess experience to the digital age.
+</p>
+<div class="pt-4 pb-2 flex gap-2 flex-wrap">
+  <div class="group">
+    <a
+      href="https://pawn-hub.de/"
+      target="_blank"
+      class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+      <div
+        class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+        <p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+          Play Chess:E
+        </p>
+      </div>
+    </a>
+  </div>
+  <div class="group">
+    <a
+      href="https://github.com/PawnHubChess/backend"
+      target="_blank"
+      class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
+      <div
+        class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
+        <p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+          Backend on GitHub
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
+<p>This is something I have yet to write.</p>
+<h2 class="text-3xl font-poppins pt-4">Connecting Humans</h2>
+<p>This is something I have yet to write.</p>
+<h2 class="text-3xl font-poppins pt-4">Team</h2>
+<p>This is something I have yet to write.</p>
+<h2 class="text-3xl font-poppins pt-4">Technology</h2>
+<p>This is something I have yet to write.</p>
+<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
+<p>This is something I have yet to write.</p>

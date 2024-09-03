@@ -6,6 +6,13 @@ import Marquee from "../components/Marquee.astro";
 import ProjectCardSmall from "../components/ProjectCardSmall.astro";
 import ProjectDialog from "../components/ProjectDialog.astro";
 import Footer from "../components/Footer.astro";
+import { getEntry } from "astro:content";
+import PromotedProject from "../components/PromotedProject.astro";
+
+const PromotedProject1 = await getEntry("projects", "melodymates");
+const PromotedProject2 = await getEntry("projects", "chesse");
+const PromotedProject3 = await getEntry("projects", "indicatinghelmet");
+const PromotedProject4 = await getEntry("projects", "sphplanner");
 ---
 
 <Layout title="Florian König">
@@ -27,11 +34,11 @@ import Footer from "../components/Footer.astro";
 			id="recent-projects"
 			class="projectsgrid min-h-[56rem] 2xl:max-h-[92vh] overflow-hidden p-4 md:p-8 max-md:mt-4 xl:px-16 gap-4 xl:gap-8">
 			<h2 class="sr-only">Recent Projects</h2>
-			<div class="group flex" id="project1">
+			<div class="group flex" id="projectmelodymates">
 				<div
 					class="opendialog elevated-4 elevated-card-hoverable hover:cursor-pointer"
-					data-dialog="dialog1"
-					data-origin="project1"
+					data-dialog="dialogmelodymates"
+					data-origin="projectmelodymates"
 					data-slug="melodymates"
 					tabindex="0"
 					aria-label="Open details">
@@ -72,7 +79,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 				</div>
 			</div>
-			<ProjectDialog title="MelodyMates" image="melodymates.webp" index={1}>
+			<ProjectDialog title="MelodyMates" image="melodymates.webp" slug="melodymates">
 				<p>
 					MelodyMates is a social network for young music lovers.<br />
 					Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
@@ -211,157 +218,9 @@ import Footer from "../components/Footer.astro";
 				<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
 				<p>This is something I have yet to write.</p>
 			</ProjectDialog>
-			<ProjectCardSmall
-				title="Chess:E"
-				description="Remote but analog chess system that brings the traditional chess experience to the digital age."
-				image="chesse.webp"
-				index={2}
-				tags={["Hardware", "Deno", "AMQP", "Python", "SvelteKit"]}
-				slug="chesse"
-			/>
-			<ProjectDialog title="Chess:E" image="chesse.webp" index={2}>
-				<p>
-					Chess:E is an internet-enabled chess board that enables playing chess on a physical board
-					against friends at a different location or in an virtual environment. It brings the
-					traditional chess experience to the digital age.
-				</p>
-				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<div class="group">
-						<a
-							href="https://pawn-hub.de/"
-							target="_blank"
-							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
-							<div
-								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-									Play Chess:E
-								</p>
-							</div>
-						</a>
-					</div>
-					<div class="group">
-						<a
-							href="https://github.com/PawnHubChess/backend"
-							target="_blank"
-							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
-							<div
-								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-									Backend on GitHub
-								</p>
-							</div>
-						</a>
-					</div>
-				</div>
-				<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Connecting Humans</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Team</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Technology</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
-				<p>This is something I have yet to write.</p>
-			</ProjectDialog>
-			<ProjectCardSmall
-				title="Indicating Helmet"
-				description="Rapid prototyping of a bike helmet with turn signals to improve urban safety."
-				image="helmet.webp"
-				index={3}
-				tags={["Hardware", "C"]}
-				slug="helmet"
-			/>
-			<ProjectDialog title="Indicating Helmet" image="helmet.webp" index={3}>
-				<p>
-					This hardware prototype of a helmet with turn indicators is designed to aid urban safety
-					by making cyclists more noticable and allowing them to let drivers know where they are
-					going.
-				</p>
-				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<div class="group">
-						<a
-							href="https://drive.google.com/file/d/1zGdzhDCvHW8u2QyqdMXzXgZRerl3s4Cr/view?usp=sharing"
-							target="_blank"
-							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
-							<div
-								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-									Read the documentation
-								</p>
-							</div>
-						</a>
-					</div>
-				</div>
-				<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Urban Safety</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Technology</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
-				<p>This is something I have yet to write.</p>
-			</ProjectDialog>
-			<ProjectCardSmall
-				title="Schulportal App"
-				description="Native Android app for students to manage timetables and homework, chat with teachers, and much more."
-				image="sphplanner.webp"
-				index={4}
-				tags={["600+ Users", "Android", "Kotlin"]}
-				slug="sphplanner"
-			/>
-			<ProjectDialog title="Schulportal App" image="sphplanner.webp" index={4}>
-				<p>
-					Schulportal App makes accessing Hesse's education portal a breeze. It allows students to
-					manage timetables and homework, chat with teachers, and much more.
-				</p>
-				<div class="pt-4 pb-2 flex gap-2 flex-wrap">
-					<div class="group">
-						<a
-							href="https://github.com/koenidv/sph-planner"
-							target="_blank"
-							class="inline-block elevated-card-hoverable elevated-1 h-8 w-fit">
-							<div
-								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-12">
-								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
-									Code on GitHub
-								</p>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="imagecarousel flex flex-row gap-2 overflow-x-scroll rounded">
-					{
-						[
-							"Home Screen",
-							"Home Screen",
-							"Tasks",
-							"Schedule Changes",
-							"Messenger",
-							"Class Summary",
-							"Additional Features"
-						].map((description, index) => (
-							<a
-								target="_blank"
-								class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
-								href={`/images/sphplanner/${index + 1}.png`}>
-								<img
-									class="max-h-[40vh] min-w-[7.5rem] rounded"
-									src={`/images/sphplanner/${index + 1}.png`}
-									loading="lazy"
-									alt={`Screenshot from Schulportal App; ${description}`}
-								/>
-							</a>
-						))
-					}
-				</div>
-				<h2 class="text-3xl font-poppins pt-4">Motivation</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Technology</h2>
-				<p>This is something I have yet to write.</p>
-				<h2 class="text-3xl font-poppins pt-4">Challenges</h2>
-				<p>This is something I have yet to write.</p>
-			</ProjectDialog>
+			<PromotedProject project={PromotedProject2} />
+			<PromotedProject project={PromotedProject3} />
+			<PromotedProject project={PromotedProject4} />
 			<a href="/projects" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
 				<div class="elevated-card-hoverable elevated-3 w-full md:w-[48%] 2xl:w-fit">
 					<div
@@ -448,26 +307,8 @@ import Footer from "../components/Footer.astro";
 			if (document.location.href.includes("#")) {
 				const id = document.location.href.split("#")[1];
 				let dialog, origin;
-				switch (id) {
-					case "melodymates":
-						dialog = document.querySelector("#dialog1");
-						origin = document.querySelector("#project1");
-						break;
-					case "chesse":
-						dialog = document.querySelector("#dialog2");
-						origin = document.querySelector("#project2");
-						break;
-					case "helmet":
-						dialog = document.querySelector("#dialog3");
-						origin = document.querySelector("#project3");
-						break;
-					case "sphplanner":
-						dialog = document.querySelector("#dialog4");
-						origin = document.querySelector("#project4");
-						break;
-					default:
-						break;
-				}
+				dialog = document.querySelector("#dialog" + id);
+				origin = document.querySelector("#project" + id);
 				if (dialog && origin) {
 					dialog.showModal();
 					origin.classList.add("invisible");

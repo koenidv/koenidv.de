@@ -4,19 +4,19 @@ import Marquee from "../components/Marquee.astro";
 export interface Props {
 	title: string;
 	image: string;
-	index: number;
+	slug: string;
 }
 
-const { title, image, index } = Astro.props;
+const { title, image, slug } = Astro.props;
 ---
 
 <dialog
-	id={"dialog" + index}
+	id={"dialog" + slug}
 	class="projectdialog bg-transparent w-screen h-screen p-0 backdrop:bg-transparent">
 	<div
 		class="closedialog backdrop absolute top-0 left-0 w-screen h-screen opacity-50 bg-gradient-to-br from-mojito-200 to-lavender-200"
-		data-dialog={"dialog" + index}
-		data-origin={"project" + index}>
+		data-dialog={"dialog" + slug}
+		data-origin={"project" + slug}>
 	</div>
 	<div class="bg-transparent bg-opacity-25 w-screen h-screen flex justify-center items-center">
 		<div
@@ -31,8 +31,8 @@ const { title, image, index } = Astro.props;
 						class="elevated-card-hoverable elevated-1 absolute top-3 left-3 w-8 h-8 bg-beige-100 z-10">
 						<div
 							class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-							data-dialog={"dialog" + index}
-							data-origin={"project" + index}
+							data-dialog={"dialog" + slug}
+							data-origin={"project" + slug}
 							tabindex="0"
 							aria-label="Close dialog">
 							<img
