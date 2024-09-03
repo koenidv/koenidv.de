@@ -3,15 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import TitleArea from "../components/TitleArea/TitleArea.astro";
 import ContactForm from "../components/TitleArea/ContactForm.astro";
 import Marquee from "../components/Marquee.astro";
-import ProjectDialog from "../components/ProjectDialog.astro";
 import Footer from "../components/Footer.astro";
 import { getEntry } from "astro:content";
 import PromotedProject from "../components/PromotedProject.astro";
 
-const PromotedProject1 = await getEntry("projects", "melodymates");
-const PromotedProject2 = await getEntry("projects", "chesse");
-const PromotedProject3 = await getEntry("projects", "helmet");
-const PromotedProject4 = await getEntry("projects", "sphplanner");
+import promotedProjects from "../data/settings/promotedProjects.json";
+const PromotedProject1 = await getEntry("projects", promotedProjects.project1);
+const PromotedProject2 = await getEntry("projects", promotedProjects.project2);
+const PromotedProject3 = await getEntry("projects", promotedProjects.project3);
+const PromotedProject4 = await getEntry("projects", promotedProjects.project4);
 ---
 
 <Layout title="Florian König">

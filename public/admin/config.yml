@@ -36,31 +36,31 @@ collections:
             name: "project1"
             widget: "relation"
             collection: "projects"
-            searchFields: ["title"]
+            searchFields: ["title", "slug"]
             valueField: "slug"
-            displayFields: ["title", "longDescription"]
+            displayFields: ["{{title}}: {{longDescription}}"]
             required: true
           - label: "Small Project 1"
             name: "project2"
             widget: "relation"
             collection: "projects"
-            searchFields: ["title"]
+            searchFields: ["title", "slug"]
             valueField: "slug"
-            displayFields: ["title", "longDescription"]
+            displayFields: ["{{title}}: {{longDescription}}"]
             required: true
           - label: "Small Project 2"
             name: "project3"
             widget: "relation"
             collection: "projects"
-            searchFields: ["title"]
+            searchFields: ["title", "slug"]
             valueField: "slug"
-            displayFields: ["title", "longDescription"]
+            displayFields: ["{{title}}: {{longDescription}}"]
             required: true
           - label: "Small Project 3"
             name: "project4"
             widget: "relation"
             collection: "projects"
-            searchFields: ["title"]
+            searchFields: ["title", "slug"]
             valueField: "slug"
-            displayFields: ["title", "longDescription"]
+            displayFields: ["{{title}}: {{longDescription}}"]
             required: true
