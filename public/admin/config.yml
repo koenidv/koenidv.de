@@ -1,0 +1,25 @@
+media_folder: "public/images"
+public_folder: "images" # The src attribute for uploaded media
+
+backend:
+  name: git-gateway
+  branch: main
+
+
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    delete: true
+    fields:
+    - { label: "Title", name: "title", widget: "string" }
+    - { label: "Description", name: "description", widget: "text" }
+    - { label: "Long Description", name: "longDescription", widget: "text", required: false }
+    - { label: "Image", name: "image", widget: "image", required: false }
+    - { label: "Link", name: "link", widget: "string" }
+    - { label: "Tags", name: "tags", widget: "list" }
+    - { label: "Date", name: "date", widget: "datetime" }
+    - { label: "Category", name: "category", widget: "select", options: ["people", "tools", "games", "services"], required: false }
+    - { label: "Live", name: "live", widget: "boolean", required: false }
