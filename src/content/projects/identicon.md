@@ -1,5 +1,6 @@
 ---
 title: Identicon
+slug: identicon
 description: Generate reproducible, human-differentiable images for any value.
 image: https://with.koeni.dev/identicon/identicon?format=svg
 link: https://with.koeni.dev/identicon

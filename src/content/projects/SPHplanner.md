@@ -1,5 +1,6 @@
 ---
 title: "Schulportal App"
+slug: "sphplanner"
 description: "The perfect companion for your life with Schulportal Hessen."
 longDescription: "Native Android app for students to manage timetables and homework, chat with teachers, and much more."
 image: "sphplanner.webp"

@@ -1,5 +1,6 @@
 ---
 title: "Culture on Air"
+slug: "cultureonair"
 description: "Explore what the world is listening to! Experimental Unity project."
 image: "cultureonair.webp"
 link: "https://koeni.dev/projects/cultureonair"

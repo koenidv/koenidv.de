@@ -1,5 +1,6 @@
 ---
 title: "Chess:E"
+slug: "chesse"
 description: "Remote but analog chess experience."
 longDescription: "Remote but analog chess system that brings the traditional chess experience to the digital age."
 image: "chesse.webp"

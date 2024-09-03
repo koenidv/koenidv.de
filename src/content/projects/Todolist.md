@@ -1,5 +1,6 @@
 ---
 title: "Todolist"
+slug: "todolist"
 description: "Simple todo list in React."
 image: "todolist.webp"
 link: "https://todo.koeni.dev"

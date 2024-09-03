@@ -1,5 +1,6 @@
 ---
 title: "Vorratsliste"
+slug: "supplies"
 description: "Never forget those groceries in the cupboard again."
 image: ""
 link: "https://play.google.com/store/apps/details?id=de.koenidv.expiries"
