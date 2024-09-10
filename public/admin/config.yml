@@ -10,6 +10,8 @@ collections:
   - name: "projects"
     label: "Projects"
     folder: "src/content/projects"
+    extension: "mdx"
+    format: "frontmatter"
     create: true
     delete: true
     fields:

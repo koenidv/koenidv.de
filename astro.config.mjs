@@ -14,6 +14,7 @@ export default defineConfig({
 	adapter: netlify(),
 	integrations: [
 		tailwind(),
-		mdx()
+		mdx(
+		)	
 	]
 });
