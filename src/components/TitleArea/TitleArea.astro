@@ -16,13 +16,14 @@ import titleImage from "../../../public/images/title.jpg";
 
 	<div id="tagline" class="mx-4 md:mx-8 max-md:my-4 relative">
 		<Image
+			id="titleimage"
 			src={titleImage}
 			alt="Blurry photo of subway station"
 			widths={[300, 600, 1000, 2000]}
 			sizes={`(max-width: 600px) 300px, (max-width: 1000px) 600px, (max-width: 2000px) 1000px, 2000px`}
 			quality={80}
 			class="w-full max-md:-mt-16 max-md:translate-y-6 md:w-[60%] h-48 md:h-full xl:h-[80%] object-cover md:absolute left-[12vw] top-[50%] md:max-xl:top-[25%] select-none"
-				/>
+		/>
 
 		<div class="md:hidden flex justify-end max-w-[100vw] h-[20vw]">
 			<TaglineRight />
@@ -53,3 +54,49 @@ import titleImage from "../../../public/images/title.jpg";
 		Kønig
 	</h1> -->
 </div>
+
+<script lang="js">
+
+	const mouseContainer = document.body;
+	const movingImage = document.querySelector("#titleimage");
+	const constrain = mouseContainer.clientWidth / 100;
+	const maxChange = 200, changeRate = 100;
+
+	let currentX = 0, currentY = 0;
+
+	const imageCenter = [movingImage.x + movingImage.clientWidth / 2, movingImage.y + movingImage.clientHeight / 2];
+
+	function transforms(x, y, el) {
+		x = x - imageCenter[0];
+		y = y - imageCenter[1];
+
+		if (Math.abs(currentX - x) > maxChange) {
+			x = x > currentX ? currentX + changeRate : currentX - changeRate;
+			console.log("max change x triggered")
+		}
+		if (Math.abs(currentY - y) > maxChange) {
+			y = y > currentY ? currentY + changeRate : currentY - changeRate;
+			console.log("max change y triggered")
+		}
+
+		currentX = x;
+		currentY = y;
+
+		return (
+			`perspective(${mouseContainer.clientWidth}px) rotateX(${y / constrain}deg) rotateY(${x / constrain}deg)`
+		);
+	}
+
+	function transformElement(el, xyEl) {
+		el.style.transform = transforms(xyEl[0], xyEl[1], el);
+	}
+
+	mouseContainer.onmousemove = function (e) {
+		let xy = [e.clientX, e.clientY];
+		let position = xy.concat([movingImage]);
+
+		window.requestAnimationFrame(function () {
+			transformElement(movingImage, position);
+		});
+	};
+</script>
