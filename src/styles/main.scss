@@ -255,6 +255,7 @@ div.maingrid {
         "name"
         "links"
         "address";
+    grid-template-columns: 1fr 1fr 1fr;
 
     @media screen and (min-width: 48rem) {
         grid-template-areas:
