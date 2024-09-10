@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+export const prerender = false;
+
 const name = Astro.url.searchParams.get("name");
 const content = Astro.url.searchParams.get("content");
 

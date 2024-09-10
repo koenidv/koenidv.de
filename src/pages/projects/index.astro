@@ -6,6 +6,8 @@ import LiveIndicator from "../../components/LiveIndicator.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
+export const prerender = true;
+
 const projects = (await getCollection("projects")).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
