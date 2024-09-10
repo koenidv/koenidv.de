@@ -11,9 +11,14 @@ color: "#f1f6b7"
 category: "people"
 ---
 
+import { Image } from "astro:assets";
+import image1 from "../../../public/images/melodymates/1.png";
+import image2 from "../../../public/images/melodymates/2.png";
+import image3 from "../../../public/images/melodymates/3.png";
+import image4 from "../../../public/images/melodymates/4.png";
+
 <p>
-	MelodyMates is a social network for young music lovers.
-	<br />
+	MelodyMates is a social network for young music lovers. <br/>
 	Sign up with Spotify, share the songs you love, and discover what your friends are recommending.
 </p>
 <div class="flex flex-wrap gap-2 pb-2 pt-4">
@@ -39,42 +44,28 @@ category: "people"
 	</a>
 </div>
 <div class="imagecarousel flex flex-row gap-2 overflow-x-scroll rounded">
-	<a
-		target="_blank"
-		class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
-		href="https://user-images.githubusercontent.com/32238636/234383204-cfd9e5fe-743f-45ee-b054-9dac9ad465cc.png">
-		<img
-			class="max-h-[40vh] min-w-[7.5rem] rounded"
-			src="https://user-images.githubusercontent.com/32238636/234383204-cfd9e5fe-743f-45ee-b054-9dac9ad465cc.png"
-		/>
-	</a>
-	<a
-		target="_blank"
-		class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
-		href="https://user-images.githubusercontent.com/32238636/234383213-91b8f412-c4a7-45c8-910a-bc2a939c4678.png">
-		<img
-			class="max-h-[40vh] min-w-[7.5rem] rounded"
-			src="https://user-images.githubusercontent.com/32238636/234383213-91b8f412-c4a7-45c8-910a-bc2a939c4678.png"
-		/>
-	</a>
-	<a
-		target="_blank"
-		class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
-		href="https://user-images.githubusercontent.com/32238636/234383226-4699cbfa-1de5-4492-977b-520345ba5058.png">
-		<img
-			class="max-h-[40vh] min-w-[7.5rem] rounded"
-			src="https://user-images.githubusercontent.com/32238636/234383226-4699cbfa-1de5-4492-977b-520345ba5058.png"
-		/>
-	</a>
-	<a
-		target="_blank"
-		class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
-		href="https://user-images.githubusercontent.com/32238636/234383242-daef942c-f03a-4a4f-bd77-ea3a1990e80c.png">
-		<img
-			class="max-h-[40vh] min-w-[7.5rem] rounded"
-			src="https://user-images.githubusercontent.com/32238636/234383242-daef942c-f03a-4a4f-bd77-ea3a1990e80c.png"
-		/>
-	</a>
+  {
+    [
+      ["Home Feed", image1],
+      ["User Profile", image2],
+      ["Post", image3],
+      ["Search Screen", image4]
+    ].map(([description, image], index) => (
+      <a
+        target="_blank"
+        class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
+        href={`/images/melodymates/${index + 1}.png`}>
+        <Image
+          src={image}
+          alt={`Screenshot from MelodyMates; ${description}`}
+					widths={[200, 400, 800]}
+					sizes={"(max-width: 1000px) 200px, (max-width: 2000px) 400px, 800px"}
+          loading="lazy"
+          class="max-h-[40vh] min-w-[7.5rem] rounded w-min"
+        />
+      </a>
+    ))
+  }
 </div>
 <h2 class="pt-4 font-poppins text-3xl">Motivation</h2>
 <p>
