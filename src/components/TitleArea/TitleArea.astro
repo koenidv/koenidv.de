@@ -56,15 +56,31 @@ import titleImage from "../../../public/images/title.jpg";
 </div>
 
 <script lang="js">
-
 	const mouseContainer = document.body;
 	const movingImage = document.querySelector("#titleimage");
-	const constrain = mouseContainer.clientWidth / 100;
-	const maxChange = 200, changeRate = 100;
+	const constrain = mouseContainer.clientWidth / 20;
+	const maxChange = 200,
+		changeRate = 100;
 
-	let currentX = 0, currentY = 0;
+	let currentX = 0,
+		currentY = 0;
 
-	const imageCenter = [movingImage.x + movingImage.clientWidth / 2, movingImage.y + movingImage.clientHeight / 2];
+	const imageCenter = [
+		movingImage.x + movingImage.clientWidth / 2,
+		movingImage.y + movingImage.clientHeight / 2
+	];
+
+	const mightBeMobile = [
+		/Android/i,
+		/webOS/i,
+		/iPhone/i,
+		/iPad/i,
+		/iPod/i,
+		/BlackBerry/i,
+		/Windows Phone/i
+	].some((toMatchItem) => {
+		return navigator.userAgent.match(toMatchItem);
+	});
 
 	function transforms(x, y, el) {
 		x = x - imageCenter[0];
@@ -72,19 +88,19 @@ import titleImage from "../../../public/images/title.jpg";
 
 		if (Math.abs(currentX - x) > maxChange) {
 			x = x > currentX ? currentX + changeRate : currentX - changeRate;
-			console.log("max change x triggered")
+			console.log("max change x triggered");
 		}
 		if (Math.abs(currentY - y) > maxChange) {
 			y = y > currentY ? currentY + changeRate : currentY - changeRate;
-			console.log("max change y triggered")
+			console.log("max change y triggered");
 		}
 
 		currentX = x;
 		currentY = y;
 
-		return (
-			`perspective(${mouseContainer.clientWidth}px) rotateX(${y / constrain}deg) rotateY(${x / constrain}deg)`
-		);
+		return `perspective(${mouseContainer.clientWidth}px) rotateX(${y / constrain}deg) rotateY(${
+			x / constrain
+		}deg)`;
 	}
 
 	function transformElement(el, xyEl) {
@@ -92,6 +108,10 @@ import titleImage from "../../../public/images/title.jpg";
 	}
 
 	mouseContainer.onmousemove = function (e) {
+		if (mightBeMobile) {
+			return;
+		}
+
 		let xy = [e.clientX, e.clientY];
 		let position = xy.concat([movingImage]);
 
