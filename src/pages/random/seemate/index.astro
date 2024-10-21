@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeingMate</title>
+    <style is:inline>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #4caf50; color: white; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .photo { width: 8rem; height: 8rem; cursor: pointer; margin: 5px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .photo-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .fullscreen, .import-dialog { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        .fullscreen img { max-width: 90%; max-height: 80%; border-radius: 5px; }
+        .dialog { background: white; padding: 20px; border-radius: 5px; width: 90%; max-width: 400px; }
+        .fullscreen button, .dialog button { background-color: #4caf50; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin: 10px; cursor: pointer; }
+        .fullscreen button:hover, .dialog button:hover { background-color: #45a049; }
+        #savedUserIds { margin-top: 50px; }
+        #savedUserIds button { margin: 5px; display: flex; align-items: center; }
+        .user-preview { width: 3rem; height: 3rem; object-fit: cover; border-radius: 4px; margin-right: 10px; }
+        .navigation { display: flex; justify-content: space-between; width: 100%; position: absolute; top: 50%; transform: translateY(-50%); }
+        .delete-btn { background: none; border: none; color: #ff4c4c; cursor: pointer; margin-left: 10px; }
+        .delete-btn:hover { color: #ff1c1c; }
+    </style>
+</head>
+<body>
+
+    <h1>SeeingMate</h1>
+    <input type="text" id="useridInput" placeholder="Enter User ID">
+    <button onclick="showPhotos()">Show Photos</button>
+    <div id="photoContainer" class="photo-row"></div>
+
+    <input type="text" id="nameInput" placeholder="Enter Name">
+    <button onclick="saveUserId()">Save User</button>
+    <button onclick="exportUsers()">Export</button>
+    <button onclick="openImportDialog()">Import</button>
+
+    <div id="savedUserIds"></div>
+
+    <div class="fullscreen" id="fullscreen">
+        <div class="navigation">
+            <button onclick="prevPhoto()">&#9664; Prev</button>
+            <button onclick="nextPhoto()">Next &#9654;</button>
+        </div>
+        <img id="fullscreenImg" src="" alt="Full Screen">
+    </div>
+
+    <div class="import-dialog" id="importDialog">
+        <div class="dialog">
+            <textarea id="importData" placeholder="Import users (id name)" style="width: 100%; height: 100px;"></textarea>
+            <button onclick="importUsers()">Import</button>
+            <button onclick="closeImportDialog()">Cancel</button>
+        </div>
+    </div>
+
+    <script is:inline>
+        const photoContainer = document.getElementById('photoContainer');
+        const fullscreen = document.getElementById('fullscreen');
+        const fullscreenImg = document.getElementById('fullscreenImg');
+        const savedUserIdsDiv = document.getElementById('savedUserIds');
+        const importDialog = document.getElementById('importDialog');
+        let currentPhotoIndex = 0;
+        let currentPhotos = [];
+
+        function showPhotos() {
+            const userid = document.getElementById('useridInput').value.trim().replace(/\//g, '');
+            photoContainer.innerHTML = '';
+            currentPhotos = [];
+
+            for (let i = 0; i < 7; i++) {
+                const suffix = i === 0 ? '' : `-${i}`;
+                const url = `https://static.blindmate.de/u/${userid.substring(0, 2)}/${userid.substring(2, 4)}/${userid.substring(4)}${suffix}.jpg`;
+                currentPhotos.push(url);
+
+                const img = document.createElement('img');
+                img.src = url;
+                img.className = 'photo';
+                img.onclick = () => openFullscreen(i);
+                photoContainer.appendChild(img);
+            }
+        }
+
+        function openFullscreen(index) {
+            currentPhotoIndex = index;
+            fullscreenImg.src = currentPhotos[index];
+            fullscreen.style.display = 'flex';
+        }
+
+        function prevPhoto() {
+            currentPhotoIndex = (currentPhotoIndex - 1 + currentPhotos.length) % currentPhotos.length;
+            fullscreenImg.src = currentPhotos[currentPhotoIndex];
+        }
+
+        function nextPhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % currentPhotos.length;
+            fullscreenImg.src = currentPhotos[currentPhotoIndex];
+        }
+
+        fullscreen.onclick = (e) => {
+            if (e.target === fullscreen) {
+                fullscreen.style.display = 'none';
+            }
+        };
+
+        function saveUserId() {
+            const userid = document.getElementById('useridInput').value.trim().replace(/\//g, '');
+            const name = document.getElementById('nameInput').value;
+            if (!userid || !name) return;
+
+            const userIds = JSON.parse(localStorage.getItem('userIds')) || {};
+            userIds[userid] = name;
+            localStorage.setItem('userIds', JSON.stringify(userIds));
+            displaySavedUserIds();
+        }
+
+        function displaySavedUserIds() {
+            const userIds = JSON.parse(localStorage.getItem('userIds')) || {};
+            savedUserIdsDiv.innerHTML = '';
+
+            for (const [userid, name] of Object.entries(userIds)) {
+                const container = document.createElement('div');
+                container.style.display = 'flex';
+                container.style.alignItems = 'center';
+
+                const button = document.createElement('button');
+                const img = document.createElement('img');
+                img.src = `https://static.blindmate.de/u/${userid.substring(0, 2)}/${userid.substring(2, 4)}/${userid.substring(4)}.jpg`;
+                img.className = 'user-preview';
+
+                button.appendChild(img);
+                button.appendChild(document.createTextNode(`${name} (${userid})`));
+                button.onclick = () => {
+                    document.getElementById('useridInput').value = userid;
+                    showPhotos();
+                };
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.innerHTML = '🗑️';
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.onclick = () => deleteUser(userid);
+
+                container.appendChild(button);
+                container.appendChild(deleteBtn);
+                savedUserIdsDiv.appendChild(container);
+            }
+        }
+
+        function deleteUser(userid) {
+            const userIds = JSON.parse(localStorage.getItem('userIds')) || {};
+            delete userIds[userid];
+            localStorage.setItem('userIds', JSON.stringify(userIds));
+            displaySavedUserIds();
+        }
+
+        function exportUsers() {
+            const userIds = JSON.parse(localStorage.getItem('userIds')) || {};
+            const exportData = Object.entries(userIds).map(([id, name]) => `${id} ${name}`).join('\n');
+            navigator.clipboard.writeText(exportData).then(() => {
+                alert('User data copied to clipboard');
+            });
+        }
+
+        function openImportDialog() {
+            importDialog.style.display = 'flex';
+        }
+
+        function closeImportDialog() {
+            importDialog.style.display = 'none';
+        }
+
+        function importUsers() {
+            const importText = document.getElementById('importData').value.trim();
+            const lines = importText.split('\n');
+            const userIds = JSON.parse(localStorage.getItem('userIds')) || {};
+
+            lines.forEach(line => {
+                const [id, ...nameParts] = line.split(' ');
+                const cleanId = id.replace(/\//g, '');
+                const name = nameParts.join(' ');
+                if (cleanId && name) {
+                    userIds[cleanId] = name;
+                }
+            });
+
+            localStorage.setItem('userIds', JSON.stringify(userIds));
+            displaySavedUserIds();
+            closeImportDialog();
+        }
+
+        displaySavedUserIds();
+    </script>
+</body>
+</html>
