@@ -311,7 +311,7 @@ div.projectsgrid {
     }
 }
 
-@media screen and (min-width: 96rem) {
+@media screen and (min-width: 80rem) {
     div.projectsgrid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, minmax(0, 1fr)) 3.5rem;
