@@ -300,7 +300,7 @@ div.projectsgrid {
         "more";
 }
 
-@media screen and (min-width: 56rem) {
+@media screen and (min-width: 48rem) {
     div.projectsgrid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 3.5rem;
@@ -311,7 +311,23 @@ div.projectsgrid {
     }
 }
 
-@media screen and (min-width: 80rem) {
+@media screen and (min-width: 64rem) {
+    div.projectsgrid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 3.5rem;
+        grid-template-areas:
+            "project1 project2"
+            "project1 project2"
+            "project1 project2"
+            "project1 project2"
+            "project1 project3"
+            "project4 project3"
+            "project4 project3"
+            "project4 more";
+    }
+}
+
+@media screen and (min-width: 96rem) {
     div.projectsgrid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, minmax(0, 1fr)) 3.5rem;

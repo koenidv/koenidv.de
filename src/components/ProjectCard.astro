@@ -44,10 +44,10 @@ const { title, description, image, tags, slug, isLarge } = Astro.props;
 				alt={`Cover image for ${title}`}
 				class:list={isLarge
 					? [
-							"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4"
+							"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4 max-h-[40vh]"
 					  ]
 					: [
-							"h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4"
+							"h-full aspect-[2] 2xl:aspect-square object-cover md:max-2xl:h-96 border-black max-2xl:border-b-4 2xl:border-r-4 max-h-[20vh]"
 					  ]}
 			/>
 			<div class:list={["m-8", { "flex flex-col m-8 md:mt-6": !isLarge }]}>
