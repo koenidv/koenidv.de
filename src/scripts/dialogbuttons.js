@@ -34,7 +34,10 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 		document.body.style.top = "";
 	});
 
-	e.addEventListener("click", () => handleOpenClicked(origin, dialog, slug));
+	e.addEventListener("click", (evt) => {
+		if (evt.target.tagName === "A") return;
+		handleOpenClicked(origin, dialog, slug);
+	});
 	e.addEventListener("keydown", (event) => {
 		if (event.keyCode !== 13) return;
 		handleOpenClicked(origin, dialog, slug);
@@ -49,7 +52,7 @@ const hideDialog = (origin, dialog) => {
 
 const handleCloseClicked = async (origin, dialog) => {
 	console.log(document.referrer)
-	console.log((document.referrer && document.location.href.includes(document.referrer))=== true)
+	console.log((document.referrer && document.location.href.includes(document.referrer)) === true)
 	if ((document.referrer && document.location.href.includes(document.referrer)) === true) {
 		history.back();
 		return;

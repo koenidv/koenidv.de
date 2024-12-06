@@ -25,6 +25,7 @@ collections:
     - { label: "Date", name: "date", widget: "datetime" }
     - { label: "Category", name: "category", widget: "select", options: ["people", "tools", "games", "services"], required: false }
     - { label: "Live", name: "live", widget: "boolean", required: false }
+    - { label: "CTA Button Text for Promoted Project #1", name: "ctaLinkText", widget: "string", required: false }
     - { label: "Body", name: "body", widget: "markdown" }
   
   - name: "settings"

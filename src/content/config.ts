@@ -12,6 +12,7 @@ const projects = defineCollection({
     color: z.string().optional(),
     category: z.enum(["people", "tools", "games", "services"]).optional(),
     live: z.boolean().optional(),
+    ctaLinkText: z.string().optional(),
   }),
 });
 

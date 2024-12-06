@@ -14,11 +14,7 @@ const { Content, headings } = await project.render();
 ---
 
 <ProjectCard
-	title={data.title}
-	description={data.longDescription || data.description}
-	image={data.image || ""}
-	tags={data.tags}
-	slug={project.slug}
+	project={project}
 	isLarge={isLarge == true}
 />
 <ProjectDialog title={data.title} image={data.image} slug={project.slug}>

@@ -21,6 +21,7 @@ module.exports = {
 					50: "#fbfff5",
 					100: "#f1ffdc",
 					200: "#e7ffc2",
+					500: "#c5fc6f",
 				},
 				lavender: {
 					200: "#ffc9fd",

@@ -1,25 +1,25 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+
 export interface Props {
-	title: string;
-	description: string;
-	image: string;
-	tags: string[];
-	slug: string;
+	project: CollectionEntry<'projects'>;
 	isLarge: boolean;
 }
 
-const { title, description, image, tags, slug, isLarge } = Astro.props;
+const { project, isLarge } = Astro.props;
+
+const data = project.data!;
 ---
 
-<div class="group flex" id={"project" + slug}>
+<div class="group flex" id={"project" + project.slug}>
 	<div
 		class:list={[
 			"opendialog elevated-card-hoverable hover:cursor-pointer w-full",
 			{ "elevated-4": isLarge }
 		]}
-		data-dialog={"dialog" + slug}
-		data-origin={"project" + slug}
-		data-slug={slug}
+		data-dialog={"dialog" + project.slug}
+		data-origin={"project" + project.slug}
+		data-slug={project.slug}
 		tabindex="0"
 		aria-label="Open details">
 		<div
@@ -29,19 +29,19 @@ const { title, description, image, tags, slug, isLarge } = Astro.props;
 			]}>
 			<img
 				srcset={`
-					/images/200/${image}   200w,
-					/images/400/${image}   400w,
-					/images/800/${image}   800w,
-					/images/1200/${image} 1200w
+					/images/200/${data.image}   200w,
+					/images/400/${data.image}   400w,
+					/images/800/${data.image}   800w,
+					/images/1200/${data.image} 1200w
 				`}
 				sizes="
 					(max-width: 450px) 200px,
 					(max-width: 850px) 400px,
 					(max-width: 1250px) 800px,
 					1200px"
-				src={`/images/1200/${image}`}
+				src={`/images/1200/${data.image}`}
 				loading="lazy"
-				alt={`Cover image for ${title}`}
+				alt={`Cover image for ${data.title}`}
 				class:list={isLarge
 					? [
 							"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4 lg:max-2xl:max-h-[40vh]"
@@ -53,14 +53,23 @@ const { title, description, image, tags, slug, isLarge } = Astro.props;
 			<div class:list={["m-8", { "flex flex-col m-8 md:mt-6": !isLarge }]}>
 				<h2
 					class="animateunderline h-12 text-4xl font-poppins font-bold tracking-wider underline-offset-[0.4rem] decoration-[0.2rem]">
-					{title}
+					{data.title}
 				</h2>
 				<p class="mt-2">
-					{description}
+					{data.longDescription || data.description}
 				</p>
 				<div class:list={["mt-4 flex flex-wrap gap-2", { "md:mt-8": isLarge }]}>
-					{tags.map((tag: String) => <span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>)}
+					{data.tags.map((tag: String) => <span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>)}
 				</div>
+				{data.ctaLinkText && (
+					<div class="max-2xl:hidden absolute bottom-16 right-16 border-2 border-black w-fit h-fit flex group">
+						<a
+							href={data.link}
+							class="hover:italic border-0 border-mojito-500 rounded-sm p-4 min-w-[24rem] text-center box-border hover:bg-mojito-500 psycho-bg">
+							{data.ctaLinkText}	
+						</a>
+					</div>
+				)}
 			</div>
 		</div>
 	</div>
