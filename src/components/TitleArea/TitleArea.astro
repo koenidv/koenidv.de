@@ -80,11 +80,9 @@ import titleImage from "../../../public/images/title.jpg";
 
 		if (Math.abs(currentX - x) > maxChange) {
 			x = x > currentX ? currentX + changeRate : currentX - changeRate;
-			console.log("max change x triggered");
 		}
 		if (Math.abs(currentY - y) > maxChange) {
 			y = y > currentY ? currentY + changeRate : currentY - changeRate;
-			console.log("max change y triggered");
 		}
 
 		currentX = x;
