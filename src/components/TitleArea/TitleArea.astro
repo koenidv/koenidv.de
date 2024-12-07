@@ -74,6 +74,8 @@ import titleImage from "../../../public/images/title.jpg";
 		return navigator.userAgent.match(toMatchItem);
 	});
 
+	const mightBeSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 	function transforms(x, y, el) {
 		x = x - imageCenter[0];
 		y = y - imageCenter[1];
@@ -98,7 +100,7 @@ import titleImage from "../../../public/images/title.jpg";
 	}
 
 	mouseContainer.onmousemove = function (e) {
-		if (mightBeMobile) {
+		if (mightBeMobile || mightBeSafari) {
 			return;
 		}
 
