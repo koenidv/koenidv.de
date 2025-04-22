@@ -1,0 +1,37 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+	title: string;
+	description?: string | undefined;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout
+  title={title}
+  description={description}
+  >
+
+  <div class="font-mono">
+    <div class="flex flex-col md:flex-row p-4 gap-3 items-center md:justify-between md:items-center">
+      <div class="flex items-baseline">
+        <a href="/"> <!-- on mobile, direct to /blog if not on /blog already -->
+          Florian König
+        </a>
+        <a href="/blog" class="font-normal px-2 text-sm max-md:hidden">blog/</a>
+      </div>
+      <div id="links" class="flex flex-row gap-4 md:gap-3 justify-center md:justify-end opacity-60 md:opacity-100">
+        <a href="/projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <main id="blog" class="p-4">
+      <slot />
+    </main>
+  </div>
+
+</Layout>

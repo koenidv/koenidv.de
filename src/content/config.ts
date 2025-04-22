@@ -16,4 +16,16 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects }
+const articles = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    image: z.string().optional(),
+    date: z.string().or(z.date()).transform((val) => new Date(val)),
+    published: z.boolean().optional(),
+    draft: z.boolean().optional(),
+    category: z.enum(["reverse-eng", "android", "hardware", "web"]),
+  })
+});
+
+export const collections = { projects, articles }
