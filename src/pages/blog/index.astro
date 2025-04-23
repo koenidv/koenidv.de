@@ -1,39 +1,26 @@
 ---
-import BlogLayout from '../../layouts/BlogLayout.astro';
-import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro'
+import { getCollection } from 'astro:content'
+import { categoryColors } from './categoryColors'
 
-// Make this page prerendered
-export const prerender = true;
+export const prerender = true
 
-// Get all articles from the collection
-const allArticles = await getCollection('articles', ({ data }) => {
-  // Only show published articles (not drafts)
-  return data.published !== false && data.draft !== true;
-});
-
-// Sort articles by date (newest first)
-const sortedArticles = allArticles.sort((a, b) => 
+const articles = (await getCollection('articles', ({ data }) =>
+  data.draft !== true
+)).sort((a, b) => 
   b.data.date.getTime() - a.data.date.getTime()
-);
-
-// Define category colors for visual distinction
-const categoryColors = {
-  "reverse-eng": "bg-amber-100 text-amber-800",
-  "android": "bg-green-100 text-green-800",
-  "hardware": "bg-red-100 text-red-800",
-  "web": "bg-blue-100 text-blue-800"
-};
+)
 ---
 
 <BlogLayout
   title="Florian König's Technology Blog"
   description="Articles on tech and design by Florian König."
 >
-  <div class="max-w-7xl mx-auto py-8">
-    <h1 class="text-4xl font-black font-poppins tracking-wider mb-8 pb-4">Articles</h1>
+  <div class="max-w-7xl mx-auto md:py-8">
+    <h1 class="text-3xl max-sm:text-center md:text-4xl font-black font-poppins tracking-wider mb-8">Articles</h1>
     
     <div class="grid gap-8 md:grid-cols-2">
-      {sortedArticles.map((article) => (
+      {articles.map((article) => (
         <div class="group flex w-full">
 	<a class="elevated-card-hoverable hover:cursor-pointer w-full elevated"
     href={`/blog/${article.slug}`}>
@@ -56,8 +43,7 @@ const categoryColors = {
             <time class="text-sm text-gray-600 font-normal">
               {article.data.date.toLocaleDateString('en-US', {
                 year: 'numeric',
-                month: 'short',
-                day: 'numeric'
+                month: 'long'
               })}
             </time>
           </div>
@@ -76,9 +62,9 @@ const categoryColors = {
       ))}
     </div>
     
-    {sortedArticles.length === 0 && (
+    {articles.length === 0 && (
       <div class="text-center py-12">
-        <p class="text-gray-500 font-mono">No articles published yet. Check back soon!</p>
+        <p class="text-gray-500 font-mono">No articles published yet.</p>
       </div>
     )}
   </div>

@@ -22,7 +22,6 @@ const articles = defineCollection({
     description: z.string(),
     image: z.string().optional(),
     date: z.string().or(z.date()).transform((val) => new Date(val)),
-    published: z.boolean().optional(),
     draft: z.boolean().optional(),
     category: z.enum(["reverse-eng", "android", "hardware", "web"]),
   })

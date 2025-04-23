@@ -6,7 +6,6 @@ backend:
   branch: main
 
 collections:
-  
   - name: "projects"
     label: "Projects"
     folder: "src/content/projects"
@@ -15,19 +14,57 @@ collections:
     create: true
     delete: true
     fields:
-    - { label: "Title", name: "title", widget: "string" }
-    - { label: "Slug", name: "slug", widget: "string" }
-    - { label: "Description", name: "description", widget: "text" }
-    - { label: "Long Description", name: "longDescription", widget: "text", required: false }
-    - { label: "Image", name: "image", widget: "image", required: false }
-    - { label: "Link", name: "link", widget: "string" }
-    - { label: "Tags", name: "tags", widget: "list" }
-    - { label: "Date", name: "date", widget: "datetime" }
-    - { label: "Category", name: "category", widget: "select", options: ["people", "tools", "games", "services"], required: false }
-    - { label: "Live", name: "live", widget: "boolean", required: false }
-    - { label: "CTA Button Text for Promoted Project #1", name: "ctaLinkText", widget: "string", required: false }
-    - { label: "Body", name: "body", widget: "markdown" }
-  
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Long Description",
+          name: "longDescription",
+          widget: "text",
+          required: false,
+        }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["people", "tools", "games", "services"],
+          required: false,
+        }
+      - { label: "Live", name: "live", widget: "boolean", required: false }
+      - {
+          label: "CTA Button Text for Promoted Project #1",
+          name: "ctaLinkText",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "articles"
+    label: "Articles"
+    folder: "src/content/articles"
+    extension: "mdx"
+    format: frontmatter
+    create: true
+    delete: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean", required: false }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["reverse-eng", "android", "hardware", "web"],
+          required: false,
+        }
+
   - name: "settings"
     label: "Settings"
     files:

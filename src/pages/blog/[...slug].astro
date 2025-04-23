@@ -1,16 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content'
+import BlogLayout from '../../layouts/BlogLayout.astro'
+import { categoryColors } from './categoryColors'
 
-// Make this page prerendered
-export const prerender = true;
+export const prerender = true
 
-// Generate static paths for all articles
 export async function getStaticPaths() {
-  const articleEntries = await getCollection('articles', ({ data }) => {
-    // Only include published articles
-    return data.published !== false && data.draft !== true;
-  });
+  const articleEntries = await getCollection('articles')
   
   return articleEntries.map(entry => ({
     params: { slug: entry.slug },
@@ -18,45 +14,48 @@ export async function getStaticPaths() {
   }));
 }
 
-// Get the article data from the props
-const { entry } = Astro.props;
-// Render the article content
-const { Content } = await entry.render();
-
-// Format the date
-const formattedDate = entry.data.date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
-
-// Define category colors for visual distinction
-const categoryColors = {
-  "reverse-eng": "bg-amber-100 text-amber-800 border-amber-200",
-  "android": "bg-green-100 text-green-800 border-green-200",
-  "hardware": "bg-red-100 text-red-800 border-red-200",
-  "web": "bg-blue-100 text-blue-800 border-blue-200"
-};
+const { entry } = Astro.props
+const { Content } = await entry.render()
 ---
 
 <BlogLayout 
   title={entry.data.title}
   description={entry.data.description}
+  slug={entry.slug}
 >
-  <article class="max-w-3xl mx-auto px-4 py-12 font-mono">
+  <article class="max-w-5xl mx-auto px-12 py-12 font-mono bg-beige-100 rounded-sm border border-beige-200">
     <!-- Article Header -->
     <header class="mb-10">
       <div class="flex items-center gap-3 mb-4">
-        <span class={`text-sm px-3 py-1 rounded-md border ${categoryColors[entry.data.category]}`}>
+        {entry.data.draft && (
+          <span class="bg-rose-100 text-rose-800 border-rose-200 text-sm px-3 py-1 rounded-sm border">
+            draft
+          </span>
+        )}
+        <span class={`text-sm px-3 py-1 rounded-sm border ${categoryColors[entry.data.category]}`}>
           {entry.data.category}
         </span>
         <time class="text-gray-500 text-sm">
-          {formattedDate}
+          {entry.data.date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long'
+          })}
         </time>
       </div>
       
       <h1 class="text-4xl font-bold mb-6 leading-tight">
         {entry.data.title}
+        <div class="inline-flex">
+          <button 
+            class="text-gray-500 hover:text-purple-500 copy-link-btn"
+            data-url={`https://koeni.dev/blog/${entry.slug}`}
+            aria-label="Copy link to article"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
       </h1>
       
       <p class="text-xl text-gray-600 mb-8">
@@ -80,30 +79,22 @@ const categoryColors = {
       <Content />
     </div>
     
-    <!-- Article Footer -->
-    <footer class="mt-16 pt-8 border-t border-gray-200">
-      <div class="flex justify-between items-center">
-        <a href="/blog" class="inline-flex items-center text-blue-600 hover:text-blue-800">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-          Back to all articles
-        </a>
-        
-        <div class="flex space-x-4">
-          <button 
-            class="text-gray-500 hover:text-blue-500 copy-link-btn"
-            data-url={`https://koeni.dev/blog/${entry.slug}`}
-            aria-label="Copy link to article"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </footer>
   </article>
+  
+  <div class="max-w-5xl mx-auto px-8 py-12 font-mono">
+
+    <footer class="border-t border-gray-200">
+      <div class="flex justify-between items-center">
+        <a href="/blog" class="inline-flex items-center hover:text-purple-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        all articles
+      </a>
+    
+    </footer>
+  </div>
+
 </BlogLayout>
 
 <script>
@@ -117,7 +108,7 @@ const categoryColors = {
           // Optional: Show a tooltip or notification that the link was copied
           const originalText = copyBtn.innerHTML;
           copyBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
           `;
