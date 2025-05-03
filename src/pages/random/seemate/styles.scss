@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.seemate-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 2rem;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.seemate-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin: 0;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000, 4px 4px 0 #da62c4;
+  color: #000;
+  position: sticky;
+  top: 0;
+  background: transparent;
+  z-index: 1;
+  padding: 1rem 0;
+}
+
+.seemate-panes {
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+  align-items: flex-start;
+  max-width: calc(56rem + 40rem + 2rem);
+  padding: 0 1rem;
+  height: calc(100vh - 8rem);
+  position: relative;
+}
+
+.seemate-pane {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
+}
+
+.seemate-pane::-webkit-scrollbar {
+  width: 6px;
+}
+
+.seemate-pane::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.seemate-pane::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 3px;
+}
+
+.seemate-user-pane {
+  width: 56rem;
+  flex: none;
+}
+
+.seemate-list-pane {
+  width: 40rem;
+  flex: none;
+}
+
+.seemate-controls,
+.seemate-user-controls,
+.seemate-saved-users {
+  background: #f4ae81;
+  border: 3px solid #000;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 4px 4px 0 #000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.seemate-photo-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.seemate-input {
+  font-size: 1.1rem;
+  padding: 0.7rem 1rem;
+  border: 2.5px solid #000;
+  border-radius: 0.5rem;
+  background: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  outline: none;
+  box-shadow: 2px 2px 0 #000;
+  margin-bottom: 0.5rem;
+  transition: border 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.seemate-input:focus {
+  border-color: #da62c4;
+  box-shadow: 2px 2px 0 #da62c4;
+}
+
+.seemate-btn {
+  font-size: 1.1rem;
+  font-weight: 900;
+  padding: 0.7rem 1.2rem;
+  border: 2.5px solid #000;
+  border-radius: 0.5rem;
+  background: #a0a2d3;
+  color: #000;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.15s, box-shadow 0.15s, border 0.15s;
+  white-space: nowrap;
+}
+.seemate-btn:hover, .seemate-btn:focus {
+  background: #ef8d8b;
+  border-color: #da62c4;
+  box-shadow: 2px 2px 0 #da62c4;
+}
+
+.photo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: flex-start;
+}
+
+.photo-row img.photo {
+  width: calc((100% - 2rem) / 3);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 3px solid #000;
+  border-radius: 0.7rem;
+  box-shadow: 2px 2px 0 #000;
+  background: #fff;
+  cursor: pointer;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+.photo-row img.photo:hover {
+  border-color: #da62c4;
+  box-shadow: 2px 2px 0 #da62c4;
+}
+
+.seemate-saved-users {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.seemate-saved-users > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #afd0d1;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.seemate-saved-users > div:hover {
+  background: #9bc0c1;
+  box-shadow: 2px 2px 0 #da62c4;
+}
+
+.user-preview {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #000;
+  border-radius: 0.4rem;
+  background: #fff;
+  box-shadow: 1px 1px 0 #000;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex-grow: 1;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.delete-btn {
+  background: #ef8d8b;
+  border: 2px solid #000;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000;
+  transition: background 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+}
+.delete-btn:hover {
+  background: #da62c4;
+  box-shadow: 1px 1px 0 #da62c4;
+}
+
+.fullscreen {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.98);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 4px solid #000;
+  padding: 2rem;
+}
+.fullscreen .navigation {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.9);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+}
+.fullscreen img {
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 4px solid #000;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0 #000;
+  background: #fff;
+}
+
+.import-dialog {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  align-items: center;
+  justify-content: center;
+}
+.import-dialog .dialog {
+  background: #fffbe6;
+  border: 4px solid #000;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 6px 6px 0 #000;
+  min-width: 320px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .seemate-wrapper {
+    padding: 1rem;
+  }
+
+  .seemate-panes {
+    flex-direction: column;
+    gap: 1rem;
+    max-width: none;
+    height: auto;
+  }
+
+  .seemate-pane {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .seemate-user-pane,
+  .seemate-list-pane {
+    width: 100%;
+  }
+
+  .photo-row img.photo {
+    width: calc((100% - 1rem) / 2);
+  }
+}
+
+// Snackbar styles
+.seemate-snackbar {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 #da62c4;
+  z-index: 1200;
+  transition: transform 0.3s ease-out;
+}
+
+.seemate-snackbar.show {
+  transform: translateX(-50%) translateY(0);
+}
