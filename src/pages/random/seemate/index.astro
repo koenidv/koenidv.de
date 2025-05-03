@@ -69,8 +69,8 @@
             photoContainer.innerHTML = '';
             currentPhotos = [];
 
-            for (let i = 0; i < 7; i++) {
-                const suffix = i === 0 ? '' : `-${i}`;
+            for (let i = -1; i < 6; i++) {
+                const suffix = i === -1 ? '' : `-${i}`;
                 const url = `https://static.blindmate.de/u/${userid.substring(0, 2)}/${userid.substring(2, 4)}/${userid.substring(4)}${suffix}.jpg`;
                 currentPhotos.push(url);
 
