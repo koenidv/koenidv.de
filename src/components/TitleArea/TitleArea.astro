@@ -8,11 +8,16 @@ import TaglineRight from "../InlineSVGs/TaglineRight.astro";
 import { Image } from "astro:assets";
 
 import titleImage from "../../../public/images/title.jpg";
+
+export interface Props {
+	showBlog?: boolean;
+}
+const { showBlog } = Astro.props;
 ---
 
 <div class="maingrid">
 	<Shortinfo />
-	<Links />
+	<Links {showBlog} />
 
 	<div id="tagline" class="mx-4 md:mx-8 max-md:my-4 relative">
 		<Image

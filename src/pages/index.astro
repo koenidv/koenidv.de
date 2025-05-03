@@ -10,14 +10,18 @@ import { getEntry } from "astro:content";
 import PromotedProject from "../components/PromotedProject.astro";
 
 import promotedProjects from "../data/settings/promotedProjects.json";
+import { getCollection } from "astro:content";
 const PromotedProject1 = await getEntry("projects", promotedProjects.project1);
 const PromotedProject2 = await getEntry("projects", promotedProjects.project2);
 const PromotedProject3 = await getEntry("projects", promotedProjects.project3);
 const PromotedProject4 = await getEntry("projects", promotedProjects.project4);
+
+const blogArticlesCount = (await getCollection("articles", a => a.data.draft !== true)).length;
+console.log("articles", blogArticlesCount);
 ---
 
 <Layout title="Florian König">
-	<TitleArea />
+	<TitleArea showBlog={blogArticlesCount > 0} />
 
 	<section id="projects">
 		<Marquee inverse={false}>
