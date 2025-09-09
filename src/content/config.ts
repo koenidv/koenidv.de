@@ -23,7 +23,7 @@ const articles = defineCollection({
     image: z.string().optional(),
     date: z.string().or(z.date()).transform((val) => new Date(val)),
     draft: z.boolean().optional(),
-    category: z.enum(["reverse-eng", "android", "hardware", "web"]),
+    tags: z.enum(["talk", "cities", "reverse-eng", "android", "hardware", "web"]).array(),
   })
 });
 

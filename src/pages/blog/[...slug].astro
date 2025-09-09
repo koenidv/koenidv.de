@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import BlogLayout from '../../layouts/BlogLayout.astro'
 import { categoryColors } from './categoryColors'
+import Prose from '../../components/Prose.astro'
 
 export const prerender = true
 
@@ -32,9 +33,14 @@ const { Content } = await entry.render()
             draft
           </span>
         )}
-        <span class={`text-sm px-3 py-1 rounded-sm border ${categoryColors[entry.data.category]}`}>
-          {entry.data.category}
-        </span>
+        {entry.data.tags.map((tag) => (
+          <span
+            class={`rounded-sm border px-3 py-1 text-sm ${
+              categoryColors[tag]
+            }`}>
+            {tag}
+          </span>
+        ))}
         <time class="text-gray-500 text-sm">
           {entry.data.date.toLocaleDateString('en-US', {
             year: 'numeric',
@@ -76,7 +82,9 @@ const { Content } = await entry.render()
     
     <!-- Article Content -->
     <div class="prose prose-slate max-w-none font-mono prose-headings:font-bold prose-headings:border-b prose-headings:pb-2 prose-headings:border-gray-200 prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-pre:rounded-md prose-pre:shadow-inner prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none">
-      <Content />
+      <Prose>
+        <Content />
+      </Prose>
     </div>
     
   </article>

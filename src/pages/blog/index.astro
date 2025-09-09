@@ -45,12 +45,14 @@ const articles = (
 											draft
 										</span>
 									)}
-									<span
-										class={`rounded-sm border px-3 py-1 text-sm ${
-											categoryColors[article.data.category]
-										}`}>
-										{article.data.category}
-									</span>
+									{article.data.tags.map((tag) => (
+										<span
+											class={`rounded-sm border px-3 py-1 text-sm ${
+												categoryColors[tag]
+											}`}>
+											{tag}
+										</span>
+									))}
 									<time class="text-sm font-normal text-gray-600">
 										{article.data.date.toLocaleDateString("en-US", {
 											year: "numeric",
