@@ -5,9 +5,11 @@ import PostHog from "../components/PostHog.astro"
 export interface Props {
 	title: string;
 	description?: string | undefined;
+	socialImage?: string | undefined;
 }
 
-const { title, description } = Astro.props;
+const { title, description, socialImage } = Astro.props;
+const origin = Astro.site?.origin ?? "https://koeni.dev";
 ---
 
 <!DOCTYPE html>
@@ -27,6 +29,14 @@ const { title, description } = Astro.props;
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Roboto:wght@400&display=swap"
 			rel="stylesheet"
 		/>
+
+		<meta property="og:type" content="website" />
+    <meta property="og:title" content={title || "Florian König: Creative Developer"} />
+    <meta property="og:description" content={description || "Florian König is a creative software engineer and designer from Berlin, Germany. Explore his projects!"} />
+    <meta property="og:image" content={origin + socialImage} />
+
+		<meta name="robots" content="index, follow" />
+
 		<PostHog />
 	</head>
 	<body>

@@ -22,6 +22,7 @@ const { Content } = await entry.render()
 <BlogLayout 
   title={entry.data.title}
   description={entry.data.description}
+  socialImage={entry.data.socialImage}
   slug={entry.slug}
 >
   <article class="max-w-5xl mx-auto px-12 py-12 font-mono bg-beige-100 rounded-sm border border-beige-200">
@@ -71,7 +72,7 @@ const { Content } = await entry.render()
     
     <!-- Featured Image -->
     {entry.data.image && (
-      <div class="mb-10 rounded-lg overflow-hidden shadow-md">
+      <div class="mb-10 rounded-lg overflow-hidden">
         <img 
           src={entry.data.image} 
           alt={entry.data.title}

@@ -4,16 +4,18 @@ import Layout from './Layout.astro';
 export interface Props {
 	title: string;
 	description?: string | undefined;
+  socialImage?: string | undefined;
   slug?: string | undefined;
 }
 
-const { title, description, slug } = Astro.props;
+const { title, description, socialImage, slug } = Astro.props;
 ---
 
 <Layout
   title={title}
   description={description}
-  >
+  socialImage={socialImage}
+/>
 
   <div class="font-mono font-normal">
     <div class="flex md:font-sans font-semibold flex-col md:flex-row p-4 px-6 gap-3 items-center md:justify-between md:items-center">
