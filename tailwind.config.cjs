@@ -6,7 +6,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				poppins: ["Poppins", ...defaultTheme.fontFamily.sans]
+				poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
+				roboto: ["Roboto", ...defaultTheme.fontFamily.sans]
 			},
 			colors: {
 				beige: {
