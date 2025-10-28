@@ -25,17 +25,132 @@ console.log("articles", blogArticlesCount);
 
 	<section id="projects">
 		<Marquee inverse={false}>
-			<p>Collaboration</p>
-			<p>Android</p>
-			<p>Web</p>
-			<p>Cloud</p>
-			<p>Design</p>
-			<p>3D</p>
-			<p>Hardware</p>
-			<p>DevOps</p>
+			<p>Projects</p>
+			<p>Projects</p>
+			<p>Projects</p>
+			<p>Projects</p>
+			<p>Projects</p>
+			<p>Projects</p>
 		</Marquee>
 
-		<div
+
+		<div class="relative flex columns-2 w-full py-48">
+			
+			<div class="absolute top-0 bottom-0 left-0 right-0 -z-50 overflow-hidden">
+				<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-beige-100 to-transparent z-10" />
+				<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-beige-100 to-transparent z-10" />
+				<video
+					id="projects-background"
+					class="w-full h-full object-cover object-center opacity-90 bg-beige-100 blur-sm"
+					src=""
+					autoplay
+					muted
+					loop
+				></video>
+			</div>
+
+			<div class="flex flex-col gap-[4.5rem] min-h-screen w-full basis-2/5 pl-24 pb-64">
+
+				<div class="flex flex-col gap-4 max-w-lg">
+					<h1 class="text-3xl font-poppins font-black">Projects</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis imperdiet lectus, congue mattis neque varius sed. Nulla eu tellus posuere, posuere odio quis, rhoncus diam. </p>
+					<p>You'll find most of what I build on GitHub.</p>
+				</div>
+
+
+				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined  transition-all duration-300 ease-out" id="project-urban-mobility">Urban Mobility</h2>
+				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-kutelabs">kutelabs</h2>
+				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-culture-on-air">Culture on Air</h2>
+				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-chess-e">Chess:E</h2>
+				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-melodymates">MelodyMates</h2>
+				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-schulportal">Schulportal</h2>
+
+			</div>
+
+			<div class="sticky w-full basis-3/5 top-24 bottom-0 h-min p-8 flex flex-col items-center">
+
+				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-urban-mobility">
+					<div class="w-full h-80 bg-beige-400 rounded-lg" />
+					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Mobility Data → Knowledge</h1>
+					<p>Dies das</p>
+				</div>
+				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-kutelabs">
+					<img
+						src={`/images/character_boozle_kotlin.webp`}
+						loading="lazy"
+						alt={`Cover image for Culture on Air`}
+						class="w-full rounded-lg object-cover h-96 bg-beige-100"
+					/>
+					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Kotlin For Kids</h1>
+					<p>Dies das</p>
+				</div>
+				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-culture-on-air">
+					<!-- <img
+						srcset={`
+							/images/200/${data.image}   200w,
+							/images/400/${data.image}   400w,
+							/images/800/${data.image}   800w,
+							/images/1200/${data.image} 1200w
+						`}
+						sizes="
+							(max-width: 450px) 200px,
+							(max-width: 850px) 400px,
+							(max-width: 1250px) 800px,
+							1200px"
+						src={`/images/1200/${data.image}`}
+						loading="lazy"
+						alt={`Cover image for ${data.title}`}
+						class:list={isLarge
+							? [
+									"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4 lg:max-2xl:max-h-[40vh]"
+								]
+							: [
+									"h-full aspect-[2] 2xl:aspect-square object-cover border-black max-2xl:border-b-4 2xl:border-r-4 lg:max-2xl:max-h-[20vh]"
+								]}
+					/> -->
+					<img
+						src={`/images/cultureonair.avif`}
+						loading="lazy"
+						alt={`Cover image for Culture on Air`}
+						class="w-full rounded-lg object-cover h-96 bg-beige-100"
+					/>
+					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Global Pop Culture</h1>
+					<p>Dies das</p>
+				</div>
+				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-chess-e">
+					<img
+						src={`/images/chesse.webp`}
+						loading="lazy"
+						alt={`Cover image for Culture on Air`}
+						class="w-full rounded-lg object-cover h-96 bg-beige-100"
+					/>
+					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Digital⨯Analog Chess</h1>
+					<p>Dies das</p>
+				</div>
+				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-melodymates">
+					<img
+						src={`/images/melodymates.webp`}
+						loading="lazy"
+						alt={`Cover image for Culture on Air`}
+						class="w-full rounded-lg object-cover h-96 bg-beige-100"
+					/>
+					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">The Social Music Network</h1>
+					<p>Dies das</p>
+			</div>
+				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-schulportal">
+					<img
+						src={`/images/sphplanner.webp`}
+						loading="lazy"
+						alt={`Cover image for Culture on Air`}
+						class="w-full rounded-lg object-cover h-96 bg-beige-100"
+					/>
+					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Schulportal Hessen App</h1>
+					<p>Dies das</p>
+				</div>
+		</div>
+
+
+		<!-- <div
 			id="recent-projects"
 			class="projectsgrid min-h-[56rem] 2xl:max-h-[92vh] overflow-hidden p-4 md:p-8 max-md:mt-4 xl:px-16 gap-4 xl:gap-8 max-w-[180rem] mx-auto">
 			<h2 class="sr-only">Recent Projects</h2>
@@ -55,7 +170,7 @@ console.log("articles", blogArticlesCount);
 					</div>
 				</div>
 			</a>
-		</div>
+		</div> -->
 	</section>
 
 	<section id="about">
@@ -144,4 +259,59 @@ console.log("articles", blogArticlesCount);
 			}
 		};
 	</script>
+
+	<script type="module" is:inline>
+		function getClosestHeadline(headlines) {
+			const center = window.innerHeight / 2;
+			let closest = null;
+			let minDist = Infinity;
+			for (const h of headlines) {
+				const rect = h.getBoundingClientRect();
+				const dist = Math.abs((rect.top + rect.bottom)/1.5 - center);
+				if (dist < minDist) {
+					minDist = dist;
+					closest = h;
+				}
+			}
+			return closest;
+		}
+
+		function syncStickyVisibility() {
+			const headlines = Array.from(document.querySelectorAll('h2[id^="project-"]'));
+			const stickySections = Array.from(document.querySelectorAll('[id^="sticky-"]'));
+			const backgroundVideo = document.getElementById('projects-background');
+
+			stickySections.forEach(sec => sec.style.display = 'none');
+			headlines.forEach(h => {
+				h.classList.remove("text-7xl");
+				h.classList.add("text-5xl", "text-beige-100/75", "text-outlined");
+			})
+
+			const closest = getClosestHeadline(headlines);
+			
+			const videoSource = closest.id === "project-melodymates" 
+				? "/videos/melodymates_1.mp4" 
+				: closest.id === "project-urban-chesse"
+					? "/videos/chesse_1.webm"
+					: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4";
+			console.log("setting video source to", backgroundVideo.src, videoSource);
+			if (!backgroundVideo.src.endsWith(videoSource)) {
+				backgroundVideo.src = videoSource;
+			}
+			
+			if (!closest) return;
+
+			closest.classList.remove("text-5xl", "text-beige-100/75", "text-outlined");
+			closest.classList.add("text-7xl");
+			const stickyId = 'sticky-' + closest.id.replace(/^project-/, '');
+			const matching = document.getElementById(stickyId);
+			if (matching) matching.style.display = '';
+		}
+
+		window.addEventListener('scroll', syncStickyVisibility, { passive: true });
+		window.addEventListener('resize', syncStickyVisibility);
+
+		window.addEventListener('DOMContentLoaded', syncStickyVisibility);
+</script>
 </Layout>
+
