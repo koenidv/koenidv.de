@@ -7,14 +7,15 @@ import ContactForm from "../components/TitleArea/ContactForm.astro";
 import Marquee from "../components/Marquee.astro";
 import Footer from "../components/Footer.astro";
 import { getEntry } from "astro:content";
-import PromotedProject from "../components/PromotedProject.astro";
 
 import promotedProjects from "../data/settings/promotedProjects.json";
 import { getCollection } from "astro:content";
-const PromotedProject1 = await getEntry("projects", promotedProjects.project1);
-const PromotedProject2 = await getEntry("projects", promotedProjects.project2);
-const PromotedProject3 = await getEntry("projects", promotedProjects.project3);
-const PromotedProject4 = await getEntry("projects", promotedProjects.project4);
+import StickyProject from "../components/StickyProject.astro";
+const projects = await Promise.all(
+  promotedProjects.projects.map(async (item) => {
+    return await getEntry("projects", item.project);
+  })
+).then((projects) => projects.filter((p) => p != null));
 
 const blogArticlesCount = (await getCollection("articles", a => a.data.draft !== true)).length;
 console.log("articles", blogArticlesCount);
@@ -41,7 +42,7 @@ console.log("articles", blogArticlesCount);
 				<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-beige-100 to-transparent z-10" />
 				<video
 					id="projects-background"
-					class="w-full h-full object-cover object-center opacity-90 bg-beige-100 blur-sm"
+					class="w-full h-full object-cover object-right opacity-90 bg-beige-100 blur-sm"
 					src=""
 					autoplay
 					muted
@@ -49,7 +50,7 @@ console.log("articles", blogArticlesCount);
 				></video>
 			</div>
 
-			<div class="flex flex-col gap-[4.5rem] min-h-screen w-full basis-2/5 pl-24 pb-64">
+			<div class="flex flex-col gap-[4.5rem] min-h-screen w-full basis-2/5 pl-24 pb-40">
 
 				<div class="flex flex-col gap-4 max-w-lg">
 					<h1 class="text-3xl font-poppins font-black">Projects</h1>
@@ -57,96 +58,29 @@ console.log("articles", blogArticlesCount);
 					<p>You'll find most of what I build on GitHub.</p>
 				</div>
 
+				{projects.map((project) => (
+					<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/65 text-outlined transition-all duration-300 ease-out" id={`project-${project.slug}`} data-video={project.data.video}>{project.data.shortTitle || project.data.title}</h2>
+				))}
 
-				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined  transition-all duration-300 ease-out" id="project-urban-mobility">Urban Mobility</h2>
-				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-kutelabs">kutelabs</h2>
-				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-culture-on-air">Culture on Air</h2>
-				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-chess-e">Chess:E</h2>
-				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-melodymates">MelodyMates</h2>
-				<h2 class="h-[4.5rem] text-5xl font-poppins font-black tracking-wider text-beige-100/75 text-outlined transition-all duration-300 ease-out" id="project-schulportal">Schulportal</h2>
-
+				<a
+						href="https://www.linkedin.com/in/koenidv/"
+						target="_blank"
+						class="group flex max-md:justify-center w-fit">
+						<div class="elevated-card-hoverable elevated-2 flex-1 mt-16">
+							<div
+								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center py-2 px-4 md:px-20">
+								<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+									Explore All Projects
+								</p>
+							</div>
+						</div>
+					</a>
 			</div>
 
 			<div class="sticky w-full basis-3/5 top-24 bottom-0 h-min p-8 flex flex-col items-center">
-
-				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-urban-mobility">
-					<div class="w-full h-80 bg-beige-400 rounded-lg" />
-					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Mobility Data → Knowledge</h1>
-					<p>Dies das</p>
-				</div>
-				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-kutelabs">
-					<img
-						src={`/images/character_boozle_kotlin.webp`}
-						loading="lazy"
-						alt={`Cover image for Culture on Air`}
-						class="w-full rounded-lg object-cover h-96 bg-beige-100"
-					/>
-					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Kotlin For Kids</h1>
-					<p>Dies das</p>
-				</div>
-				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-culture-on-air">
-					<!-- <img
-						srcset={`
-							/images/200/${data.image}   200w,
-							/images/400/${data.image}   400w,
-							/images/800/${data.image}   800w,
-							/images/1200/${data.image} 1200w
-						`}
-						sizes="
-							(max-width: 450px) 200px,
-							(max-width: 850px) 400px,
-							(max-width: 1250px) 800px,
-							1200px"
-						src={`/images/1200/${data.image}`}
-						loading="lazy"
-						alt={`Cover image for ${data.title}`}
-						class:list={isLarge
-							? [
-									"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4 lg:max-2xl:max-h-[40vh]"
-								]
-							: [
-									"h-full aspect-[2] 2xl:aspect-square object-cover border-black max-2xl:border-b-4 2xl:border-r-4 lg:max-2xl:max-h-[20vh]"
-								]}
-					/> -->
-					<img
-						src={`/images/cultureonair.avif`}
-						loading="lazy"
-						alt={`Cover image for Culture on Air`}
-						class="w-full rounded-lg object-cover h-96 bg-beige-100"
-					/>
-					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Global Pop Culture</h1>
-					<p>Dies das</p>
-				</div>
-				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-chess-e">
-					<img
-						src={`/images/chesse.webp`}
-						loading="lazy"
-						alt={`Cover image for Culture on Air`}
-						class="w-full rounded-lg object-cover h-96 bg-beige-100"
-					/>
-					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Digital⨯Analog Chess</h1>
-					<p>Dies das</p>
-				</div>
-				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-melodymates">
-					<img
-						src={`/images/melodymates.webp`}
-						loading="lazy"
-						alt={`Cover image for Culture on Air`}
-						class="w-full rounded-lg object-cover h-96 bg-beige-100"
-					/>
-					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">The Social Music Network</h1>
-					<p>Dies das</p>
-			</div>
-				<div class="flex flex-col gap-4 w-full max-w-3xl" id="sticky-schulportal">
-					<img
-						src={`/images/sphplanner.webp`}
-						loading="lazy"
-						alt={`Cover image for Culture on Air`}
-						class="w-full rounded-lg object-cover h-96 bg-beige-100"
-					/>
-					<h1 class="text-5xl font-poppins font-black tracking-wider pt-4">Schulportal Hessen App</h1>
-					<p>Dies das</p>
-				</div>
+				{projects.map((project) => (
+					<StickyProject project={project} />
+				))}
 		</div>
 
 
@@ -223,7 +157,7 @@ console.log("articles", blogArticlesCount);
 				</div>
 				<p class="text-lg font-normal mt-8">
 					I studied Software Engineering at <a href="https://code.berlin" target="_blank" class="underline">CODE Berlin</a> and Design at <a href="https://www.iade.europeia.pt/en/" target="_blank" class="underline">IADE Lisbon</a>.<br />	
-					Currently, I'm working at <a href="https://tbo.de" target="_blank" class="underline">TBO Interactive</a>, creating Android Native experiences.
+					Currently, I'm working at <a href="https://tbo.de" target="_blank" class="underline">TBO Digital</a> and completing my Master's in Management at <a href="https://www.tum.de/en/" target="_blank" class="underline">TUM</a>.
 				</p>
 				<p class="text-lg mt-8">
 					Everything you ever wanted is doing it.	
@@ -283,26 +217,21 @@ console.log("articles", blogArticlesCount);
 
 			stickySections.forEach(sec => sec.style.display = 'none');
 			headlines.forEach(h => {
-				h.classList.remove("text-7xl");
+				h.classList.remove("text-7xl", "text-white");
 				h.classList.add("text-5xl", "text-beige-100/75", "text-outlined");
 			})
 
 			const closest = getClosestHeadline(headlines);
-			
-			const videoSource = closest.id === "project-melodymates" 
-				? "/videos/melodymates_1.mp4" 
-				: closest.id === "project-urban-chesse"
-					? "/videos/chesse_1.webm"
-					: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4";
-			console.log("setting video source to", backgroundVideo.src, videoSource);
-			if (!backgroundVideo.src.endsWith(videoSource)) {
-				backgroundVideo.src = videoSource;
+
+			const videoSource = closest ? closest.dataset.video : null;
+			if (videoSource && !backgroundVideo.src.endsWith(videoSource)) {
+				backgroundVideo.src = `/videos/${videoSource}`;
 			}
 			
 			if (!closest) return;
 
-			closest.classList.remove("text-5xl", "text-beige-100/75", "text-outlined");
-			closest.classList.add("text-7xl");
+			closest.classList.remove("text-5xl");
+			closest.classList.add("text-7xl", "text-white");
 			const stickyId = 'sticky-' + closest.id.replace(/^project-/, '');
 			const matching = document.getElementById(stickyId);
 			if (matching) matching.style.display = '';

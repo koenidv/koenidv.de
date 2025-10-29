@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+	project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props;
+
+const data = project.data!;
+---
+
+<div class="group flex flex-col gap-2 w-full max-w-4xl" id={"sticky-" + project.slug}>
+  <div
+    class:list={[
+      "opendialog elevated-card-hoverable hover:cursor-pointer w-full",
+    ]}
+    tabindex="0"
+    aria-label="Open details">
+    <div
+      class:list={[
+        "border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full"
+      ]}>
+      <img
+        src={`/images/${data.image}`}
+        loading="lazy"
+        alt={`Cover image for ${data.title}`}
+        class="w-full object-cover h-96 bg-beige-100"
+      />
+    </div>
+  </div>
+  <div
+    class:list={[
+      "opendialog elevated-card-hoverable hover:cursor-pointer w-full",
+    ]}
+    tabindex="0"
+    aria-label="Open details">
+    <div
+      class:list={[
+        "flex flex-col gap-3 border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full px-8 pb-8 pt-4"
+      ]}>
+      <h1 class="text-5xl font-poppins font-black tracking-wider pt-4">
+        {data.alternativeTitle || data.title}
+      </h1>
+      <p>
+        {data.longDescription || data.description}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+					<!-- <img
+						srcset={`
+							/images/200/${data.image}   200w,
+							/images/400/${data.image}   400w,
+							/images/800/${data.image}   800w,
+							/images/1200/${data.image} 1200w
+						`}
+						sizes="
+							(max-width: 450px) 200px,
+							(max-width: 850px) 400px,
+							(max-width: 1250px) 800px,
+							1200px"
+						src={`/images/1200/${data.image}`}
+						loading="lazy"
+						alt={`Cover image for ${data.title}`}
+						class:list={isLarge
+							? [
+									"w-full aspect-[2] md:aspect-video object-cover md:max-2xl:h-96 border-black border-b-4 lg:max-2xl:max-h-[40vh]"
+								]
+							: [
+									"h-full aspect-[2] 2xl:aspect-square object-cover border-black max-2xl:border-b-4 2xl:border-r-4 lg:max-2xl:max-h-[20vh]"
+								]}
+					/> -->

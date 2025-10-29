@@ -15,6 +15,8 @@ collections:
     delete: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Alternative Title", name: "alternativeTitle", widget: "string", required: false }
+      - { label: "Short Title", name: "shortTitle", widget: "string", required: false }
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - {
@@ -35,6 +37,8 @@ collections:
           required: false,
         }
       - { label: "Live", name: "live", widget: "boolean", required: false }
+      - { label: "Video", name: "video", widget: "string", required: false }
+      - { label: "Type", name: "type", widget: "select", required: true, options: ["project", "article"] }
       - {
           label: "CTA Button Text for Promoted Project #1",
           name: "ctaLinkText",
@@ -65,42 +69,23 @@ collections:
           required: false,
         }
 
-  - name: "settings"
+  - name: "settings" 
     label: "Settings"
     files:
       - file: "src/data/settings/promotedProjects.json"
         label: "Promoted Projects"
         name: "promotedProjects"
         fields:
-          - label: "Large Project"
-            name: "project1"
-            widget: "relation"
-            collection: "projects"
-            searchFields: ["title", "slug"]
-            valueField: "slug"
-            displayFields: ["{{title}}: {{longDescription}}"]
-            required: true
-          - label: "Small Project 1"
-            name: "project2"
-            widget: "relation"
-            collection: "projects"
-            searchFields: ["title", "slug"]
-            valueField: "slug"
-            displayFields: ["{{title}}: {{longDescription}}"]
-            required: true
-          - label: "Small Project 2"
-            name: "project3"
-            widget: "relation"
-            collection: "projects"
-            searchFields: ["title", "slug"]
-            valueField: "slug"
-            displayFields: ["{{title}}: {{longDescription}}"]
-            required: true
-          - label: "Small Project 3"
-            name: "project4"
-            widget: "relation"
-            collection: "projects"
-            searchFields: ["title", "slug"]
-            valueField: "slug"
-            displayFields: ["{{title}}: {{longDescription}}"]
-            required: true
+          - label: "Promoted Projects"
+            name: "projects"
+            widget: "list"
+            summary: "{{fields.project.title}}"
+            fields:
+              - label: "Project"
+                name: "project"
+                widget: "relation"
+                collection: "projects"
+                searchFields: ["title", "slug"]
+                valueField: "slug"
+                displayFields: ["{{title}}: {{longDescription}}"]
+                required: true

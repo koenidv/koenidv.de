@@ -1,6 +1,22 @@
 {
-  "project1": "cultureonair",
-  "project2": "melodymates",
-  "project3": "chesse",
-  "project4": "sphplanner"
+  "projects": [
+    {
+      "project": "vorfahrt"
+    },
+    {
+      "project": "kutelabs"
+    },
+    {
+      "project": "cultureonair"
+    },
+    {
+      "project": "chesse"
+    },
+    {
+      "project": "melodymates"
+    },
+    {
+      "project": "sphplanner"
+    }
+  ]
 }

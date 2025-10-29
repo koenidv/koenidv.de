@@ -8,7 +8,9 @@ import { getCollection } from "astro:content";
 
 export const prerender = true;
 
-const projects = (await getCollection("projects")).sort(
+const projects = (await getCollection("projects"))
+.filter(p => p.data.type === "project" || !p.data.type)
+.sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
