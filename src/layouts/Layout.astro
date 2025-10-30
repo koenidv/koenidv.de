@@ -37,6 +37,13 @@ const origin = Astro.site?.origin ?? "https://koeni.dev";
 
 		<meta name="robots" content="index, follow" />
 
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Articles by Florian König"
+			href={new URL("feed.xml", Astro.site)}
+		/>
+
 		<PostHog />
 	</head>
 	<body>
