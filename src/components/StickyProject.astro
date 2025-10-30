@@ -10,41 +10,38 @@ const { project } = Astro.props;
 const data = project.data!;
 ---
 
-<div class="group flex flex-col gap-2 w-full max-w-4xl" id={"sticky-" + project.slug}>
-  <div
-    class:list={[
-      "opendialog elevated-card-hoverable hover:cursor-pointer w-full",
-    ]}
-    tabindex="0"
-    aria-label="Open details">
+<div class="max-lg:sticky top-24 group flex flex-col gap-2 w-full lg:max-w-4xl max-lg:elevated-card-hoverable max-lg:cursor-pointer" id={"sticky-" + project.slug}>
+  <div class="flex flex-col gap-2 w-full h-full max-lg:border-l-4 max-lg:border-t-4 max-lg:border-r-2 max-lg:border-b-2 border-black">
     <div
-      class:list={[
-        "border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full"
-      ]}>
-      <img
-        src={`/images/${data.image}`}
-        loading="lazy"
-        alt={`Cover image for ${data.title}`}
-        class="w-full object-cover h-96 bg-beige-100"
-      />
+      class="lg:elevated-card-hoverable hover:cursor-pointer w-full"
+      tabindex="0"
+      aria-label="Open details">
+      <div class="lg:border-l-4 lg:border-t-4 lg:border-r-2 lg:border-b-2 border-black h-full w-full">
+        <img
+          src={`/images/${data.image}`}
+          loading="lazy"
+          alt={`Cover image for ${data.title}`}
+          class="w-full object-cover h-96 bg-beige-100 max-lg:border-b-4 border-black"
+        />
+      </div>
     </div>
-  </div>
-  <div
-    class:list={[
-      "opendialog elevated-card-hoverable hover:cursor-pointer w-full",
-    ]}
-    tabindex="0"
-    aria-label="Open details">
     <div
       class:list={[
-        "flex flex-col gap-3 border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full px-8 pb-8 pt-4"
-      ]}>
-      <h1 class="text-5xl font-poppins font-black tracking-wider pt-4">
-        {data.alternativeTitle || data.title}
-      </h1>
-      <p>
-        {data.longDescription || data.description}
-      </p>
+        "lg:elevated-card-hoverable hover:cursor-pointer w-full",
+      ]}
+      tabindex="0"
+      aria-label="Open details">
+      <div
+        class:list={[
+          "flex flex-col gap-3 lg:border-l-4 lg:border-t-4 lg:border-r-2 lg:border-b-2 border-black h-full w-full px-8 pb-8 pt-4"
+        ]}>
+        <h1 class="text-5xl font-poppins font-black tracking-wider pt-4">
+          {data.alternativeTitle || data.title}
+        </h1>
+        <p>
+          {data.longDescription || data.description}
+        </p>
+      </div>
     </div>
   </div>
 </div>

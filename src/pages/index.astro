@@ -35,9 +35,9 @@ console.log("articles", blogArticlesCount);
 		</Marquee>
 
 
-		<div class="relative flex columns-2 w-full py-48">
+		<div class="relative flex lg:columns-2 w-full py-48">
 			
-			<div class="absolute top-0 bottom-0 left-0 right-0 -z-50 overflow-hidden">
+			<div class="max-md:hidden absolute top-0 bottom-0 left-0 right-0 -z-50 overflow-hidden">
 				<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-beige-100 to-transparent z-10" />
 				<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-beige-100 to-transparent z-10" />
 				<video
@@ -50,7 +50,7 @@ console.log("articles", blogArticlesCount);
 				></video>
 			</div>
 
-			<div class="flex flex-col gap-[4.5rem] min-h-screen w-full basis-2/5 pl-24 pb-40">
+			<div class="max-lg:hidden flex flex-col gap-[4.5rem] min-h-screen w-full basis-2/5 pl-24 pb-40">
 
 				<div class="flex flex-col gap-4 max-w-lg">
 					<h1 class="text-3xl font-poppins font-black">Projects</h1>
@@ -65,7 +65,7 @@ console.log("articles", blogArticlesCount);
 				<a
 						href="https://www.linkedin.com/in/koenidv/"
 						target="_blank"
-						class="group flex max-md:justify-center w-fit">
+						class="group flex max-lg:justify-center w-fit">
 						<div class="elevated-card-hoverable elevated-2 flex-1 mt-16">
 							<div
 								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center py-2 px-4 md:px-20">
@@ -77,7 +77,7 @@ console.log("articles", blogArticlesCount);
 					</a>
 			</div>
 
-			<div class="sticky w-full basis-3/5 top-24 bottom-0 h-min p-8 flex flex-col items-center">
+			<div id="stickycontainer" class="lg:sticky w-full lg:basis-3/5 top-24 bottom-0 h-min p-8 flex flex-col gap-8 items-center">
 				{projects.map((project) => (
 					<StickyProject project={project} />
 				))}
@@ -195,6 +195,10 @@ console.log("articles", blogArticlesCount);
 	</script>
 
 	<script type="module" is:inline>
+		function isWideScreen() {
+			return window.innerWidth >= 1024;
+		}
+
 		function getClosestHeadline(headlines) {
 			const center = window.innerHeight / 2;
 			let closest = null;
@@ -211,30 +215,37 @@ console.log("articles", blogArticlesCount);
 		}
 
 		function syncStickyVisibility() {
+			const isWide = isWideScreen();
+			const container = document.getElementById('stickycontainer');
 			const headlines = Array.from(document.querySelectorAll('h2[id^="project-"]'));
 			const stickySections = Array.from(document.querySelectorAll('[id^="sticky-"]'));
 			const backgroundVideo = document.getElementById('projects-background');
 
-			stickySections.forEach(sec => sec.style.display = 'none');
-			headlines.forEach(h => {
-				h.classList.remove("text-7xl", "text-white");
-				h.classList.add("text-5xl", "text-beige-100/75", "text-outlined");
-			})
+			stickySections.forEach(sec => {
+				sec.style.display = isWide ? 'none' : '';
+			});
 
-			const closest = getClosestHeadline(headlines);
+			if (isWide) {
+				headlines.forEach(h => {
+					h.classList.remove("text-7xl", "text-white");
+					h.classList.add("text-5xl", "text-beige-100/75", "text-outlined");
+				})
 
-			const videoSource = closest ? closest.dataset.video : null;
-			if (videoSource && !backgroundVideo.src.endsWith(videoSource)) {
-				backgroundVideo.src = `/videos/${videoSource}`;
+				const closest = getClosestHeadline(headlines);
+
+				const videoSource = closest ? closest.dataset.video : null;
+				if (videoSource && !backgroundVideo.src.endsWith(videoSource)) {
+					backgroundVideo.src = `/videos/${videoSource}`;
+				}
+				
+				if (!closest) return;
+
+				closest.classList.remove("text-5xl");
+				closest.classList.add("text-7xl", "text-white");
+				const stickyId = 'sticky-' + closest.id.replace(/^project-/, '');
+				const matching = document.getElementById(stickyId);
+				if (matching) matching.style.display = '';
 			}
-			
-			if (!closest) return;
-
-			closest.classList.remove("text-5xl");
-			closest.classList.add("text-7xl", "text-white");
-			const stickyId = 'sticky-' + closest.id.replace(/^project-/, '');
-			const matching = document.getElementById(stickyId);
-			if (matching) matching.style.display = '';
 		}
 
 		window.addEventListener('scroll', syncStickyVisibility, { passive: true });
