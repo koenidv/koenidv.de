@@ -83,6 +83,12 @@ console.log("articles", blogArticlesCount);
 				))}
 		</div>
 
+		<!-- preload videos -->
+		{projects.map((project) => (
+			<video class="hidden" preload="auto" muted src={`/videos/${project.data.video}`} />
+		))}
+
+
 
 		<!-- <div
 			id="recent-projects"
