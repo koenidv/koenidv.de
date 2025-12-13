@@ -61,7 +61,7 @@ const data = project.data!;
 				<div class:list={["mt-4 flex flex-wrap gap-2", { "md:mt-8": isLarge }]}>
 					{data.tags.map((tag: String) => <span class="rounded-sm bg-[#e0e2d8] px-2">{tag}</span>)}
 				</div>
-				{data.ctaLinkText && (
+				{isLarge &&data.ctaLinkText && (
 					<div class="max-2xl:hidden absolute bottom-16 right-16 border-2 border-black w-fit h-fit flex group">
 						<a
 							href={data.link}

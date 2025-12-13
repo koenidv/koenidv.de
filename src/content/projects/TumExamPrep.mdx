@@ -1,0 +1,63 @@
+---
+title: TUM Exam Prep
+slug: tumexamprep
+description: Effective exam prepation for SIM at TUM.
+image: tumexamprep.webp
+link: https://sim.koeni.dev/
+tags:
+  - Next
+  - Stripe
+  - Lovable
+date: "2025/12"
+live: true
+---
+
+import { Image } from "astro:assets";
+import image1 from "../../../public/images/tumexamprep/1.png";
+import image2 from "../../../public/images/tumexamprep/2.png";
+import image3 from "../../../public/images/tumexamprep/3.png";
+
+Driven by the nonexistence of exam preparation content for Strategic & International Management (SIM) at TUM, I created TUM Exam Prep.
+
+This web app offers more than 20 test exams with hundreds of close-to-life multiple-choice questions, in exchange for a small fee handled through Stripe.
+No account is necessary to minimize friction, however users can opt to sync their progress using a Google sign-in.
+
+To build the full platform including payments, device sync and content in less than half a day, I used Lovable and Antigravity, with human-written code only for more complex or security-relevant parts.
+
+
+<div class="flex flex-wrap gap-2 pb-2 pt-4">
+	<a
+		href="https://koeni.dev/projects/cultureonair"
+		target="_blank"
+		class="elevated-card-hoverable elevated-1 group inline-block h-8 w-fit">
+		<div class="flex h-full w-full items-center justify-center border-b-2 border-l-4 border-r-2 border-t-4 border-black px-12">
+			<p class="decoration-[0.125rem] underline-offset-[0.3rem] group-hover:underline">
+				Try a free exam
+			</p>
+		</div>
+	</a>
+</div>
+
+<div class="imagecarousel flex flex-row gap-2 overflow-x-scroll rounded">
+  {
+    [
+      ["Exam Selection", image1],
+      ["Question View", image2],
+      ["Results Summary", image3],
+    ].map(([description, image], index) => (
+      <a
+        target="_blank"
+        class="transition-all duration-200 hover:saturate-100 lg:saturate-0"
+        href={`/images/tumexamprep/${index + 1}.png`}>
+        <Image
+          src={image}
+          alt={`Screenshot from TUM Exam Prep; ${description}`}
+					widths={[200, 400, 800]}
+					sizes={"(max-width: 1000px) 200px, (max-width: 2000px) 400px, 800px"}
+          loading="lazy"
+          class="max-h-[40vh] min-w-[7.5rem] rounded w-min"
+        />
+      </a>
+    ))
+  }
+</div>
