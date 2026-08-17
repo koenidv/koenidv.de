@@ -196,6 +196,11 @@ html {
     background-color: theme('colors.beige.100');
     background-size: 80px;
     background-repeat: repeat;
+    // Pins the tile to the viewport instead of the document. Without this, macOS
+    // and iOS rubber-band overscroll drags the pattern along with the page,
+    // running it out past the document's own box and exposing blank canvas
+    // underneath at the top/bottom edge.
+    background-attachment: fixed;
     color: #000000;
     font-weight: 600;
     // Keeps the layout from shifting sideways when a dialog locks scrolling
