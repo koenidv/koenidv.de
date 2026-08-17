@@ -1,7 +1,7 @@
 const prefersReducedMotion = () =>
 	window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const MORPH_DURATION = 220;
+const MORPH_DURATION = 280;
 // A snappier decelerate than the CSS "ease-out" keyword — fast out of the
 // gate, gentle settle. Common choice for this kind of box/scale morph.
 const MORPH_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
