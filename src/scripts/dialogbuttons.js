@@ -182,12 +182,15 @@ const handleOpenClicked = async (origin, dialog, slug) => {
 	const card = dialog.querySelector(".dialog-morph-target");
 	const content = dialog.querySelector(".dialog-morph-content");
 	const backdrop = dialog.querySelector(".backdrop");
-	settleImmediately([card, content, backdrop, dialog].filter(Boolean));
+	settleImmediately([card, content, backdrop, dialog, origin].filter(Boolean));
 	// settleImmediately only cancels the animation; morphCard's own static
 	// overrides (position: fixed, margin: 0, ...) are separate inline styles
 	// that survive a cancel, which would leave an interrupted card stuck
 	// position: fixed with no left/top/width/height — reset before re-measuring.
 	if (card) resetCardStyles(card);
+	// Likewise, a close's origin-reveal fade (see closeDialog) leaves an
+	// inline opacity override that must not linger into a fresh open.
+	origin.style.opacity = "";
 
 	// `origin`'s own box is its grid cell, stretched to fit the card *plus*
 	// the card's own margin-bottom/margin-right (the space .elevated-card
@@ -248,8 +251,9 @@ const closeDialog = async (origin, dialog) => {
 	const card = dialog.querySelector(".dialog-morph-target");
 	const content = dialog.querySelector(".dialog-morph-content");
 	const backdrop = dialog.querySelector(".backdrop");
-	settleImmediately([card, content, backdrop, dialog].filter(Boolean));
+	settleImmediately([card, content, backdrop, dialog, origin].filter(Boolean));
 	if (card) resetCardStyles(card);
+	origin.style.opacity = "";
 
 	if (card && !prefersReducedMotion()) {
 		// See handleOpenClicked: measure the visible card, not origin's own
@@ -258,14 +262,34 @@ const closeDialog = async (origin, dialog) => {
 		const originRect = originVisibleCard.getBoundingClientRect();
 		const innerCard = card.querySelector(":scope > div");
 
+		// Reveal the real card as the dialog shrinks toward it, instead of
+		// leaving it hidden until the shrink is already done — that read as
+		// the card popping in well after the transition had settled rather
+		// than as part of it. The dialog box is still larger and opaque for
+		// most of the shrink, so nothing doubles up visually underneath it.
+		origin.classList.remove("invisible");
+		origin.style.opacity = "0";
+		// ease-out, not FADE_EASING's ease-in: ease-in keeps this mostly
+		// transparent until late (barely 30% opaque at the halfway point),
+		// which still reads as "pops in near the end." ease-out front-loads
+		// the opacity gain so the real card is clearly visible early in the
+		// shrink, well before the box finishes settling into place.
+		const originFade = origin.animate([{ opacity: 0 }, { opacity: 1 }], {
+			duration: MORPH_DURATION,
+			easing: "ease-out",
+			fill: "both"
+		});
+
 		await runMorph([
 			morphCard(card, originRect, { reverse: true }),
 			...(innerCard ? morphShadow(innerCard, originVisibleCard, { reverse: true }) : []),
 			fadeContent(content, { reverse: true }),
 			fadeBackdrop(backdrop, { reverse: true }),
-			fadeNativeBackdrop(dialog, { reverse: true })
+			fadeNativeBackdrop(dialog, { reverse: true }),
+			originFade
 		]);
 		resetCardStyles(card);
+		origin.style.opacity = "";
 	}
 
 	dialog.close();
