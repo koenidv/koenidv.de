@@ -189,7 +189,13 @@ const handleOpenClicked = async (origin, dialog, slug) => {
 	// position: fixed with no left/top/width/height — reset before re-measuring.
 	if (card) resetCardStyles(card);
 
-	const originRect = origin.getBoundingClientRect();
+	// `origin`'s own box is its grid cell, stretched to fit the card *plus*
+	// the card's own margin-bottom/margin-right (the space .elevated-card
+	// reserves for its shadow to poke into) — always a full --elevation
+	// larger in both dimensions than the card the visitor actually sees.
+	// Measure the visible card itself, not its stretched wrapper.
+	const originVisibleCard = origin.querySelector(".opendialog") ?? origin;
+	const originRect = originVisibleCard.getBoundingClientRect();
 
 	history.replaceState({ dialog: { originid: origin.id, dialogid: dialog.id } }, "");
 	history.pushState({ dialogOpen: true }, "", `#${slug}`);
@@ -200,7 +206,6 @@ const handleOpenClicked = async (origin, dialog, slug) => {
 
 	if (!card || prefersReducedMotion()) return;
 
-	const originVisibleCard = origin.querySelector(".opendialog") ?? origin;
 	const innerCard = card.querySelector(":scope > div");
 
 	await runMorph([
@@ -247,8 +252,10 @@ const closeDialog = async (origin, dialog) => {
 	if (card) resetCardStyles(card);
 
 	if (card && !prefersReducedMotion()) {
-		const originRect = origin.getBoundingClientRect();
+		// See handleOpenClicked: measure the visible card, not origin's own
+		// stretched (by --elevation) wrapper box.
 		const originVisibleCard = origin.querySelector(".opendialog") ?? origin;
+		const originRect = originVisibleCard.getBoundingClientRect();
 		const innerCard = card.querySelector(":scope > div");
 
 		await runMorph([
