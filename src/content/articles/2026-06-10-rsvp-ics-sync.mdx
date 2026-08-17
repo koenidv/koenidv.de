@@ -17,10 +17,12 @@ Some of these event streams come as ICS feeds over event invitations. This is wh
 While this script is made specifically for TUM's event title format, it might be helpful to you even if you're not at TUM by adapting the title mutation logic.
 
 1. Simply paste the script below into a new [Apps Script Project](https://script.google.com/home/).
-2. Create a new calendar in your Google Calendar and copy its ID from the calendar settings (Calendar ID at the bottom), then hide it.
+2. Create a new calendar in your Google Calendar and copy its ID from the calendar settings (_Calendar ID_ at the bottom), then hide it.
 3. Update `CALENDAR_ID` in the script to the value you just copied. Update `INVITE_CALENDAR_ID` to the calendar id of your personal calendar (same procedure as before).
 4. Update `ICS_URL` to the ICS feed you want to ingest.
 5. Select and run the **setupTrigger** method in the top toolbar.
+
+You will now be invited to events present in the ICS stream by your hidden calendar. Please note that responding to these invites is only for personal organization and will not send a response to the original organizer. ICS simply doesn't support that.
 
 <Gist url="https://gist.github.com/koenidv/35da9f28a19fdcb249412f9cfe72ce68" title="ics-rsvp-sync.gs" />
 
