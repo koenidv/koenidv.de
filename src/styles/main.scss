@@ -475,13 +475,31 @@ div.projectsgrid {
 Article embeds
 */
 
-.gistcontainer {
-  max-height: 300px;
-  overflow: auto;
+.gist-collapse {
+    max-height: 19rem;
+    transition: max-height 400ms ease;
+
+    &.gist-expanded {
+        max-height: 5000px;
+
+        .gist-fade {
+            display: none;
+        }
+    }
 }
 
-.gistcontainer:target .show {display:none;}
-.gistcontainer:target {max-height:none;}
+// Override GitHub's own embed chrome: we supply our own header/footer bar,
+// so its meta bar (star/fork/raw links) is redundant, and its default
+// bottom margin would leave a mismatched gap before our fade/toggle.
+.gist-embed {
+    .gist {
+        margin-bottom: 0;
+    }
+
+    .gist-meta {
+        display: none;
+    }
+}
 
 /*
 Motion preferences
