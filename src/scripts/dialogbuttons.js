@@ -77,6 +77,45 @@ const resetCardStyles = (card) => {
 	card.style.height = "";
 };
 
+// .elevated-card-hoverable halves its offset-shadow on :hover/:active/
+// :focus-visible (main.scss's elevated-pressed mixin) — if the origin card
+// happened to be hovered or mid-press when clicked, its shadow at that exact
+// moment is smaller than its resting size. Read the actual current size
+// (::before's height, ::after's width) rather than assuming rest, and morph
+// the dialog's own shadow from that to its natural size alongside the box.
+const morphShadow = (innerCard, originVisibleCard, { reverse = false } = {}) => {
+	try {
+		const collapsedHeight = getComputedStyle(originVisibleCard, "::before").height;
+		const collapsedWidth = getComputedStyle(originVisibleCard, "::after").width;
+		const expandedHeight = getComputedStyle(innerCard, "::before").height;
+		const expandedWidth = getComputedStyle(innerCard, "::after").width;
+
+		const heightFrames = reverse
+			? [{ height: expandedHeight }, { height: collapsedHeight }]
+			: [{ height: collapsedHeight }, { height: expandedHeight }];
+		const widthFrames = reverse
+			? [{ width: expandedWidth }, { width: collapsedWidth }]
+			: [{ width: collapsedWidth }, { width: expandedWidth }];
+
+		return [
+			innerCard.animate(heightFrames, {
+				duration: MORPH_DURATION,
+				easing: MORPH_EASING,
+				fill: "both",
+				pseudoElement: "::before"
+			}),
+			innerCard.animate(widthFrames, {
+				duration: MORPH_DURATION,
+				easing: MORPH_EASING,
+				fill: "both",
+				pseudoElement: "::after"
+			})
+		];
+	} catch {
+		return [];
+	}
+};
+
 const fadeContent = (content, { reverse = false } = {}) => {
 	if (!content) return null;
 	const keyframes = reverse ? [{ opacity: 1 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: 1 }];
@@ -161,8 +200,12 @@ const handleOpenClicked = async (origin, dialog, slug) => {
 
 	if (!card || prefersReducedMotion()) return;
 
+	const originVisibleCard = origin.querySelector(".opendialog") ?? origin;
+	const innerCard = card.querySelector(":scope > div");
+
 	await runMorph([
 		morphCard(card, originRect),
+		...(innerCard ? morphShadow(innerCard, originVisibleCard) : []),
 		fadeContent(content),
 		fadeBackdrop(backdrop),
 		fadeNativeBackdrop(dialog)
@@ -205,8 +248,12 @@ const closeDialog = async (origin, dialog) => {
 
 	if (card && !prefersReducedMotion()) {
 		const originRect = origin.getBoundingClientRect();
+		const originVisibleCard = origin.querySelector(".opendialog") ?? origin;
+		const innerCard = card.querySelector(":scope > div");
+
 		await runMorph([
 			morphCard(card, originRect, { reverse: true }),
+			...(innerCard ? morphShadow(innerCard, originVisibleCard, { reverse: true }) : []),
 			fadeContent(content, { reverse: true }),
 			fadeBackdrop(backdrop, { reverse: true }),
 			fadeNativeBackdrop(dialog, { reverse: true })
