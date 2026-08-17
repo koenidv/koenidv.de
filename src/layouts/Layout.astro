@@ -8,32 +8,48 @@ export interface Props {
 	socialImage?: string | undefined;
 }
 
+const DEFAULT_SOCIAL_IMAGE = "/images/title.jpg";
+
 const { title, description, socialImage } = Astro.props;
 const origin = Astro.site?.origin ?? "https://koeni.dev";
+
+const resolvedTitle = title || "Florian König: Creative Developer";
+const resolvedDescription =
+	description ||
+	"Florian König is a creative software engineer and designer from Berlin, Germany. Explore his projects!";
+const socialImageUrl = new URL(socialImage || DEFAULT_SOCIAL_IMAGE, origin).href;
+const canonicalUrl = new URL(Astro.url.pathname, origin).href;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>{title || "Florian König: Creative Developer"}</title>
-		<meta name="description" content={description || "Florian König is a creative software engineer and designer from Berlin, Germany. Explore his projects!"} />
-		<meta name="viewport" content="width=device-width" />
+		<title>{resolvedTitle}</title>
+		<meta name="description" content={resolvedDescription} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="generator" content={Astro.generator} />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Roboto:wght@400&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&family=Roboto:wght@400;600&display=swap"
 			rel="stylesheet"
 		/>
 
 		<meta property="og:type" content="website" />
-    <meta property="og:title" content={title || "Florian König: Creative Developer"} />
-    <meta property="og:description" content={description || "Florian König is a creative software engineer and designer from Berlin, Germany. Explore his projects!"} />
-    <meta property="og:image" content={origin + socialImage} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={resolvedTitle} />
+		<meta property="og:description" content={resolvedDescription} />
+		<meta property="og:image" content={socialImageUrl} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={resolvedTitle} />
+		<meta name="twitter:description" content={resolvedDescription} />
+		<meta name="twitter:image" content={socialImageUrl} />
 
 		<meta name="robots" content="index, follow" />
 
@@ -61,13 +77,25 @@ const origin = Astro.site?.origin ?? "https://koeni.dev";
 	}
 </style>
 <script>
-	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-		anchor.addEventListener("click", function (e) {
+	document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+		anchor.addEventListener("click", (e) => {
+			const href = anchor.getAttribute("href");
+			// "#" alone is not a valid selector and would throw
+			if (!href || href === "#") return;
+
+			const target = document.querySelector(href);
+			if (!target) return;
+
 			e.preventDefault();
 
-			document.querySelector(this.getAttribute("href")).scrollIntoView({
-				behavior: "smooth"
-			});
+			const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
+
+			// Move focus along with the viewport so keyboard users continue from here
+			if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+			(target as HTMLElement).focus({ preventScroll: true });
+
+			history.replaceState(null, "", href);
 		});
 	});
 </script>

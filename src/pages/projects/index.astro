@@ -24,10 +24,10 @@ function colorForTags(tags: string[]) {
 
 <Layout title="Projects by Florian König">
 	<div class="flex flex-col p-4 pt-8 gap-4 items-baseline lg:justify-between lg:flex-row-reverse">
-			
-		<ProjectsInline class="max-md:w-full"/>
 
-		<a href="/" class="group">
+		<h1><ProjectsInline class="max-md:w-full"/><span class="sr-only">Projects</span></h1>
+
+		<a href="/" class="group" aria-label="Florian König — home">
 				<NameInline class="max-md:w-full"/>
 		</a>
 	</div>
@@ -55,7 +55,7 @@ function colorForTags(tags: string[]) {
 									}
 									src={project.data.image.startsWith("http") ? project.data.image : `/images/1200/${project.data.image}`}
 									loading="lazy"
-									alt={`Cover image for ${project.data.title}`}
+									alt=""
 									class="aspect-[3] w-full border-b-4 border-black object-cover bg-beige-300"
 								/>
 							)}
@@ -63,7 +63,7 @@ function colorForTags(tags: string[]) {
 								<LiveIndicator class="absolute top-4 left-4" />
 							)}
 							<div class="m-8 flex flex-col md:mt-6">
-								<h2 class="animateunderline font-poppins text-4xl font-bold tracking-wider decoration-[0.2rem] underline-offset-[0.4rem]">
+								<h2 class="animateunderline font-poppins text-4xl font-black tracking-wider decoration-[0.2rem] underline-offset-[0.4rem]">
 									{project.data.title}
 								</h2>
 								<p class="mt-2">{project.data.description}</p>

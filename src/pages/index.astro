@@ -10,19 +10,25 @@ import { getEntry } from "astro:content";
 import PromotedProject from "../components/PromotedProject.astro";
 
 import promotedProjects from "../data/settings/promotedProjects.json";
-import { getCollection } from "astro:content";
+import { getPublishedArticles } from "../lib/articles";
 const PromotedProject1 = await getEntry("projects", promotedProjects.project1);
 const PromotedProject2 = await getEntry("projects", promotedProjects.project2);
 const PromotedProject3 = await getEntry("projects", promotedProjects.project3);
 const PromotedProject4 = await getEntry("projects", promotedProjects.project4);
 
-const blogArticlesCount = (await getCollection("articles", a => a.data.draft !== true)).length;
-console.log("articles", blogArticlesCount);
+const blogArticlesCount = (await getPublishedArticles()).length;
 ---
 
 <Layout title="Florian König">
+	<a
+		href="#main"
+		class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-beige-100 focus:border-2 focus:border-black focus:px-4 focus:py-2">
+		Skip to content
+	</a>
+
 	<TitleArea showBlog={blogArticlesCount > 0} />
 
+	<main id="main">
 	<section id="projects">
 		<Marquee inverse={false}>
 			<p>Collaboration</p>
@@ -46,10 +52,10 @@ console.log("articles", blogArticlesCount);
 			<PromotedProject project={PromotedProject4!} />
 			
 			<a href="/projects" id="projectsmore" class="group h-14 w-full flex max-2xl:justify-center">
-				<div class="elevated-card-hoverable elevated-3 w-full md:w-[48%] 2xl:w-fit">
+				<div class="elevated-card-hoverable elevated-3 w-full md:w-fit">
 					<div
-						class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center xl:px-20">
-						<p class="group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
+						class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center px-8 md:px-12 xl:px-20">
+						<p class="whitespace-nowrap group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">
 							More Projects
 						</p>
 					</div>
@@ -72,9 +78,9 @@ console.log("articles", blogArticlesCount);
 
 		<div class="flex flex-row max-w-[180rem] mx-auto">
 			<div class="lg:mx-16 mt-4 p-8 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
-				<h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-poppins font-black">
+				<h2 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-poppins font-black">
 					Hey, I'm <span>Florian</span>!
-				</h1>
+				</h2>
 				<p class="text-lg mt-8">
 					I'm a multidisciplinary software engineer with a strong passion for the technology of
 					tomorrow.<wbr /> I love building digital products and physical experiences that just feel natural.
@@ -96,12 +102,13 @@ console.log("articles", blogArticlesCount);
 					<a
 						href="https://www.github.com/koenidv/"
 						target="_blank"
-						id="projectsmore"
+						rel="noopener"
+						aria-label="Florian König on GitHub"
 						class="group flex max-md:justify-center">
 						<div class="elevated-card-hoverable elevated-1 w-12">
 							<div
 								class="border-l-4 border-t-4 border-r-2 border-b-2 border-black h-full w-full flex items-center justify-center py-2">
-								<img width="24" height="24" src="https://img.icons8.com/material-rounded/24/github.png" alt="github"/>
+								<img width="24" height="24" src="https://img.icons8.com/material-rounded/24/github.png" alt=""/>
 							</div>
 						</div>
 					</a>
@@ -119,29 +126,36 @@ console.log("articles", blogArticlesCount);
 
 	<section id="contact" class="max-w-[180rem] mx-auto">
 		<div class="mx-4 md:mx-8 xl:mx-16 mt-4 p-4 lg:p-8">
-			<h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-poppins mb-14">
+			<h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-poppins font-black mb-14">
 				Let's grow together
 			</h2>
 			<ContactForm />
 		</div>
 	</section>
+	</main>
 
 	<Footer />
 
 	<script src="../scripts/dialogbuttons.js"></script>
 
-	<script is:inline>
-		document.body.onload = () => {
-			if (document.location.href.includes("#")) {
-				const id = document.location.href.split("#")[1];
-				let dialog, origin;
-				dialog = document.querySelector("#dialog" + id);
-				origin = document.querySelector("#project" + id);
-				if (dialog && origin) {
-					dialog.showModal();
-					origin.classList.add("invisible");
-				}
+	<script>
+		// Deep link: /#kutelabs opens that project's dialog straight away.
+		const hash = decodeURIComponent(window.location.hash.slice(1));
+		if (hash) {
+			const dialog = document.querySelector<HTMLDialogElement>(
+				`#dialog${CSS.escape(hash)}`
+			);
+			const origin = document.querySelector(`#project${CSS.escape(hash)}`);
+			if (dialog && origin) {
+				history.replaceState(
+					{ dialog: { originid: origin.id, dialogid: dialog.id } },
+					""
+				);
+				history.pushState({ dialogOpen: true }, "", `#${hash}`);
+				dialog.showModal();
+				origin.classList.add("invisible");
+				document.body.style.overflowY = "hidden";
 			}
-		};
+		}
 	</script>
 </Layout>

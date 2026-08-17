@@ -1,16 +1,11 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import { getCollection } from "astro:content";
-import { categoryColors } from "./categoryColors";
+import { categoryColors } from "../../lib/categoryColors";
+import { getPublishedArticles } from "../../lib/articles";
 
 export const prerender = true;
 
-const articles = (
-	await getCollection(
-		"articles",
-		({ data }) => data.draft !== true || process.env.NODE_ENV === "development"
-	)
-).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const articles = await getPublishedArticles();
 ---
 
 <BlogLayout
@@ -30,16 +25,17 @@ const articles = (
 							href={`/blog/${article.slug}`}>
 							<div class="flex min-h-[12rem] h-full flex-col overflow-hidden border-b-2 border-l-4 border-r-2 border-t-4 border-black p-4">
 								{article.data.image && (
-									<div class="mb-4 aspect-video overflow-hidden">
+									<div class="mb-4 aspect-video overflow-hidden bg-beige-200">
 										<img
 											src={article.data.image}
-											alt={article.data.title}
+											alt=""
+											loading="lazy"
 											class="h-full w-full object-cover"
 										/>
 									</div>
 								)}
 
-								<div class="mb-2 flex items-center gap-2">
+								<div class="mb-2 flex flex-wrap items-center gap-2">
 									{article.data.draft && (
 										<span class="rounded-sm border border-rose-200 bg-rose-100 px-3 py-1 text-sm text-rose-800">
 											draft
@@ -53,7 +49,9 @@ const articles = (
 											{tag}
 										</span>
 									))}
-									<time class="text-sm font-normal text-gray-600">
+									<time
+										class="text-sm font-normal text-gray-600"
+										datetime={article.data.date.toISOString()}>
 										{article.data.date.toLocaleDateString("en-US", {
 											year: "numeric",
 											month: "long"
@@ -78,7 +76,7 @@ const articles = (
 		{
 			articles.length === 0 && (
 				<div class="py-12 text-center">
-					<p class="font-mono text-gray-500">No articles published yet.</p>
+					<p class="font-mono text-gray-600">No articles published yet.</p>
 				</div>
 			)
 		}

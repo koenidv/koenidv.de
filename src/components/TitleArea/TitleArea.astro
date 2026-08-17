@@ -16,6 +16,10 @@ const { showBlog } = Astro.props;
 ---
 
 <div class="maingrid">
+	<!-- The visible name and tagline are inline SVG artwork, so the page needs a
+	     real heading for assistive tech and search engines. -->
+	<h1 class="sr-only">Florian König — Creative Developer</h1>
+
 	<Shortinfo />
 	<Links {showBlog} />
 

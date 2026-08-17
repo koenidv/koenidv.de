@@ -15,7 +15,10 @@ const { title, description, socialImage, slug } = Astro.props;
   title={title}
   description={description}
   socialImage={socialImage}
-/>
+>
+  <a href="#blog" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-beige-100 focus:border-2 focus:border-black focus:px-4 focus:py-2">
+    Skip to content
+  </a>
 
   <div class="font-mono font-normal">
     <div class="flex md:font-sans font-semibold flex-col md:flex-row p-4 px-6 gap-3 items-center md:justify-between md:items-center">
@@ -25,12 +28,12 @@ const { title, description, socialImage, slug } = Astro.props;
         </a>
         <a href="/blog" class="font-normal px-2 text-sm max-md:hidden">blog/{slug}</a>
       </div>
-      <div id="links" class="flex flex-row gap-4 md:gap-3 justify-center md:justify-end opacity-60 md:opacity-100">
+      <nav aria-label="Main" id="links" class="flex flex-row gap-4 md:gap-3 justify-center md:justify-end opacity-60 md:opacity-100">
         <a href="/projects" class="hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">Projects</a>
         <a href="/blog" class="hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">Articles</a>
         <a href="/#about" class="hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">About</a>
         <a href="/#contact" class="hover:underline underline-offset-[0.3rem] decoration-[0.125rem]">Contact</a>
-      </div>
+      </nav>
     </div>
 
     <main id="blog" class="p-4">

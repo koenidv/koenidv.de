@@ -55,15 +55,32 @@ collections:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - {
+          label: "Social Image",
+          name: "socialImage",
+          widget: "image",
+          required: false,
+        }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Draft", name: "draft", widget: "boolean", required: false }
       - {
-          label: "Category",
-          name: "category",
+          label: "Tags",
+          name: "tags",
           widget: "select",
-          options: ["reverse-eng", "android", "hardware", "web"],
-          required: false,
+          multiple: true,
+          options:
+            [
+              "talk",
+              "cities",
+              "reverse-eng",
+              "android",
+              "hardware",
+              "web",
+              "automation",
+              "workspace",
+            ],
         }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "settings"
     label: "Settings"
