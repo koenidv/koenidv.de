@@ -1,14 +1,14 @@
 ---
-import { getCollection } from 'astro:content'
 import BlogLayout from '../../layouts/BlogLayout.astro'
-import { categoryColors } from './categoryColors'
+import { categoryColors } from '../../lib/categoryColors'
+import { getPublishedArticles } from '../../lib/articles'
 import Prose from '../../components/Prose.astro'
 
 export const prerender = true
 
 export async function getStaticPaths() {
-  const articleEntries = await getCollection('articles')
-  
+  const articleEntries = await getPublishedArticles()
+
   return articleEntries.map(entry => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -25,10 +25,10 @@ const { Content } = await entry.render()
   socialImage={entry.data.socialImage}
   slug={entry.slug}
 >
-  <article class="max-w-5xl mx-auto px-12 py-12 font-mono bg-beige-100 rounded-sm border border-beige-200">
+  <article class="max-w-5xl mx-auto px-4 py-8 sm:px-8 md:px-12 md:py-12 font-mono bg-beige-100 rounded-sm border border-beige-200">
     <!-- Article Header -->
     <header class="mb-10">
-      <div class="flex items-center gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
         {entry.data.draft && (
           <span class="bg-rose-100 text-rose-800 border-rose-200 text-sm px-3 py-1 rounded-sm border">
             draft
@@ -42,7 +42,7 @@ const { Content } = await entry.render()
             {tag}
           </span>
         ))}
-        <time class="text-gray-500 text-sm">
+        <time class="text-gray-600 text-sm" datetime={entry.data.date.toISOString()}>
           {entry.data.date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long'
@@ -50,20 +50,21 @@ const { Content } = await entry.render()
         </time>
       </div>
       
-      <h1 class="text-4xl font-bold mb-6 leading-tight">
-        {entry.data.title}
-        <div class="inline-flex">
-          <button 
-            class="text-gray-500 hover:text-purple-500 copy-link-btn"
-            data-url={`https://koeni.dev/blog/${entry.slug}`}
-            aria-label="Copy link to article"
-          >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
-            </svg>
-          </button>
-        </div>
-      </h1>
+      <div class="flex items-center gap-2 mb-6">
+        <h1 class="text-4xl font-bold leading-tight">
+          {entry.data.title}
+        </h1>
+        <button
+          class="copy-link-btn shrink-0 flex items-center justify-center w-11 h-11 -m-1 text-gray-600 hover:text-purple-600 focus-visible:text-purple-600"
+          data-url={`https://koeni.dev/blog/${entry.slug}`}
+          aria-label="Copy link to article"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <span class="sr-only" role="status" aria-live="polite" id="copy-status"></span>
+      </div>
       
       <p class="text-xl text-gray-600 mb-8">
         {entry.data.description}
@@ -72,11 +73,12 @@ const { Content } = await entry.render()
     
     <!-- Featured Image -->
     {entry.data.image && (
-      <div class="mb-10 rounded-lg overflow-hidden">
-        <img 
-          src={entry.data.image} 
-          alt={entry.data.title}
-          class="w-full h-auto object-cover"
+      <div class="mb-10 rounded-lg overflow-hidden aspect-[3] bg-beige-200">
+        <img
+          src={entry.data.image}
+          alt=""
+          loading="eager"
+          class="w-full h-full object-cover"
         />
       </div>
     )}
@@ -107,26 +109,39 @@ const { Content } = await entry.render()
 </BlogLayout>
 
 <script>
-  // Script to handle the copy link button
-  document.addEventListener('DOMContentLoaded', () => {
-    const copyBtn = document.querySelector('.copy-link-btn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        const url = copyBtn.getAttribute('data-url');
-        navigator.clipboard.writeText(url).then(() => {
-          // Optional: Show a tooltip or notification that the link was copied
-          const originalText = copyBtn.innerHTML;
-          copyBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-          `;
-          
-          setTimeout(() => {
-            copyBtn.innerHTML = originalText;
-          }, 2000);
-        });
-      });
-    }
-  });
+  const copyBtn = document.querySelector<HTMLButtonElement>(".copy-link-btn");
+  const status = document.querySelector("#copy-status");
+
+  const CHECK_ICON = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+    </svg>
+  `;
+
+  if (copyBtn) {
+    const originalIcon = copyBtn.innerHTML;
+    let resetTimer: ReturnType<typeof setTimeout>;
+
+    copyBtn.addEventListener("click", async () => {
+      const url = copyBtn.dataset.url;
+      if (!url) return;
+
+      try {
+        // Not available over plain HTTP or in older browsers
+        if (!navigator.clipboard) throw new Error("Clipboard API unavailable");
+        await navigator.clipboard.writeText(url);
+        copyBtn.innerHTML = CHECK_ICON;
+        if (status) status.textContent = "Link copied to clipboard";
+      } catch {
+        // No blocking prompt — just say so, same as the success state
+        if (status) status.textContent = "Couldn't copy the link automatically";
+      }
+
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => {
+        copyBtn.innerHTML = originalIcon;
+        if (status) status.textContent = "";
+      }, 2000);
+    });
+  }
 </script>

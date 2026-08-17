@@ -25,7 +25,7 @@ const articles = defineCollection({
     socialImage: z.string().optional(),
     date: z.string().or(z.date()).transform((val) => new Date(val)),
     draft: z.boolean().optional(),
-    tags: z.enum(["talk", "cities", "reverse-eng", "android", "hardware", "web"]).array(),
+    tags: z.enum(["talk", "cities", "reverse-eng", "android", "hardware", "web", "automation", "workspace"]).array(),
   })
 });
 
