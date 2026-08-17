@@ -29,58 +29,67 @@ const titleId = `dialog-title-${slug}`;
 		<div
 			class="dialog-content border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-[100dvh]">
 			<div
-				class="dialog-morph-target relative md:elevated-card elevated-4 bg-beige-100 max-md:h-[100dvh] md:max-h-[90dvh] min-h-[40vh] w-screen md:w-[60vw]">
-				<div
-					class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90dvh]">
+				class="dialog-morph-target relative max-md:h-[100dvh] md:max-h-[90dvh] min-h-[40vh] w-screen md:w-[60vw]">
+				<!--
+					The morph transform below is applied to THIS wrapper, not the
+					elevated-card div itself: a transform makes its element establish a
+					new stacking context, which would trap elevated-card's negative
+					z-index ::before/::after shadow behind its own opaque background
+					for the duration of the animation.
+				-->
+				<div class="md:elevated-card elevated-4 bg-beige-100 w-full h-full">
 					<div
-						class="elevated-card-hoverable elevated-1 absolute top-3 left-3 w-11 h-11 bg-beige-100 z-10">
-						<button
-							type="button"
-							class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
-							data-dialog={"dialog" + slug}
-							data-origin={"project" + slug}
-							aria-label={`Close ${title} details`}>
-							<img
-								class="w-5 h-5"
-								src="https://img.icons8.com/ios-filled/50/multiply.png"
-								alt=""
-							/>
-						</button>
-					</div>
-					<div class="dialog-morph-content">
-						{
-							image && (
+						class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90dvh]">
+						<div
+							class="elevated-card-hoverable elevated-1 absolute top-3 left-3 w-11 h-11 bg-beige-100 z-10">
+							<button
+								type="button"
+								class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
+								data-dialog={"dialog" + slug}
+								data-origin={"project" + slug}
+								aria-label={`Close ${title} details`}>
 								<img
-									srcset={`
-                      /images/200/${image}   200w,
-                      /images/400/${image}   400w,
-                      /images/800/${image}   800w,
-                      /images/1200/${image} 1200w
-				`}
-									sizes="
-                      (max-width: 450px) 200px,
-                      (max-width: 850px) 400px,
-                      (max-width: 1250px) 800px,
-                      (max-width: 2000px) 1200px,
-                      2000px"
-									src={`/images/1200/${image}`}
-									loading="lazy"
-									alt={`Photo demonstrating the ${title} project`}
-									class="aspect-[2] max-h-96 w-full object-cover md:aspect-video"
+									class="w-5 h-5"
+									src="https://img.icons8.com/ios-filled/50/multiply.png"
+									alt=""
 								/>
-							)
-						}
-						<h2 id={titleId} class="sr-only">{title}</h2>
-						<Marquee inverse={false} decorative={true}>
-							<p class="h-24 flex items-center mt-4 text-6xl font-poppins font-black tracking-wider">
-								{title}
-							</p>
-							<p class="h-24 flex items-center mt-4 text-6xl font-poppins font-black tracking-wider">
-								{title}
-							</p>
-						</Marquee>
-						<div class="m-8 flex flex-col gap-4">
-							<slot />
+							</button>
+						</div>
+						<div class="dialog-morph-content">
+							{
+								image && (
+									<img
+										srcset={`
+                        /images/200/${image}   200w,
+                        /images/400/${image}   400w,
+                        /images/800/${image}   800w,
+                        /images/1200/${image} 1200w
+				  `}
+										sizes="
+                        (max-width: 450px) 200px,
+                        (max-width: 850px) 400px,
+                        (max-width: 1250px) 800px,
+                        (max-width: 2000px) 1200px,
+                        2000px"
+										src={`/images/1200/${image}`}
+										loading="lazy"
+										alt={`Photo demonstrating the ${title} project`}
+										class="aspect-[2] max-h-96 w-full object-cover md:aspect-video"
+									/>
+								)
+							}
+							<h2 id={titleId} class="sr-only">{title}</h2>
+							<Marquee inverse={false} decorative={true}>
+								<p class="h-24 flex items-center mt-4 text-6xl font-poppins font-black tracking-wider">
+									{title}
+								</p>
+								<p class="h-24 flex items-center mt-4 text-6xl font-poppins font-black tracking-wider">
+									{title}
+								</p>
+							</Marquee>
+							<div class="m-8 flex flex-col gap-4">
+								<slot />
+							</div>
 						</div>
 					</div>
 				</div>

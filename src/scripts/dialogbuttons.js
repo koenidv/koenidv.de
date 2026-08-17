@@ -1,8 +1,10 @@
 const prefersReducedMotion = () =>
 	window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const MORPH_DURATION = 350;
-const MORPH_EASING = "ease-out";
+const MORPH_DURATION = 220;
+// A snappier decelerate than the CSS "ease-out" keyword — fast out of the
+// gate, gentle settle. Common choice for this kind of box/scale morph.
+const MORPH_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 const lockScroll = () => {
 	document.body.style.overflowY = "hidden";
@@ -59,6 +61,25 @@ const fadeBackdrop = (backdrop, { reverse = false } = {}) => {
 	return backdrop.animate(keyframes, { duration: MORPH_DURATION, easing: MORPH_EASING, fill: "both" });
 };
 
+// The dim + blur behind the dialog is the UA-generated ::backdrop pseudo-
+// element (main.scss), separate from the gradient `.backdrop` div above.
+// It has no box of its own to run a FLIP on, so just cross-fade its opacity —
+// not all browsers support animating a pseudo-element, so this degrades to
+// an instant show/hide rather than throwing.
+const fadeNativeBackdrop = (dialog, { reverse = false } = {}) => {
+	try {
+		const keyframes = reverse ? [{ opacity: 1 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: 1 }];
+		return dialog.animate(keyframes, {
+			duration: MORPH_DURATION,
+			easing: MORPH_EASING,
+			fill: "both",
+			pseudoElement: "::backdrop"
+		});
+	} catch {
+		return null;
+	}
+};
+
 const settle = (animation) => (animation ? animation.finished.catch(() => {}) : Promise.resolve());
 
 // fill: "both" keeps an animation's last frame in effect, overriding the
@@ -86,7 +107,12 @@ const handleOpenClicked = async (origin, dialog, slug) => {
 	if (!card || prefersReducedMotion()) return;
 
 	const cardRect = card.getBoundingClientRect();
-	await runMorph([morphCard(card, originRect, cardRect), fadeContent(content), fadeBackdrop(backdrop)]);
+	await runMorph([
+		morphCard(card, originRect, cardRect),
+		fadeContent(content),
+		fadeBackdrop(backdrop),
+		fadeNativeBackdrop(dialog)
+	]);
 };
 
 document.querySelectorAll(".opendialog").forEach((e) => {
@@ -126,7 +152,8 @@ const closeDialog = async (origin, dialog) => {
 		await runMorph([
 			morphCard(card, originRect, cardRect, { reverse: true }),
 			fadeContent(content, { reverse: true }),
-			fadeBackdrop(backdrop, { reverse: true })
+			fadeBackdrop(backdrop, { reverse: true }),
+			fadeNativeBackdrop(dialog, { reverse: true })
 		]);
 	}
 
