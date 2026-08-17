@@ -4,11 +4,12 @@
 		style="grid-area: person;">
 		<h3 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins">Tell me about yourself</h3>
 		<div class="flex flex-col gap-1">
-			<label for="name">Your Name</label>
+			<label for="contact-name">Your Name <span aria-hidden="true">*</span></label>
 			<div class="group">
 				<div class="elevated-card-hoverable elevated-2">
 					<input
 						type="text"
+						id="contact-name"
 						name="name"
 						placeholder="Erich Doe"
 						required
@@ -19,11 +20,12 @@
 			</div>
 		</div>
 		<div class="flex flex-col gap-1">
-			<label for="email">Your Email</label>
+			<label for="contact-email">Your Email <span aria-hidden="true">*</span></label>
 			<div class="group">
 				<div class="elevated-card-hoverable elevated-2">
 					<input
 						type="email"
+						id="contact-email"
 						name="email"
 						required
 						autocomplete="email"
@@ -38,12 +40,14 @@
 		<h3 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins">
 			& what you've got in mind
 		</h3>
+		<label for="contact-message" class="sr-only">Your message</label>
 		<div class="group">
 			<div class="elevated-card-hoverable elevated-4">
 				<div
 					class="grow-wrap after:p-2 after:border-l-4 after:border-t-4 after:border-r-2 after:border-b-2 min-h-[16rem]"
-					data-replicatedValue="Yoo Florian,\n\nI've got this crazy idea for a doughnut-shaped spaceship. Complete with rotating outer rings that simulate gravity through centrifugal force. The central hole housing would be a zero-gravity donut bakery to satisfy our interstellar cravings.\n\nIt'll be called Spacedoe, let's build it!">
+					data-replicated-value="Yoo Florian,\n\nI've got this crazy idea for a doughnut-shaped spaceship. Complete with rotating outer rings that simulate gravity through centrifugal force. The central hole housing would be a zero-gravity donut bakery to satisfy our interstellar cravings.\n\nIt'll be called Spacedoe, let's build it!">
 					<textarea
+						id="contact-message"
 						name="message"
 						required
 						oninput="this.parentNode.dataset.replicatedValue = this.value || this.placeholder"
@@ -61,7 +65,7 @@
 					<input
 						type="submit"
 						value="Send this message"
-						class="block group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]"
+						class="block w-full h-full min-h-[2.75rem] cursor-pointer group-hover:underline underline-offset-[0.3rem] decoration-[0.125rem]"
 					/>
 				</div>
 			</div>

@@ -1,7 +1,11 @@
+<!--
+  `contents` so this wrapper does not create a second, nested `prose` context —
+  the article page already applies `prose` to its container.
+-->
 <div
-  class="prose w-full contents
+  class="contents
   prose-h1:font-bold prose-h1:text-xl
-  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
-  prose-headings:underline">
+  prose-a:text-blue-700 prose-a:underline prose-img:rounded-xl
+  hyphens-auto">
   <slot />
 </div>
