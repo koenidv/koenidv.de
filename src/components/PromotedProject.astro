@@ -17,6 +17,6 @@ const { Content, headings } = await project.render();
 	project={project}
 	isLarge={isLarge == true}
 />
-<ProjectDialog title={data.title} image={data.image} slug={project.slug}>
+<ProjectDialog title={data.title} image={data.image} slug={project.slug} isLarge={isLarge == true}>
 	<Content />
 </ProjectDialog>
