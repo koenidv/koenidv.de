@@ -1,17 +1,23 @@
 ---
 interface Props {
   inverse?: boolean;
+  /**
+   * Hide every copy from assistive tech. Use when the marquee text merely
+   * repeats a heading that is already announced elsewhere on the page.
+   */
+  decorative?: boolean;
 }
 
-const { inverse = false } = Astro.props;
+const { inverse = false, decorative = false } = Astro.props;
 ---
 
 <div class={inverse ? "marquee-container-right" : "marquee-container-left"}>
   <div class="marquee no-margin-children">
-    <slot />
-    <slot />
-    <slot />
-    <slot />
+    {/* The copies exist to make the loop seamless, so only the first is exposed */}
+    <div class="marquee-copy" aria-hidden={decorative ? "true" : undefined}><slot /></div>
+    <div class="marquee-copy" aria-hidden="true"><slot /></div>
+    <div class="marquee-copy" aria-hidden="true"><slot /></div>
+    <div class="marquee-copy" aria-hidden="true"><slot /></div>
   </div>
 </div>
 
@@ -21,14 +27,14 @@ const { inverse = false } = Astro.props;
     overflow: hidden;
     --offset: 20vw;
     --move-initial: calc(-25% + var(--offset));
-    --move-final: calc(-50.1% + var(--offset));
+    --move-final: calc(-50% + var(--offset));
   }
 
   .marquee-container-right {
     position: relative;
     overflow: hidden;
     --offset: 20vw;
-    --move-initial: calc(-50.1% + var(--offset));
+    --move-initial: calc(-50% + var(--offset));
     --move-final: calc(-25% + var(--offset));
   }
 
@@ -36,47 +42,68 @@ const { inverse = false } = Astro.props;
     width: fit-content;
     display: flex;
     flex-direction: row;
-    gap: 2rem;
     position: relative;
     width: max-content;
     align-items: center;
     font-size: 10vw;
     font-family: 'Poppins', sans-serif;
 
+    /* The spacing lives on the copies, not here, so that one copy plus its
+       trailing gap is exactly 25% of the track and the loop is seamless. */
+    gap: 0;
+
     transform: translate3d(var(--move-initial), 0, 0);
     animation: marquee 30s linear infinite;
   }
 
-  
+  .marquee-copy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Moving content must be pausable — and holding a pointer over it is the
+     natural way to read something that is scrolling past. */
+  .marquee-container-left:hover .marquee,
+  .marquee-container-right:hover .marquee,
+  .marquee-container-left:focus-within .marquee,
+  .marquee-container-right:focus-within .marquee {
+    animation-play-state: paused;
+  }
+
   .marquee :global(p) {
     color: #131218;
   }
-  
+
+  /* Scoped to the text elements themselves: the .marquee-copy wrappers are now
+     the direct children, and a bare :nth-of-type(even) would outline whole copies. */
   @supports (-webkit-text-stroke: 1px white) {
-    .marquee :global(p:nth-of-type(even)) {
+    .marquee :global(:is(p, h1, h2, h3):nth-of-type(even)) {
       color: theme('colors.beige.100');
       -webkit-text-stroke: 2px black;
     }
-  }  
-  
+  }
+
   @media screen and (min-width: 48rem) {
     .marquee {
       font-size: 6rem;
+    }
+
+    .marquee-copy {
       gap: 4rem;
+      padding-right: 4rem;
     }
 
     @supports (-webkit-text-stroke: 1px white) {
-    .marquee :global(:nth-of-type(even)) {
-      color: theme('colors.beige.100');
-      -webkit-text-stroke: 0.15rem black;
+      .marquee :global(:is(p, h1, h2, h3):nth-of-type(even)) {
+        -webkit-text-stroke: 0.15rem black;
+      }
     }
-  }  
-
   }
 
   .marquee p {
-    /* color: #1c1d20;
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; */
     margin: 0;
   }
 
@@ -87,6 +114,13 @@ const { inverse = false } = Astro.props;
 
     100% {
       transform: translate3d(var(--move-final), 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      animation: none;
+      transform: none;
     }
   }
 </style>

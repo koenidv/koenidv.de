@@ -8,48 +8,54 @@ export interface Props {
 }
 
 const { title, image, slug } = Astro.props;
+const titleId = `dialog-title-${slug}`;
 ---
 
 <dialog
 	id={"dialog" + slug}
+	aria-labelledby={titleId}
 	class="projectdialog bg-transparent w-screen h-screen p-0 backdrop:bg-transparent">
+	<!--
+		The gradient backdrop doubles as the click-to-close target. It must stay
+		behind the content: without an explicit z-index it is a positioned element
+		among static ones and paints on top, which made every tap close the dialog.
+	-->
 	<div
-		class="closedialog backdrop absolute top-0 left-0 w-screen h-screen opacity-50 bg-gradient-to-br from-mojito-200 to-lavender-200"
+		class="closedialog backdrop absolute top-0 left-0 w-screen h-screen -z-10 opacity-50 bg-gradient-to-br from-mojito-200 to-lavender-200"
 		data-dialog={"dialog" + slug}
 		data-origin={"project" + slug}>
 	</div>
-	<div class="bg-transparent bg-opacity-25 w-screen h-screen flex justify-center items-center">
+	<div class="relative z-0 bg-transparent w-screen h-[100dvh] flex justify-center items-center">
 		<div
-			class="dialog-content"
-			class="border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-screen">
+			class="dialog-content border-none outline-none bg-transparent rounded-none max-md:p-0 max-md:m-0 max-md:w-screen max-md:h-[100dvh]">
 			<div
 				style="view-transition-name: fullembed;"
-				class="md:elevated-card elevated-4 bg-beige-100 max-md:h-screen md:max-h-[90vh] min-h-[40vh] w-screen md:w-[60vw]">
+				class="relative md:elevated-card elevated-4 bg-beige-100 max-md:h-[100dvh] md:max-h-[90dvh] min-h-[40vh] w-screen md:w-[60vw]">
 				<div
-					class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90vh]">
+					class="md:border-l-4 md:border-t-4 md:border-r-2 md:border-b-2 border-black h-full w-full overflow-x-hidden overflow-y-scroll md:max-h-[90dvh]">
 					<div
-						class="elevated-card-hoverable elevated-1 absolute top-3 left-3 w-8 h-8 bg-beige-100 z-10">
-						<div
+						class="elevated-card-hoverable elevated-1 absolute top-3 left-3 w-11 h-11 bg-beige-100 z-10">
+						<button
+							type="button"
 							class="closedialog border-l-4 border-t-4 border-r-2 border-b-2 border-black flex justify-center items-center w-full h-full"
 							data-dialog={"dialog" + slug}
 							data-origin={"project" + slug}
-							tabindex="0"
-							aria-label="Close dialog">
+							aria-label={`Close ${title} details`}>
 							<img
-								class="w-full h-full"
+								class="w-5 h-5"
 								src="https://img.icons8.com/ios-filled/50/multiply.png"
-								alt="close"
+								alt=""
 							/>
-						</div>
+						</button>
 					</div>
 					{
 						image && (
 							<img
 								srcset={`
                     /images/200/${image}   200w,
-                    /images/800/${image}   400w,
-                    /images/400/${image}   800w,
-                    /images/1200/${image} 1200w,
+                    /images/400/${image}   400w,
+                    /images/800/${image}   800w,
+                    /images/1200/${image} 1200w
 			    `}
 								sizes="
                     (max-width: 450px) 200px,
@@ -59,18 +65,19 @@ const { title, image, slug } = Astro.props;
                     2000px"
 								src={`/images/1200/${image}`}
 								loading="lazy"
-								alt={`Photo demostrating the ${title} project`}
+								alt={`Photo demonstrating the ${title} project`}
 								class="aspect-[2] max-h-96 w-full object-cover md:aspect-video"
 							/>
 						)
 					}
-					<Marquee inverse={false}>
-						<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+					<h2 id={titleId} class="sr-only">{title}</h2>
+					<Marquee inverse={false} decorative={true}>
+						<p class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
 							{title}
-						</h1>
-						<h1 class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
+						</p>
+						<p class="h-24 flex items-center mt-4 text-6xl font-poppins font-bold tracking-wider">
 							{title}
-						</h1>
+						</p>
 					</Marquee>
 					<div class="m-8 flex flex-col gap-4">
 						<slot />
