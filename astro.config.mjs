@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
-import netlify from '@astrojs/netlify/functions';
+import netlify from '@astrojs/netlify';
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
-import { domains } from "googleapis/build/src/apis/domains";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,8 +12,9 @@ export default defineConfig({
 	srcDir: "src",
 	adapter: netlify(),
 	integrations: [
-		tailwind(),
-		mdx(
-		)	
+		// main.scss already declares @tailwind base/components/utilities —
+		// applyBaseStyles would ship that same base layer a second time.
+		tailwind({ applyBaseStyles: false }),
+		mdx()
 	]
 });
