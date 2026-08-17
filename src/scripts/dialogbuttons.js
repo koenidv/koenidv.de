@@ -1,18 +1,8 @@
 const prefersReducedMotion = () =>
 	window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/**
- * Run a DOM update inside a view transition when the browser supports one and
- * the visitor has not asked for reduced motion.
- */
-const withTransition = async (update) => {
-	if (!document.startViewTransition || prefersReducedMotion()) {
-		update();
-		return;
-	}
-	const transition = document.startViewTransition(update);
-	await transition.updateCallbackDone;
-};
+const MORPH_DURATION = 350;
+const MORPH_EASING = "ease-out";
 
 const lockScroll = () => {
 	document.body.style.overflowY = "hidden";
@@ -22,19 +12,81 @@ const unlockScroll = () => {
 	document.body.style.overflowY = "";
 };
 
-const showDialog = (origin, dialog) => {
-	origin.style.viewTransitionName = "";
-	dialog.showModal();
-	origin.classList.add("invisible");
-	lockScroll();
+/**
+ * A manual FLIP transform: the string that, applied to an element naturally
+ * laid out as `toRect`, makes it visually occupy `fromRect` instead.
+ *
+ * Chrome's built-in View Transitions API was tried here first, but its
+ * shared-element morph doesn't reliably animate size for a <dialog> — the
+ * dialog's own top-layer promotion appears to race the transition snapshot,
+ * so the box always renders at its final size while only position moved.
+ * Driving the same box+scale morph by hand with the Web Animations API sidesteps
+ * that entirely and behaves identically across browsers.
+ */
+const invertTransform = (fromRect, toRect) => {
+	const dx = fromRect.left - toRect.left;
+	const dy = fromRect.top - toRect.top;
+	const sx = fromRect.width / toRect.width;
+	const sy = fromRect.height / toRect.height;
+	return `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+};
+
+const morphCard = (card, fromRect, toRect, { reverse = false } = {}) => {
+	const invert = invertTransform(fromRect, toRect);
+	card.style.transformOrigin = "top left";
+	const keyframes = reverse
+		? [{ transform: "none" }, { transform: invert }]
+		: [{ transform: invert }, { transform: "none" }];
+	return card.animate(keyframes, { duration: MORPH_DURATION, easing: MORPH_EASING, fill: "both" });
+};
+
+const fadeContent = (content, { reverse = false } = {}) => {
+	if (!content) return null;
+	const keyframes = reverse
+		? [{ opacity: 1, offset: 0 }, { opacity: 0, offset: 0.5 }, { opacity: 0, offset: 1 }]
+		: [{ opacity: 0, offset: 0 }, { opacity: 0, offset: 0.35 }, { opacity: 1, offset: 1 }];
+	return content.animate(keyframes, { duration: MORPH_DURATION, easing: MORPH_EASING, fill: "both" });
+};
+
+const fadeBackdrop = (backdrop, { reverse = false } = {}) => {
+	if (!backdrop) return null;
+	// Read the resting opacity from the stylesheet (Tailwind's opacity-50) so
+	// handing off to it after cancel() is seamless instead of a visible jump.
+	const restingOpacity = getComputedStyle(backdrop).opacity;
+	const keyframes = reverse
+		? [{ opacity: restingOpacity }, { opacity: 0 }]
+		: [{ opacity: 0 }, { opacity: restingOpacity }];
+	return backdrop.animate(keyframes, { duration: MORPH_DURATION, easing: MORPH_EASING, fill: "both" });
+};
+
+const settle = (animation) => (animation ? animation.finished.catch(() => {}) : Promise.resolve());
+
+// fill: "both" keeps an animation's last frame in effect, overriding the
+// element's real styles, until it's explicitly canceled — an animation left
+// uncanceled here would still be "holding" its old transform/opacity the next
+// time the dialog opens, fighting the new animation and corrupting it.
+const runMorph = async (animations) => {
+	await Promise.all(animations.map(settle));
+	animations.forEach((a) => a && a.cancel());
 };
 
 const handleOpenClicked = async (origin, dialog, slug) => {
-	origin.style.viewTransitionName = "fullembed";
+	const originRect = origin.getBoundingClientRect();
+
 	history.replaceState({ dialog: { originid: origin.id, dialogid: dialog.id } }, "");
 	history.pushState({ dialogOpen: true }, "", `#${slug}`);
 
-	await withTransition(() => showDialog(origin, dialog));
+	dialog.showModal();
+	origin.classList.add("invisible");
+	lockScroll();
+
+	const card = dialog.querySelector(".dialog-morph-target");
+	const content = dialog.querySelector(".dialog-morph-content");
+	const backdrop = dialog.querySelector(".backdrop");
+	if (!card || prefersReducedMotion()) return;
+
+	const cardRect = card.getBoundingClientRect();
+	await runMorph([morphCard(card, originRect, cardRect), fadeContent(content), fadeBackdrop(backdrop)]);
 };
 
 document.querySelectorAll(".opendialog").forEach((e) => {
@@ -63,16 +115,24 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 	});
 });
 
-const hideDialog = (origin, dialog) => {
-	origin.style.viewTransitionName = "fullembed";
-	// Un-hide before close() so the browser can restore focus to the opener
-	origin.classList.remove("invisible");
-	dialog.close();
-};
-
 const closeDialog = async (origin, dialog) => {
-	await withTransition(() => hideDialog(origin, dialog));
-	origin.style.viewTransitionName = "";
+	const card = dialog.querySelector(".dialog-morph-target");
+	const content = dialog.querySelector(".dialog-morph-content");
+	const backdrop = dialog.querySelector(".backdrop");
+
+	if (card && !prefersReducedMotion()) {
+		const cardRect = card.getBoundingClientRect();
+		const originRect = origin.getBoundingClientRect();
+		await runMorph([
+			morphCard(card, originRect, cardRect, { reverse: true }),
+			fadeContent(content, { reverse: true }),
+			fadeBackdrop(backdrop, { reverse: true })
+		]);
+	}
+
+	dialog.close();
+	origin.classList.remove("invisible");
+	unlockScroll();
 
 	const opener = origin.querySelector(".opendialog") ?? origin;
 	if (typeof opener.focus === "function") opener.focus();
