@@ -247,6 +247,12 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 		if (history.state?.dialogOpen) history.back();
 	});
 
+	dialog.addEventListener("click", (event) => {
+		if (event.target.closest(".dialog-morph-target")) return;
+		if (event.target.closest(".closedialog")) return;
+		handleCloseClicked(origin, dialog);
+	});
+
 	e.addEventListener("click", (evt) => {
 		if (evt.target.closest("a")) return;
 		handleOpenClicked(origin, dialog, slug);
