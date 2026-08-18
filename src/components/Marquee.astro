@@ -65,15 +65,6 @@ const { inverse = false, decorative = false } = Astro.props;
     padding-right: 2rem;
   }
 
-  /* Moving content must be pausable — and holding a pointer over it is the
-     natural way to read something that is scrolling past. */
-  .marquee-container-left:hover .marquee,
-  .marquee-container-right:hover .marquee,
-  .marquee-container-left:focus-within .marquee,
-  .marquee-container-right:focus-within .marquee {
-    animation-play-state: paused;
-  }
-
   .marquee :global(p) {
     color: #131218;
   }

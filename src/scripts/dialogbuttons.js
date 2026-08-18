@@ -152,6 +152,15 @@ const fadeNativeBackdrop = (dialog, { reverse = false } = {}) => {
 	}
 };
 
+// Open and close both run an awaited morph on the same dialog. If a second
+// call starts before the first's await resolves (rapid open→close→open), the
+// first's post-await cleanup — resetCardStyles, dialog.close(), unlockScroll —
+// still fires once it settles, stomping on whatever the newer call already
+// set up. A per-dialog generation counter lets a stale call detect it's been
+// superseded and skip that cleanup instead of corrupting the newer state.
+const nextGeneration = (dialog) => (dialog._morphGeneration = (dialog._morphGeneration || 0) + 1);
+const isCurrentGeneration = (dialog, generation) => dialog._morphGeneration === generation;
+
 const settle = (animation) => (animation ? animation.finished.catch(() => {}) : Promise.resolve());
 
 // fill: "both" keeps an animation's last frame in effect, overriding the
@@ -179,6 +188,7 @@ const settleImmediately = (targets) => {
 };
 
 const handleOpenClicked = async (origin, dialog, slug) => {
+	const generation = nextGeneration(dialog);
 	const card = dialog.querySelector(".dialog-morph-target");
 	const content = dialog.querySelector(".dialog-morph-content");
 	const backdrop = dialog.querySelector(".backdrop");
@@ -218,6 +228,9 @@ const handleOpenClicked = async (origin, dialog, slug) => {
 		fadeBackdrop(backdrop),
 		fadeNativeBackdrop(dialog)
 	]);
+	// A newer open/close call already took over this dialog — let it own the
+	// final state instead of resetting styles out from under it.
+	if (!isCurrentGeneration(dialog, generation)) return;
 	resetCardStyles(card);
 };
 
@@ -248,6 +261,7 @@ document.querySelectorAll(".opendialog").forEach((e) => {
 });
 
 const closeDialog = async (origin, dialog) => {
+	const generation = nextGeneration(dialog);
 	const card = dialog.querySelector(".dialog-morph-target");
 	const content = dialog.querySelector(".dialog-morph-content");
 	const backdrop = dialog.querySelector(".backdrop");
@@ -288,10 +302,14 @@ const closeDialog = async (origin, dialog) => {
 			fadeNativeBackdrop(dialog, { reverse: true }),
 			originFade
 		]);
+		// A newer open/close call already took over — bail before this stale
+		// completion resets styles or closes a dialog the newer call reopened.
+		if (!isCurrentGeneration(dialog, generation)) return;
 		resetCardStyles(card);
 		origin.style.opacity = "";
 	}
 
+	if (!isCurrentGeneration(dialog, generation)) return;
 	dialog.close();
 	origin.classList.remove("invisible");
 	unlockScroll();
