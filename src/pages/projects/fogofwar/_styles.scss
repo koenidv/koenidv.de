@@ -1,0 +1,37 @@
+#fow-map {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+}
+
+.maplibregl-control-container {
+	.maplibregl-ctrl-bottom-right {
+		right: 1rem;
+		bottom: 5.5rem;
+		z-index: 20;
+
+		@media (min-width: 1024px) {
+			bottom: 5.5rem;
+		}
+	}
+
+	.maplibregl-ctrl-attrib {
+		background-color: rgba(245, 240, 229, 0.9) !important;
+		color: #131218 !important;
+		border: 1px solid #000000;
+		font-family: monospace;
+		font-size: 10px;
+
+		a {
+			color: #131218 !important;
+			text-decoration: underline;
+		}
+	}
+}
+
+input[type="range"] {
+	accent-color: #000000;
+}

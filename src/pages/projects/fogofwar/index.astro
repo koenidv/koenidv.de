@@ -1,0 +1,62 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import "maplibre-gl/dist/maplibre-gl.css";
+import "./_styles.scss";
+
+export const prerender = true;
+---
+
+<Layout title="Fog of War | Florian König" description="Explore everywhere you've ever set foot with your Google Maps Timeline export — completely private and rendered in WebGL2 in your browser.">
+	<div class="flex flex-row h-screen w-screen overflow-hidden bg-beige-100">
+		<!-- Vertical Florian König sidebar rail -->
+		<div class="sidebar flex w-24 flex-shrink-0 justify-center max-lg:hidden z-20 pointer-events-auto">
+			<div class="sidebar-content flex flex-row-reverse w-fit h-full [writing-mode:vertical-rl] pb-8 pt-24 items-center justify-between">
+				<div class="inline-block rotate-180">
+					<a href="/">
+						<h2 class="inline-block text-5xl font-poppins font-black outlined tracking-wide text-outlined hover:text-[#131218] hover:underline underline-offset-[0.3rem] decoration-[0.3rem]">
+							Florian König
+						</h2>
+					</a>
+					<a href="/projects/fogofwar">
+						<h2 class="inline-block text-4xl py-8 font-poppins font-black hover:text-[#131218] hover:underline underline-offset-[0.4rem] decoration-[0.2rem]">
+							Fog of War
+						</h2>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main map and interactive viewport -->
+		<div class="relative flex-1 h-full w-full overflow-hidden">
+			<!-- Full bleed MapLibre container -->
+			<div id="fow-map" class="w-full h-full"></div>
+
+			<!-- Landing / Upload overlay -->
+			<div id="fow-landing" class="absolute inset-0 z-40 bg-black/60 backdrop-blur-sm flex items-center justify-center overflow-y-auto p-4"></div>
+
+			<!-- Control panel toggle button (visible when panel is hidden) -->
+			<div id="fow-panel-toggle-wrapper" class="absolute top-4 right-4 z-20 hidden pointer-events-auto group">
+				<div class="elevated-card-hoverable elevated-1">
+					<button
+						id="fow-panel-toggle"
+						class="bg-beige-100 hover:bg-beige-200 border-l-4 border-t-4 border-r-2 border-b-2 border-black px-3 py-2 font-poppins font-black text-xs uppercase tracking-wider flex items-center space-x-1.5"
+						title="Open Settings">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+						</svg>
+						<span class="group-hover:underline underline-offset-[0.2rem] decoration-[0.1rem]">Settings</span>
+					</button>
+				</div>
+			</div>
+
+			<!-- Control panel aside -->
+			<aside id="fow-panel" class="absolute top-4 right-4 z-30 hidden pointer-events-auto max-h-[calc(100vh-7rem)]"></aside>
+
+			<!-- Bottom Timeline bar -->
+			<div id="fow-timeline" class="absolute bottom-4 left-4 right-4 z-30 hidden pointer-events-auto"></div>
+		</div>
+	</div>
+
+	<script src="../../../lib/fogofwar/app.ts"></script>
+</Layout>
